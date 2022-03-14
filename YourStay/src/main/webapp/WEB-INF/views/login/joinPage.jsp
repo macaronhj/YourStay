@@ -1,37 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ page session="true" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="../css/login.css">
+<script src="javascript/jquery-3.2.1.min.js"></script>
+<script src="javascript/jquery-ui.js"></script>
+<script src="javascript/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="../css/airDnDCSS.css?ver=3"> 
 <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="../css/blog.css" type="text/css" media="all" />
-
 <style>
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.loginForm {
-  width: 360px;
-  padding: 8% 0 0;
+.joinForm {
+  align:center;
+  width: 1200px;
+  padding: 3% 3% 3% 3%;
   margin: auto;
+  background: white;
+  padding-left: 0%;
+  padding-right: 15%;
 }
 .form {
+	
+  align:center;
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 360px;
+  max-width: 900px;
   margin: 0 auto 100px;
   padding: 45px;
-  text-align: center;
-  margin-top:60px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
+
 .form input[type=text],input[type=password] {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
-  width: 100%;
+  width: 60%;
   border: 0;
   margin: 0 0 15px;
   padding: 15px;
@@ -39,23 +47,20 @@
   font-size: 14px;
 }
 .form input[type=button] {
+  align:center;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #FF5A5F; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #FF5A5F, #FF5A5F);
-  background: -moz-linear-gradient(right, #FF5A5F, #FF5A5F);
-  background: -o-linear-gradient(right, #FF5A5F, #FF5A5F);
-  background: linear-gradient(to left, #FF5A5F, #FF5A5F);
-  width: 100%;
+  width: 200px;
   border: 0;
-  padding: 15px;
-  color: #FFFFFF;
+  padding: 15px 15px 15px 15px;
+  background-color: #FF5A5F;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
 }
+
 .form button:hover,.form button:active,.form button:focus {
   background: #43A047;
 }
@@ -105,36 +110,43 @@
   color: #EF3B3A;
 }
 
+
 </style>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-<script>
+
+<script type="text/javascript">
+	
 $(document).ready(function(){
-   $("#password").keypress(function(e) { 
-       if (e.keyCode == 13){
-          var userId = $("#id").val();
-           var userPw = $("#password").val();
-           if(userId == ""){
-               alert("아이디를 입력하세요.");
-               $("#id").focus(); // 입력포커스 이동
-               return; // 함수 종료
-           }
-           if(userPw == ""){
-               alert("비밀번호를 입력하세요.");
-               $("#password").focus();
-               return;
-           }
-           // 폼 내부의 데이터를 전송할 주소
-           document.form1.action="loginCheck.do"
-           // 제출
-           document.form1.submit();
-
-       }   
-   });
-
-   
-   $("#logo").click(function(){
-		window.location="index.jsp";
+	$(".joinBtn").click(function(){
+        // 태크.val() : 태그에 입력된 값
+        // 태크.val("값") : 태그의 값을 변경 
+        var userId = $("#id").val();
+        var userPw = $("#password").val();
+        if(userId == ""){
+            alert("아이디를 입력하세요.");
+            $("#id").focus(); // 입력포커스 이동
+            return; // 함수 종료
+        }
+        if(userPw == ""){
+            alert("아이디를 입력하세요.");
+            $("#password").focus();
+            return;
+        }
+        if(userPw != $('#mbpw_re').val()){
+        	alert("두 비밀번호가 다릅니다")
+        	return;
+        }
+        // 폼 내부의 데이터를 전송할 주소
+        document.userInfo.action="join.do"
+        // 제출
+        document.userInfo.submit();
+    });
+	
+	$(".cancelBtn").click(function(){
+		location.href = "index.jsp";
+	});
+	
+	$("#logo").click(function(){
+		location.href="index.jsp";
 	});
 	var checkShow = false;
 	$("#rollDown").hide();
@@ -148,35 +160,13 @@ $(document).ready(function(){
 		}
 
 	});
-    $("#loginBtn").click(function(){
-        // 태크.val() : 태그에 입력된 값
-        // 태크.val("값") : 태그의 값을 변경 
-        var userId = $("#id").val();
-        var userPw = $("#password").val();
-        if(userId == ""){
-            alert("아이디를 입력하세요.");
-            $("#id").focus(); // 입력포커스 이동
-            return; // 함수 종료
-        }
-        if(userPw == ""){
-            alert("비밀번호를 입력하세요.");
-            $("#password").focus();
-            return;
-        }
-        // 폼 내부의 데이터를 전송할 주소
-        document.form1.action="loginCheck.do"
-        // 제출
-        document.form1.submit();
-    });
+	
 });
-
-
-
 </script>
- <title>Insert title here</title>
  
- </head>
- <body class="body">
+
+</head>
+<body class="body">
 <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
@@ -192,27 +182,60 @@ $(document).ready(function(){
       </div>
     </div>
   </header>
-   
-   <div id="body" style="background-image: URL(img/background2.jpg); background-repeat: no-repeat; width: 100%; height:700px;">
-   
-      <div class="loginForm">
-      <form method="post" name="form1" class="form" action="loginCheck.do">
-         <div class="box">
-            <input type="text" name="id" id="id" class="iText" value="이메일 입력하세요.">
-            <br> 
-            <input type="password" name="pw" id="password" class="iText" value="비밀번호 입력하세요." onkeydown='javascript:onEnterSubmit()'>
-            <br>
-            <input type="button" id="loginBtn" class="loginBtn" value="로그인" >
-                  <p class="message">ID가 없으신가요? <a href="joinPage">회원가입</a></p>
-         </div>
-      </form>
-   </div>
-   </div> 
-<footer class="blog-footer">
-  <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-  <p>
-    <a href="#">Back to top</a>
-  </p>
-</footer>
+	<div id="body">
+		
+		<div class="joinForm">
+			<form name="userInfo" class="form" method="post" action="join.do">
+				<table width="100%">
+					<tr height="2" bgcolor="#FFC8C3">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>아이디</th>
+						<td><input type="text" name="id" id="id"> <a
+							href='#' style='cursor: help'> 중복확인 </a></td>
+					</tr>
+					<tr>
+						<th>비밀번호</th>
+						<td><input type="password" name="pw" id="password"> 영문/숫자포함 6자 이상</td>
+					</tr>
+					<tr>
+						<th>비밀번호 확인</th>
+						<td><input type="password" name="mbpw_re" id="mbpw_re"></td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td><input type='text' name="email"> ex)ya63kr@nate.com
+						</td>
+					</tr>
+					<tr>
+						<th>핸드폰 번호</th>
+						<td><input type="text" name="phone"> ex) -없이 적으세요</td>
+					</tr>
+					<tr>
+						<th>생년월일</th>
+						<td><input type="text" name="birthday"> ex)19920913 </td>
+					</tr>
+					<tr height="2" bgcolor="#FFC8C3">
+						<td colspan="2"></td>
+					</tr>
+				  </table>
+				  <table style=" width:100%;  margin: auto; text-align: center;">
+				  	<tr>
+							<td style="text-align: 'center';"><input type="button" style="color:#fff;" class="joinBtn" value="회원가입"></td>
+					
+							<td style="text-align: 'cetner';"><input type="button" style="color:#fff;" class="cancelBtn" value="취소"onclick="goIndexForm()"></td>
+					</tr>
+				  </table>								
+				</form>
+			</div>
+		
+	</div>
+	<footer class="blog-footer">
+	  <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+	  <p>
+	    <a href="#">Back to top</a>
+	  </p>
+	</footer>
 </body>
 </html>

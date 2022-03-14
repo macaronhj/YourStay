@@ -21,7 +21,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
- 
+
 <script>
       $(document).ready(function(){         
          var checkShow = false;
@@ -56,6 +56,7 @@
          $("#logo").click(function(){
             window.location="index.jsp";
          });
+      }
 </script>
 <!--// bootstrap-css -->
 <!-- css -->
@@ -69,7 +70,6 @@
         -moz-user-select: none;
         user-select: none;
       }
-
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -97,24 +97,6 @@
     </div>
   </header>
 
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <a class="p-2 link-secondary" href="#">World</a>
-      <a class="p-2 link-secondary" href="#">U.S.</a>
-      <a class="p-2 link-secondary" href="#">Technology</a>
-      <a class="p-2 link-secondary" href="#">Design</a>
-      <a class="p-2 link-secondary" href="#">Culture</a>
-      <a class="p-2 link-secondary" href="#">Business</a>
-      <a class="p-2 link-secondary" href="#">Politics</a>
-      <a class="p-2 link-secondary" href="#">Opinion</a>
-      <a class="p-2 link-secondary" href="#">Science</a>
-      <a class="p-2 link-secondary" href="#">Health</a>
-      <a class="p-2 link-secondary" href="#">Style</a>
-      <a class="p-2 link-secondary" href="#">Travel</a>
-    </nav>
-  </div>
-</div>
-
 <main class="container">
 <div id="searchBar">
          <form id="seatrchForm">
@@ -126,9 +108,9 @@
                </div>
                <div id="datepickerDiv"/>
                   <p class="searchFont">날짜</p>
-                   <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" placeholder="Start-date" onkeyup="invalid()" id="startdate" name="startdate">
+                  <input type="text" id="datepicker1" name="startDate" value="모든 날짜">
                   &nbsp;&nbsp;~&nbsp;&nbsp;
-                   <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" placeholder="Deadline" onkeyup="invalid()" id="deadline" name="deadline">
+                  <input type="text" id="datepicker2" name="endDate" value="모든 날짜">
                </div>
                <div id="personnelDiv">
                <p class="searchFont">인원</p>
@@ -155,7 +137,6 @@
       <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
     </div>
   </div>
-
   <div class="row mb-2">
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -168,7 +149,6 @@
         </div>
         <div class="col-auto d-none d-lg-block">
           <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
         </div>
       </div>
     </div>
@@ -183,24 +163,18 @@
         </div>
         <div class="col-auto d-none d-lg-block">
           <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
         </div>
       </div>
     </div>
   </div>
-
   
-
 </main>
-
 <footer class="blog-footer">
   <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
   <p>
     <a href="#">Back to top</a>
   </p>
 </footer>
-
-
     
   </body>
 </html>

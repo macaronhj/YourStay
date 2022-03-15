@@ -5,5 +5,6 @@
 <configuration>
    <typeAliases>
       <typeAlias alias="yourtrip" type="yourstay.md.domain.YourStay"/>
+      <typeAlias alias="MemberVO" type="yourstay.md.domain.MemberVO"/>
    </typeAliases>
 </configuration>

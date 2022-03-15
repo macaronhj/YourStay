@@ -20,11 +20,28 @@
 	    destroy-method="close">
 	    <constructor-arg ref="hikariConfig" />
 	 </bean>
-	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"></property>
-        <property name="configLocation"
-            value="classpath:/mybatis-config.xml"/>
-     </bean>	
+	 
+	<!-- sqlSessionFactoryBean 설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/sqlMapConfig.xml"></property>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:your/md/mapper/memberMapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- SqlSessionTemplate 설정 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+	
+	<!-- component scanning 설정 -->	
+	<context:component-scan base-package="yourstay.md">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
      <mybatis-spring:scan base-package="yourstay.md.mapper"/>
      <context:component-scan base-package="yourstay.md.mapper"/>
 </beans>

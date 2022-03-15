@@ -187,7 +187,7 @@ $(document).ready(function(){
 		<div class="joinForm">
 			<form name="userInfo" class="form" method="post" action="join.do">
 				<table width="100%">
-					<tr height="2" bgcolor="#FFC8C3">
+					<tr height="2" bgcolor="#2AC1BC">
 						<td colspan="2"></td>
 					</tr>
 					<tr>
@@ -216,15 +216,15 @@ $(document).ready(function(){
 						<th>생년월일</th>
 						<td><input type="text" name="birthday"> ex)19920913 </td>
 					</tr>
-					<tr height="2" bgcolor="#FFC8C3">
+					<tr height="2" bgcolor="#2AC1BC">
 						<td colspan="2"></td>
 					</tr>
 				  </table>
 				  <table style=" width:100%;  margin: auto; text-align: center;">
 				  	<tr>
-							<td style="text-align: 'center';"><input type="button" style="color:#fff;" class="joinBtn" value="회원가입"></td>
-					
-							<td style="text-align: 'cetner';"><input type="button" style="color:#fff;" class="cancelBtn" value="취소"onclick="goIndexForm()"></td>
+						<td style="text-align: 'center';"><input type="button" style="color:#fff;background-color: #2AC1BC;" class="joinBtn" value="회원가입"></td>
+				
+						<td style="text-align: 'cetner';"><input type="button" style="color:#fff;background-color: #2AC1BC;" class="cancelBtn" value="취소"onclick="goIndexForm()"></td>
 					</tr>
 				  </table>								
 				</form>

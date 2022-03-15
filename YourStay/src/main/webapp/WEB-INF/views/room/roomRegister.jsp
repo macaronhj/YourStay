@@ -20,22 +20,7 @@
 <link rel="stylesheet" href="../css/blog.css" type="text/css" media="all" />
 <link rel="stylesheet" href="../css/navbar.css" type="text/css" media="all" />
 </head>
-<style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      
-    </style>
-  <body>
+ <body>
     
 <div class="container">
   <header class="blog-header py-3" style="margin-bottom: 5%;">
@@ -43,23 +28,24 @@
       <div class="col-4 pt-1">
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">YourTrip</a>
+        <a class="blog-header-logo text-dark" href="/">YourTrip</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="link-secondary" href="#" aria-label="Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
         </a>
-        <a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign up</a>
+        <a class="btn btn-secondary" href="login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
       </div>
     </div>
   </header>
 
 <main class="container">
+<form name="input" method="get" action="mypage/home" enctype="multipart/form-data">
   <div class="row mb-2">
     <div class="col-md-6" style="width: 33%;">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">YourStay</strong>
+          <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
           <h3 class="mb-0">Accomodation's Name</h3>
           <p class="card-text mb-auto">Please write your accomodation's name.</p>
         </div>
@@ -69,7 +55,7 @@
 	<div class="col-md-6" style="width: 33%;">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">YourStay</strong>
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
           <h3 class="mb-0">Accomodation's Location</h3>
           <p class="card-text mb-auto">Please write your accomodation's location.</p>
         </div>
@@ -79,7 +65,7 @@
   <div class="col-md-6" style="width: 33%;">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">YourStay</strong>
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
           <h3 class="mb-0">Accomodation's Price</h3>
           <p class="card-text mb-auto">Please write your accomodation's price.</p>
         </div>
@@ -89,7 +75,7 @@
   <div class="col-md-6" style="width: 33%;">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">YourStay</strong>
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
           <h3 class="mb-0">Accomodation Name</h3>
           <p class="card-text mb-auto">Please select your accomodation type.</p>
         </div>
@@ -107,7 +93,7 @@
   <div class="col-md-6" style="width: 33%;">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">YourStay</strong>
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
           <h3 class="mb-0">Maximum Capacity</h3>
           <p class="card-text mb-auto">Please select accomodation's maximum capacity.</p>
         </div>
@@ -127,14 +113,282 @@
   <div class="col-md-6" style="width: 33%;">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">YourStay</strong>
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
           <h3 class="mb-0">Accomodation's Image</h3>
           <p class="card-text mb-auto">Please add your accomodation's Image.</p>
         </div>
-        <input class="form-control me-2" type='file' name='file' size="60" placeholder="Room's Location" style="margin-bottom: 11%;">
+        <input class="form-control me-2" type='file' name='iid' size="60" placeholder="Room's Image" style="margin-bottom: 11%;">
       </div>
   </div>
-  
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">The number of Room</h3>
+          <p class="card-text mb-auto">Please write the number of room.</p>
+        </div>
+          <input class="form-control me-2" type="text" name="rnum" size="60" placeholder="The number of Room" style="margin-bottom: 11%;">
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Wi-Fi</h3>
+          <p class="card-text mb-auto">Please select if there's Wi-Fi.</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="wifi">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">The number of Toilet</h3>
+          <p class="card-text mb-auto">Please write the number of toilet.</p>
+        </div>
+          <input class="form-control me-2" type="text" name="tnum" size="60" placeholder="The number of Room" style="margin-bottom: 11%;">
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">The number of Bed</h3>
+          <p class="card-text mb-auto">Please write the number of bed.</p>
+        </div>
+          <input class="form-control me-2" type="text" name="bnum" size="60" placeholder="The number of Room" style="margin-bottom: 11%;">
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">MicroWave</h3>
+          <p class="card-text mb-auto">Is there a microwave?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="wave">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Fridge</h3>
+          <p class="card-text mb-auto">Is there a fridge?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="refg">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Bidet</h3>
+          <p class="card-text mb-auto">Is there a bidet?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="bd">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">TV</h3>
+          <p class="card-text mb-auto">Is there a TV?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="tv">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Pet</h3>
+          <p class="card-text mb-auto">Is it possible to bring the pets?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="pet">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Kitchen</h3>
+          <p class="card-text mb-auto">Is there a kitchen?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="kitchen">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Washing Machine</h3>
+          <p class="card-text mb-auto">Is there a washing machine?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="wash">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Parking</h3>
+          <p class="card-text mb-auto">Is there a parking space?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="parking">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Fire Alarm</h3>
+          <p class="card-text mb-auto">Is there a fire alarm?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="fire">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Smoking</h3>
+          <p class="card-text mb-auto">Is it possible to smoke inside?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="smoking">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Roof Top</h3>
+          <p class="card-text mb-auto">Is there a roof top?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="roof">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Barbecue</h3>
+          <p class="card-text mb-auto">Is there a barbecue?</p>
+        </div>
+		<div id="personnelDiv" style="width: 400px!important; height: 50px!important; margin-top: 9px!important;margin-bottom: 11%;">
+           <select id="personnel" name="bbq">
+              <option value=0>Yes</option>
+              <option value=1>No</option>
+           </select>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Restaurant</h3>
+          <p class="card-text mb-auto">Please recommend a good restaurant nearby.</p>
+        </div>
+          <input class="form-control me-2" type="text" name="ures" size="60" placeholder="The number of Room" style="margin-bottom: 11%;">
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Cafe</h3>
+          <p class="card-text mb-auto">Please recommend a good cafe nearby.</p>
+        </div>
+          <input class="form-control me-2" type="text" name="ucafe" size="60" placeholder="The number of Room" style="margin-bottom: 11%;">
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Convenience Store</h3>
+          <p class="card-text mb-auto">Is there a convenience store nearby?</p>
+        </div>
+          <input class="form-control me-2" type="text" name="ucon" size="60" placeholder="The number of Room" style="margin-bottom: 11%;">
+      </div>
+  </div>
+  <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+		<span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Activity</h3>
+          <p class="card-text mb-auto">Please recommend a good activity nearby.</p>
+        </div>
+          <input class="form-control me-2" type="text" name="uact" size="60" placeholder="The number of Room" style="margin-bottom: 11%;">
+      </div>
+  </div>
+  <button id="registerbtn" type="submit" class="btn btn-secondary" style="padding: 0.9999rem 0.75rem!important;font-weight: 999!important;line-height: 1.7!important;background-color: #2AC1BC!important;border-color: #2AC1BC!important;">
+  Room Register</button>
+  </div>
+  </form>
 </main>
 <footer class="blog-footer">
   <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>

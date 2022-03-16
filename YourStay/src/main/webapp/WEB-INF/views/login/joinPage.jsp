@@ -196,7 +196,6 @@ $(document).ready(function(){
 					<tr>
 						<th>이메일</th>
 						<td><input type='text' name="memail" id="memail"> ex)ya63kr@nate.com
-						<a href='#' style='cursor: help'> 중복확인 </a>
 						</td>
 					</tr>
 					<tr>
@@ -225,7 +224,11 @@ $(document).ready(function(){
 				  </table>								
 				</form>
 			</div>
-		
+		<c:if test="${msg == 'fail'}">
+			<script type="text/javascript">
+				alert("email 중복");
+			</script>
+		</c:if>
 	</div>
 	<footer class="blog-footer">
 	  <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>

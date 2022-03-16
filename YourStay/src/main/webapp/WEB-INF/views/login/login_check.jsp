@@ -9,7 +9,7 @@
 <body>
 <script type="text/javascript">
 alert("email 중복");
-document.location.href='login.jsp';
+document.location.action="login/loginPage"
 </script>
 </body>
 </html>

@@ -73,7 +73,7 @@ public class LoginController {
 	      }
 	      else
 	      {
-	         mav.setViewName("login_check");
+	         mav.setViewName("login/joinPage");
 	         mav.addObject("msg","fail");
 	         System.out.println("cccc");
 	         return mav;

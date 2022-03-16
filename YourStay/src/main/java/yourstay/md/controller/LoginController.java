@@ -58,4 +58,25 @@ public class LoginController {
         mv.setViewName("login/joinPage");
         return mv;
     }
+	@RequestMapping("join.do")
+	   public ModelAndView join(@RequestParam String mname, String memail, String mpwd, int mcallnum) {
+   
+	      MemberVO memberVo = mapper.getUser(memail);
+	      ModelAndView mav = new ModelAndView();
+	      if(memberVo == null)
+	      {
+	    	  mapper.addUser(new MemberVO(-1, mname, memail, mpwd , mcallnum, -1));
+		      mav.setViewName("login/loginPage");
+		      mav.addObject("msg","success");
+		      System.out.println("ddd");
+		      return mav;
+	      }
+	      else
+	      {
+	         mav.setViewName("login_check");
+	         mav.addObject("msg","fail");
+	         System.out.println("cccc");
+	         return mav;
+	      }
+	   }
 }

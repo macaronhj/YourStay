@@ -16,6 +16,11 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="../css/airDnDCSS.css">
 
+<!-- 구글웹폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
 <!--// bootstrap-css -->
 <!-- css -->
 <link rel="stylesheet" href="../css/blog.css" type="text/css" media="all" />
@@ -24,6 +29,11 @@
    String memail = (String) session.getAttribute("memail");
 %>
 </head>
+<style>
+p {
+  font-family: 'Poor Story', cursive!important;
+  }
+</style>
  <body>
     
 <div class="container">
@@ -47,15 +57,17 @@
          <% 
             if(memail == null){
          %>
-                 <a class="btn btn-secondary" href="login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
+           <a class="btn btn-secondary" href="login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
           <%
             }else{
          %>
-         <p><%=memail %>님 반갑습니다!</p>
+         <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
+         <a href="login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          <%} %>
          </c:when> 
          <c:otherwise>
-         <p><%=memail%>님 반갑습니다!</p>
+         <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
+         <a href="login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          </c:otherwise>
          </c:choose>
       </div>
@@ -63,7 +75,7 @@
   </header>
 
 <main class="container">
-<form name="input" method="get" action="mypage/home" enctype="multipart/form-data">
+<form name="input" method="get" action="../mypage/home" enctype="multipart/form-data">
   <div class="row mb-2">
     <div class="col-md-6" style="width: 33%;">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">

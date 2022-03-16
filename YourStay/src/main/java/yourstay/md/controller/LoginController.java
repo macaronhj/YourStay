@@ -46,12 +46,18 @@ public class LoginController {
             // login.jsp로 이동
             mav.setViewName("login");
             mav.addObject("msg", "failure");
-            session.setAttribute("userid", null);
-            session.setAttribute("pwd", null);
+            session.setAttribute("memail", null);
+            session.setAttribute("mpwd", null);
         }
         
         return mav;
     }
+	@RequestMapping("logout.do")
+	public String logout(HttpSession session) {
+		session.setAttribute("memail", null);
+		session.setAttribute("mpwd", null);
+		return "room/roomRegister";
+	}
 	@GetMapping(value="/joinPage")
     public ModelAndView requestJoin(ModelAndView mv){
         log.info("Logincontroller -> requestLogin 로그인 시도 요청");

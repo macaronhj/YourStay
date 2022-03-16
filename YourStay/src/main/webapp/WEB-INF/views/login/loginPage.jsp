@@ -149,7 +149,7 @@ $(document).ready(function(){
             return;
         }
         // 폼 내부의 데이터를 전송할 주소
-        document.form1.action="loginPage"
+        document.form1.action="loginCheck.do"
         // 제출
         document.form1.submit();
     });
@@ -178,12 +178,12 @@ $(document).ready(function(){
    <div id="body" style="background-image: URL(img/background2.jpg); background-repeat: no-repeat; width: 100%; height:700px;">
    
       <div class="loginForm">
-      <form method="post" name="form1" class="form" action="loginPage">
+      <form method="post" name="form1" class="form" action="loginCheck.do">
       <c:if test="${member == null}">
          <div class="box">
             <input type="text" name="memail" id="id" class="iText" placeholder="E-mail">
             <br> 
-            <input type="password" name="mpwd" id="password" class="iText" placeholder="Password" onkeydown='javascript:onEnterSubmit()'>
+            <input type="password" name="mpwd" id="password" class="iText" placeholder="Password">
             <br>
             <input type="button" id="loginBtn" class="loginBtn" value="로그인" style="background: linear-gradient(to left, #2AC1BC, #2AC1BC);">
                   <p class="message">ID가 없으신가요? <a href="joinPage">회원가입</a></p>

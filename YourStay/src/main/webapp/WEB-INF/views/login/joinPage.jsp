@@ -119,19 +119,19 @@ $(document).ready(function(){
 	$(".joinBtn").click(function(){
         // 태크.val() : 태그에 입력된 값
         // 태크.val("값") : 태그의 값을 변경 
-        var userId = $("#id").val();
-        var userPw = $("#password").val();
-        if(userId == ""){
-            alert("아이디를 입력하세요.");
-            $("#id").focus(); // 입력포커스 이동
+        var userEmail = $("#memail").val();
+        var userPw = $("#mpwd").val();
+        if(userEmail == ""){
+            alert("이메일를 입력하세요.");
+            $("#memail").focus(); // 입력포커스 이동
             return; // 함수 종료
         }
         if(userPw == ""){
-            alert("아이디를 입력하세요.");
+            alert("이메일를 입력하세요.");
             $("#password").focus();
             return;
         }
-        if(userPw != $('#mbpw_re').val()){
+        if(userPw != $('#mpwd_re').val()){
         	alert("두 비밀번호가 다릅니다")
         	return;
         }
@@ -145,9 +145,6 @@ $(document).ready(function(){
 		location.href = "index.jsp";
 	});
 	
-	$("#logo").click(function(){
-		location.href="index.jsp";
-	});
 	var checkShow = false;
 	$("#rollDown").hide();
 	$("#tempImg").click(function(){
@@ -191,30 +188,27 @@ $(document).ready(function(){
 						<td colspan="2"></td>
 					</tr>
 					<tr>
-						<th>아이디</th>
-						<td><input type="text" name="id" id="id"> <a
-							href='#' style='cursor: help'> 중복확인 </a></td>
-					</tr>
-					<tr>
-						<th>비밀번호</th>
-						<td><input type="password" name="pw" id="password"> 영문/숫자포함 6자 이상</td>
-					</tr>
-					<tr>
-						<th>비밀번호 확인</th>
-						<td><input type="password" name="mbpw_re" id="mbpw_re"></td>
+						<th>이름</th>
+						<td><input type="text" name="mname" id="mname"></td>
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td><input type='text' name="email"> ex)ya63kr@nate.com
+						<td><input type='text' name="memail" id="memail"> ex)ya63kr@nate.com
+						<a href='#' style='cursor: help'> 중복확인 </a>
 						</td>
 					</tr>
 					<tr>
-						<th>핸드폰 번호</th>
-						<td><input type="text" name="phone"> ex) -없이 적으세요</td>
+						<th>비밀번호</th>
+						<td><input type="password" name="mpwd" id="mpwd"> 영문/숫자포함 6자 이상</td>
 					</tr>
 					<tr>
-						<th>생년월일</th>
-						<td><input type="text" name="birthday"> ex)19920913 </td>
+						<th>비밀번호 확인</th>
+						<td><input type="password" name="mpwd_re" id="mpwd_re"></td>
+					</tr>
+					
+					<tr>
+						<th>핸드폰 번호</th>
+						<td><input type="text" name="mcallnum"> ex) -없이 적으세요</td>
 					</tr>
 					<tr height="2" bgcolor="#2AC1BC">
 						<td colspan="2"></td>

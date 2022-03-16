@@ -27,7 +27,7 @@
 		<property name="configLocation" value="classpath:/sqlMapConfig.xml"></property>
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:your/md/mapper/memberMapper.xml</value>
+				<value>classpath:yourstay/md/mapper/MemberMapper.xml</value>
 			</list>
 		</property>
 	</bean>

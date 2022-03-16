@@ -14,4 +14,10 @@ public class MemberVO {
 	private String mpwd;
 	private int mcallnum;
 	private int mstate;
+	
+	
+	@Override
+	public String toString() {
+		return "MemberVO [memail=" + memail + ", mname=" + mname + ", mpwd=" + mpwd + "]";
+	}
 }

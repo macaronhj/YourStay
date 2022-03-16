@@ -11,6 +11,7 @@
 <meta name="generator" content="Hugo 0.88.1"><!-- bootstrap-css -->
 <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="../css/airDnDCSS.css">
@@ -19,6 +20,9 @@
 <!-- css -->
 <link rel="stylesheet" href="../css/blog.css" type="text/css" media="all" />
 <link rel="stylesheet" href="../css/navbar.css" type="text/css" media="all" />
+<%
+   String memail = (String) session.getAttribute("memail");
+%>
 </head>
  <body>
     
@@ -34,7 +38,26 @@
         <a class="link-secondary" href="#" aria-label="Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
         </a>
+        <c:choose>
+         <c:when test="${msg =='failure'}">
         <a class="btn btn-secondary" href="login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
+        </c:when> 
+         <c:when test="${msg == null}"> <!-- 로그인X -->
+         
+         <% 
+            if(memail == null){
+         %>
+                 <a class="btn btn-secondary" href="login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
+          <%
+            }else{
+         %>
+         <p><%=memail %>님 반갑습니다!</p>
+         <%} %>
+         </c:when> 
+         <c:otherwise>
+         <p><%=memail%>님 반갑습니다!</p>
+         </c:otherwise>
+         </c:choose>
       </div>
     </div>
   </header>

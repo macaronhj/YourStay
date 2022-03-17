@@ -225,7 +225,7 @@
                               126.878650),
                         level : 3
                      };
-
+//
                      var map = new kakao.maps.Map(container, options);
 
                      var data = [

@@ -95,13 +95,13 @@ h2, h3,p {
 		<img class="bi" id="reservation" width="63em" height="63em" src="../images/reservation.png"/>
         <h2>예약 목록</h2>
         <p>예약 목록을 보고 싶으시면 아래 버튼을 눌러주세요!</p>
-        <a class="btn btn-secondary" href="wishlist" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">예약 목록</a>
+        <a class="btn btn-secondary" type="submit" href="wishlist" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">예약 목록</a>
       </div>
       <div class="feature col">
         <img class="bi" id="review" width="63em" height="63em" src="../images/review.png"/>
         <h2>리뷰 쓰러 가기</h2>
         <p>방문하셨던 숙소의 리뷰를 쓰고 싶으시면 아래 버튼을 눌러주세요!</p>
-        <button class="btn btn-secondary" href="#" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">리뷰 쓰러 가기</button>
+        <a class="btn btn-secondary" type="submit" href="checkBook" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">리뷰 쓰러 가기</a>
       </div>
     </div>
   </div>

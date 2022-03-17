@@ -34,6 +34,25 @@ p {
   font-family: 'Poor Story', cursive!important;
   }
 </style>
+<script>
+   function f(){
+	   	input.aname.value = "";
+	   	input.aloc.value = "";
+	   	input.aprice.value = "";
+	   	input.rnum.value = "";
+	   	input.tnum.value = "";
+	   	input.bnum.value = "";
+	   	input.ures.value = "";
+	   	input.ucafe.value = "";
+	   	input.ucon.value = "";
+	   	input.iid.value = "";
+	   	input.uact.value = "";
+	   	
+	   	//input.content.innerText = "";
+	   	
+	   	input.aname.focus();
+   }
+</script>
  <body>
     
 <div class="container">
@@ -62,12 +81,12 @@ p {
             }else{
          %>
          <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
-         <a href="login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
+         <a href="/login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          <%} %>
          </c:when> 
          <c:otherwise>
          <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
-         <a href="login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
+         <a href="/login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          </c:otherwise>
          </c:choose>
       </div>
@@ -143,16 +162,6 @@ p {
               <option value=6>인원 6명</option>
            </select>
         </div>
-      </div>
-  </div>
-  <div class="col-md-6" style="width: 33%;">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
-          <h3 class="mb-0">Accomodation's Image</h3>
-          <p class="card-text mb-auto">Please add your accomodation's Image.</p>
-        </div>
-        <input class="form-control me-2" type='file' name='iid' size="60" placeholder="Room's Image" style="margin-bottom: 11%;">
       </div>
   </div>
   <div class="col-md-6" style="width: 33%;">
@@ -410,6 +419,21 @@ p {
           <input class="form-control me-2" type="text" name="ucon" size="60" placeholder="The number of Room" style="margin-bottom: 11%;">
       </div>
   </div>
+  
+    <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative" style="height: 500px;">
+        <div class="col p-4 d-flex flex-column position-static">
+                    <span class="badge rounded-pill bg-secondary" style="width: 18%; margin-bottom: 2%;">YourStay</span>
+          <h3 class="mb-0">Accomodation's Image</h3>
+          <p class="card-text mb-auto">Please add your accomodation's Image.</p>
+        </div>
+        <input class="form-control me-2" type='file' name='iid' size="60" placeholder="Room's Image" style="margin-bottom: 1%;height: 8%;">
+        <input class="form-control me-2" type='file' name='iid' size="60" placeholder="Room's Image" style="margin-bottom: 1%;height: 8%;">
+        <input class="form-control me-2" type='file' name='iid' size="60" placeholder="Room's Image" style="margin-bottom: 1%;height: 8%;">
+        <input class="form-control me-2" type='file' name='iid' size="60" placeholder="Room's Image" style="margin-bottom: 1%;height: 8%;">
+        <input class="form-control me-2" type='file' name='iid' size="60" placeholder="Room's Image" style="margin-bottom: 1%;height: 8%;">
+      </div>
+  </div>
   <div class="col-md-6" style="width: 33%;">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
@@ -420,8 +444,15 @@ p {
           <input class="form-control me-2" type="text" name="uact" size="60" placeholder="The number of Room" style="margin-bottom: 11%;">
       </div>
   </div>
-  <button id="registerbtn" type="submit" class="btn btn-secondary" style="padding: 0.9999rem 0.75rem!important;font-weight: 999!important;line-height: 1.7!important;background-color: #2AC1BC!important;border-color: #2AC1BC!important;">
+      <div class="col-md-6" style="width: 33%;">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative" style="height: 100px;">
+        <button id="registerbtn" type="submit" class="btn btn-secondary" style="padding: 0.9999rem 0.75rem!important;font-weight: 999!important;line-height: 1.7!important;background-color: #2AC1BC!important;border-color: #2AC1BC!important;">
   Room Register</button>
+      </div>
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative" style="height: 100px;">
+        <button id="resetBtn" type="button" onclick="f()" class="btn btn-secondary" style="padding: 0.9999rem 0.75rem!important;font-weight: 999!important;line-height: 1.7!important;background-color: #f25546!important;border-color: #f25546!important;">
+  다시 입력</button>
+      </div>
   </div>
   </form>
 </main>

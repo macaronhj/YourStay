@@ -28,6 +28,7 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:yourstay/md/mapper/MemberMapper.xml</value>
+				<value>classpath:yourstay/md/mapper/SearchMapper.xml</value>
 			</list>
 		</property>
 	</bean>

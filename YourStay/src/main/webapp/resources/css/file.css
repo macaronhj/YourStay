@@ -25,6 +25,14 @@ label {
     visibility: hidden;
 }
 
+#chooseFile2 {
+    visibility: hidden;
+}
+
+#chooseFile3 {
+    visibility: hidden;
+}
+
 .fileContainer {
     display: flex;
     justify-content: center;

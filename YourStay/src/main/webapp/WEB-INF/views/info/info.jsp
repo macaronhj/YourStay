@@ -25,6 +25,14 @@
    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
+<!-- 구글웹폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+   href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
+   rel="stylesheet">
+   
 <!-- Bootstrap core CSS -->
 <link href="/css/info_bootstrap.min.css" rel="stylesheet">
 <link href="/css/info_blog.css" rel="stylesheet">
@@ -44,6 +52,13 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<style>
+body,h1, h2, h3 {
+   font-family: 'Poor Story', cursive;
+}
+</style>
+</head>
 <body>
    <!-- 상단 -->
    <header class="blog-header py-3" style="margin-bottom: 5%;">
@@ -71,8 +86,8 @@
       <!-- 제목 -->
       <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
          <div class="col-md-6 px-0">
-            <h1 class="display-4 fst-italic">${resVO.aname}</h1>
-            <p class="lead my-3">${resVO.ucafe}</p>
+            <h1 class="display-4 fst-italic">숙소 이름: ${resVO.aname}</h1>
+            <p class="lead my-3">숙소 위치: ${resVO.aloc}<br/>숙소 가격: ${resVO.aprice}<br/>숙소 별점: ${resVO.apoint}<br/>숙소 타입: ${resVO.atype}<br/>숙소 최대 가능 인원: ${resVO.apeople}<br/></p>
             <p class="lead mb-0">
                <a href="#" class="text-white fw-bold">무슨무슨 링크...</a>
             </p>
@@ -133,8 +148,8 @@
       <div class="row g-5">
          <div class="col-md-8">
             <article class="blog-post">
-               <h2 class="blog-post-title">이재성님이 운영하는 숙소입니다</h2>
-               <p class="blog-post-meta">침실 2개, 침대 2개, 최대인원 5명</p>
+               <h2 class="blog-post-title">${resVO.mname}님이 운영하는 숙소입니다</h2>
+               <p class="blog-post-meta">방 갯수: ${resVO.rnum}<br/>화장실 갯수: ${resVO.tnum}<br/>침대 갯수: ${resVO.bnum}<br/></p>
                <hr>
                <h2 class="fw-bold">편의시설</h2>
                <div

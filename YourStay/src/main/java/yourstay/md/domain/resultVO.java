@@ -39,5 +39,9 @@ public class resultVO {
 	private String ucafe;
 	private String ucon;
 	private String uact;
-	
+	private String mname;
+	private String memail;
+	private String mpwd;
+	private int mcallnum;
+	private int mstate;
 }

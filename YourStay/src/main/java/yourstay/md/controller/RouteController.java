@@ -52,4 +52,14 @@ public class RouteController {
 
 	      return mv;
 	   }
+	@RequestMapping(value = "roomDetailInfo", method=RequestMethod.GET )
+	   public ModelAndView roomDetailInfo(@RequestParam String aloc,@RequestParam String startdate,@RequestParam String deadline,@RequestParam String person) {
+	      
+	      List<Accommodation>acvo = mapper.getAccommodationListBySearchBar(aloc, startdate, deadline, p);
+	      System.out.println(acvo.size());
+	      System.out.println(acvo.toString());      
+	      ModelAndView mv = new ModelAndView("searchList", "acvo", acvo);
+
+	      return mv;
+	   }
 }

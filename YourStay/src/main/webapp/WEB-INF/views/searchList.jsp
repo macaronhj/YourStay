@@ -67,55 +67,87 @@ div.list-font {
    rel="stylesheet">
 <script>
    $(document)
-         .ready(
-               function() {
-                  var checkShow = false;
-                  $("#searchSubmitBtn")
-                        .click(
-                              function() {
-                                 //alert($("#city").val() + " , " + $("#datepicker1").val() + " ~ " + $("#datepicker2").val() +" , "+$("#personnel option:selected").val());
-                                 if ($("#aloc").val() == "모든 위치"
-                                       || $("#aloc").val() == "") {
-                                    alert("위치를 입력해 주세요.");
-                                 } else if ($("#datepicker1").val() == "모든 날짜"
-                                       || $("#datepicker1").val() == "") {
-                                    alert("출발 날짜를 입력해 주세요.");
-                                 } else if ($("#datepicker2").val() == "모든 날짜"
-                                       || $("#datepicker2").val() == "") {
-                                    alert("도착 날짜를 입력해 주세요.");
-                                 } else {
-                                    location.href = "searchInListFromMainGet.do?aloc="
-                                          + $("#aloc").val()
-                                          + "&startdate="
-                                          + $("#datepicker1")
-                                                .val()
-                                          + "&deadline="
-                                          + $("#datepicker2")
-                                                .val()
-                                          + "&person="
-                                          + $("#personnel").val();
-                                 }
-                              });
-                  $("#datepicker1").datepicker({
-                     dateFormat : 'yy-mm-dd'
-                  });
-                  $("#datepicker2").datepicker({
-                     dateFormat : 'yy-mm-dd'
-                  });
-                  $("#rollDown").hide();
-                  $("#tempImg").click(function() {
-                     if (checkShow == false) {
-                        $("#rollDown").show();
-                        checkShow = true;
-                     } else {
-                        $("#rollDown").hide();
-                        checkShow = false;
-                     }
-                  });
-                  $("#logo").click(function() {
-                     window.location = "index.jsp";
-                  });
-               });
+       .ready(
+             function() {
+                var checkShow = false;
+                $("#searchSubmitBtn")
+                      .click(
+                            function() {
+                               //alert($("#city").val() + " , " + $("#datepicker1").val() + " ~ " + $("#datepicker2").val() +" , "+$("#personnel option:selected").val());
+                               if ($("#aloc").val() == "모든 위치"
+                                     || $("#aloc").val() == "") {
+                                  alert("위치를 입력해 주세요.");
+                               } else if ($("#datepicker1").val() == "모든 날짜"
+                                     || $("#datepicker1").val() == "") {
+                                  alert("출발 날짜를 입력해 주세요.");
+                               } else if ($("#datepicker2").val() == "모든 날짜"
+                                     || $("#datepicker2").val() == "") {
+                                  alert("도착 날짜를 입력해 주세요.");
+                               } else {
+                                  location.href = "searchInListFromMainGet.do?aloc="
+                                        + $("#aloc").val()
+                                        + "&startdate="
+                                        + $("#datepicker1")
+                                              .val()
+                                        + "&deadline="
+                                        + $("#datepicker2")
+                                              .val()
+                                        + "&person="
+                                        + $("#personnel").val();
+                               }
+                            });
+                $("#datepicker1").datepicker({
+                   dateFormat : 'yy-mm-dd'
+                });
+                $("#datepicker2").datepicker({
+                   dateFormat : 'yy-mm-dd'
+                });
+                $("#rollDown").hide();
+                $("#tempImg").click(function() {
+                   if (checkShow == false) {
+                      $("#rollDown").show();
+                      checkShow = true;
+                   } else {
+                      $("#rollDown").hide();
+                      checkShow = false;
+                   }
+                });
+                $("#logo").click(function() {
+                   window.location = "index.jsp";
+                });
+		    	 $("#godetail").on("keydown", function(){
+		    		 $.ajax({
+		    			 url: "roomDetailInfo", 
+		    			 type: "GET", 
+		    			 data: {seq: $("#seq").val()}, 
+		    			 success: function(data){
+		    				 //var jsObj = JSON.parse(data); //json -> jsObj : jQuery버젼이 낮을 때 
+		    				 //var json = JSON.stringify(data); //jsObj -> json 
+		    				 
+		    				 //(1) 파싱 
+		    				 //data; // 현재는 jsObj
+		    				 console.log("#data.name: " + data.name);
+		    				 
+		    				 //(2) 화면갱신
+		    				 if(!data){
+		    					 alert("존재하지 않는 SEQ");
+		    					 return false;
+		    				 }
+		    				 
+		    				 var html = "";
+		    				 html += "<form id='ajax'>";
+		    				 html += "번호 <input name='seq' value='"+data.seq+"'>";
+		    				 html += "이름<input name='name' value='"+data.name+"'>";
+		    				 html += "주소 <input name='addr' value='"+data.addr+"'>";
+		    				 html += "날짜 <input name='rdate' value='"+data.rdate+"'>";
+		    				 html += "</form>";
+		    				 
+		    				 $("#name").val("");
+		    				 $("#container").html(html);
+		    			 }
+		    		 });
+		    	 });
+             });
 </script>
 </head>
 <body>
@@ -141,62 +173,62 @@ div.list-font {
       </div>
    </header>
    <main class="container">
-       <form id="seatrchForm">
-          <div id="search" class="radius">
-             <p id="indexH1">YourStay 숙소 찾기</p>
-             <div id="cityDiv">
-                <p class="searchFont">위치</p>
-                <input type="text" id="aloc" name="aloc" placeholder="지역명을 입력해주세요." style="width: 60%;height: 50%;border: none;">
-             </div>
-             <div id="datepickerDiv" />
-             <div class='col-md-3 col-xs-4'>
-                <div class="form-group">
-                   <div class="input-group date" id="datetimepicker1"
-                      data-target-input="nearest">
-                      <input type="text" id="datepicker1" name="startdate"
-                         placeholder="날짜를 선택해주세요." style="margin-left: 7px!important;">
-                      <div class="input-group-append" data-target="#datetimepicker1"
-                         data-toggle="datetimepicker">
-                         <div class="input-group-text">
-                            <i class="fa fa-calendar"></i>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class='col-md-3 col-xs-4'>
-                <div class="form-group">
-                   <div class="input-group date" id="datetimepicker2"
-                      data-target-input="nearest">
-                      <input type="text" id="datepicker2" name="deadline"
-                         placeholder="날짜를 선택해주세요." style="margin-left: 7px!important;">
-                      <div class="input-group-append" data-target="#datetimepicker2"
-                         data-toggle="datetimepicker">
-                         <div class="input-group-text">
-                            <i class="fa fa-calendar"></i>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
-          <div id="personnelDiv">
-             <p class="searchFont">인원</p>
-             <select id="personnel" name="person">
-                <option value=1>인원 1명</option>
-                <option value=2>인원 2명</option>
-                <option value=3>인원 3명</option>
-                <option value=4>인원 4명</option>
-                <option value=5>인원 5명</option>
-                <option value=6>인원 6명</option>
-             </select>
-          </div>
-          <input type="button" id="searchSubmitBtn" value="검색"
-             style="cursor: pointer;">
-    </div>
-    </form>
-   
-   <c:forEach items="${acvo}" var="acvo">
+
+         <form id="seatrchForm">
+            <div id="search" class="radius">
+               <p id="indexH1">YourStay 숙소 찾기</p>
+               <div id="cityDiv">
+                  <p class="searchFont">위치</p>
+                  <input type="text" id="aloc" name="aloc" placeholder="지역명을 입력해주세요." style="width: 60%;height: 50%;border: none;">
+               </div>
+               <div id="datepickerDiv" />
+               <div class='col-md-3 col-xs-4'>
+                  <div class="form-group">
+                     <div class="input-group date" id="datetimepicker1"
+                        data-target-input="nearest">
+                        <input type="text" id="datepicker1" name="startdate"
+                           placeholder="날짜를 선택해주세요." style="margin-left: 7px!important;">
+                        <div class="input-group-append" data-target="#datetimepicker1"
+                           data-toggle="datetimepicker">
+                           <div class="input-group-text">
+                              <i class="fa fa-calendar"></i>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class='col-md-3 col-xs-4'>
+                  <div class="form-group">
+                     <div class="input-group date" id="datetimepicker2"
+                        data-target-input="nearest">
+                        <input type="text" id="datepicker2" name="deadline"
+                          placeholder="날짜를 선택해주세요."  style="margin-left: 7px!important;">
+                        <div class="input-group-append" data-target="#datetimepicker2"
+                           data-toggle="datetimepicker">
+                           <div class="input-group-text">
+                              <i class="fa fa-calendar"></i>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div id="personnelDiv">
+               <p class="searchFont">인원</p>
+               <select id="personnel" name="person">
+                  <option value=1>인원 1명</option>
+                  <option value=2>인원 2명</option>
+                  <option value=3>인원 3명</option>
+                  <option value=4>인원 4명</option>
+                  <option value=5>인원 5명</option>
+                  <option value=6>인원 6명</option>
+               </select>
+            </div>
+            <input type="button" id="searchSubmitBtn" value="검색"
+               style="cursor: pointer;">
+      </div>
+      </form>
+   		<c:forEach items="${acvo}" var="acvo">
          <div
             class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
             style="width: 50%;">
@@ -206,7 +238,7 @@ div.list-font {
                <p class="card-text mb-auto">
                   숙소 가격 : ${acvo.aprice}<br/>숙소 타입 : ${acvo.atype}<br/>최대 가능 인원 :
                   ${acvo.apeople}<br/>
-                  <a href="acco/detailInfo" style="text-decoration:none;">숙소 상세 정보 보러가기</a>
+                  <a id="godetail" href="acco/detailInfo" style="text-decoration:none;">숙소 상세 정보 보러가기</a>
                </p>
 
             </div>

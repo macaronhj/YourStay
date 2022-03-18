@@ -14,7 +14,7 @@
 		and apeople <![CDATA[>=]]> #{apeople}
 	</select>
 	<select id="getAccommodationByAccommodationId" resultType="yourstay.md.domain.resultVO">
-		select mseq, mname, memail, mpwd, mcallnum, mstate, aname, aloc, aprice, apoint, atype, apeople, oid, rnum, wifi, tnum, bnum, wave, refg, bd, tv, pet, kitchen, wash, parking, fire, smoking, roof, bbq, utid, ures, ucafe, ucon, uact from 
+		select mseq, mname, memail, mpwd, mcallnum, mstate, aname, aloc, aprice, apoint, atype, apeople, anotice, oid, rnum, wifi, tnum, bnum, wave, refg, bd, tv, pet, kitchen, wash, parking, fire, smoking, roof, bbq, utid, ures, ucafe, ucon, uact from 
 		accomoption natural join member natural join utility natural join accommodation where aid=${value}
 	</select>
 </mapper>

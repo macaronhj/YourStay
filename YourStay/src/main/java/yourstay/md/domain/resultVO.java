@@ -17,6 +17,7 @@ public class resultVO {
 	private int apeople;
 	private int iid;
 	private long mseq;
+	private String anotice;
 	private long oid;
 	private long rnum;
 	private int wifi;

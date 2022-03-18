@@ -71,9 +71,8 @@
       <!-- 제목 -->
       <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
          <div class="col-md-6 px-0">
-            <h1 class="display-4 fst-italic">숙소이름</h1>
-            <p class="lead my-3">간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명 간단한 설명
-               간단한 설명 간단한 설명 간단한 설명</p>
+            <h1 class="display-4 fst-italic">${resVO.aname}</h1>
+            <p class="lead my-3">${resVO.ucafe}</p>
             <p class="lead mb-0">
                <a href="#" class="text-white fw-bold">무슨무슨 링크...</a>
             </p>

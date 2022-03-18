@@ -115,35 +115,47 @@ div.list-font {
                 $("#logo").click(function() {
                    window.location = "index.jsp";
                 });
+                
+                $("#aloc").val("${city}");
+                $("#datepicker1").val("${startDate}");
+                $("#datepicker2").val("${endDate}");
+                $("#personnel").val("${person}").prop("selected", true); 
+                
+                var city1 = $("#aloc").val();
+                var startDate1 = $("#datepicker1").val();
+                var endDate1 = $("#datepicker2").val();
+                var person1 = $("#personnel").val();
+
+                var jData1 = {
+                   "city" : city1,
+                   "startDate" : startDate1,
+                   "endDate" : endDate1,
+                   "person" : person1
+                };
+                
 		    	 $("#godetail").on("keydown", function(){
 		    		 $.ajax({
 		    			 url: "roomDetailInfo", 
 		    			 type: "GET", 
-		    			 data: {seq: $("#seq").val()}, 
+		    			 data : jData1,
+		    			 dataType : 'json',
 		    			 success: function(data){
-		    				 //var jsObj = JSON.parse(data); //json -> jsObj : jQuery버젼이 낮을 때 
-		    				 //var json = JSON.stringify(data); //jsObj -> json 
-		    				 
-		    				 //(1) 파싱 
-		    				 //data; // 현재는 jsObj
-		    				 console.log("#data.name: " + data.name);
-		    				 
-		    				 //(2) 화면갱신
-		    				 if(!data){
-		    					 alert("존재하지 않는 SEQ");
-		    					 return false;
-		    				 }
-		    				 
-		    				 var html = "";
-		    				 html += "<form id='ajax'>";
-		    				 html += "번호 <input name='seq' value='"+data.seq+"'>";
-		    				 html += "이름<input name='name' value='"+data.name+"'>";
-		    				 html += "주소 <input name='addr' value='"+data.addr+"'>";
-		    				 html += "날짜 <input name='rdate' value='"+data.rdate+"'>";
-		    				 html += "</form>";
-		    				 
-		    				 $("#name").val("");
-		    				 $("#container").html(html);
+		    				 result = data;
+		    	               $.each(data, function(idx, item) {
+		    	                  if(data==null){
+		    	                     $("<b>예약 가능한 숙소가 없습니다.</b>").appendTo("#contentInput");
+
+		    	                  }else{
+		    	                     $("<div class='item'><div class='itemPic'><a href='searchDetail.do?aid=" + item.aid + "'></div><div class='itemCost'><h5>" + item.aprice + "원</h5></div><div class='itemTitle'><h5>" + item.aname + "</h5></div><div class='itemRecommandPoint'></div></div>")
+		    	                     .appendTo("#contentInput");
+
+		    	                  }
+		    	                  
+		    	               });
+		    	               $('#hiddenCity').val(city1);
+		    	               $('#hiddenStartDate').val(startDate1);
+		    	               $('#hiddenEndDate').val(endDate1);
+		    	               $('#hiddenPerson').val(person1);
 		    			 }
 		    		 });
 		    	 });
@@ -238,7 +250,7 @@ div.list-font {
                <p class="card-text mb-auto">
                   숙소 가격 : ${acvo.aprice}<br/>숙소 타입 : ${acvo.atype}<br/>최대 가능 인원 :
                   ${acvo.apeople}<br/>
-                  <a id="godetail" href="acco/detailInfo" style="text-decoration:none;">숙소 상세 정보 보러가기</a>
+                  <a id="godetail" href="roomDetailInfo?aid=${acvo.aid}" style="text-decoration:none;">숙소 상세 정보 보러가기</a>
                </p>
 
             </div>

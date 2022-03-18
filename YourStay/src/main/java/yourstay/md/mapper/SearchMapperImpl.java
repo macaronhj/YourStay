@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import yourstay.md.domain.Accommodation;
+import yourstay.md.domain.resultVO;
 
 @Primary
 @Repository
@@ -29,5 +30,9 @@ public class SearchMapperImpl implements SearchMapper {
 		parameters.put("apeople", apeople);
 
 		return session.selectList("yourstay.md.mapper.SearchMapper.getAccommodationListBySearchBar", parameters);
+	}
+	@Override
+	public resultVO getAccommodationByAccommodationId(long aid) {
+		return session.selectOne("yourstay.md.mapper.SearchMapper.getAccommodationByAccommodationId", aid);
 	}
 }

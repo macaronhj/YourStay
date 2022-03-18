@@ -3,14 +3,14 @@ package yourstay.md.mapper;
 import java.util.List;
 
 import yourstay.md.domain.Accommodation;
+import yourstay.md.domain.resultVO;
 
 public interface SearchMapper {
 //	// CRUDs
 //		public int addAccommodation(AccommodationVO accom);
 //		public int removeAccommodation(int accommodationId);
 //		public int updateAccommodation(AccommodationVO accom);
-//		public AccommodationVO getAccommodationByAccommodationId(int accommodationId);
-//		// public List<AccommodationVO> getAccommodationListByLocation(String location);
+		public resultVO getAccommodationByAccommodationId(long aid);
 //		
 //		// Functional Methods
 //		public float getAveragePoint();

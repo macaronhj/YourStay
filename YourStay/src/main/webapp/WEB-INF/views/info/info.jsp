@@ -59,6 +59,9 @@ body,h1, h2, h3 {
    font-family: 'Poor Story', cursive;
 }
 </style>
+<%
+   String memail = (String) session.getAttribute("memail");
+%>
 </head>
 <body>
    <!-- 상단 -->
@@ -78,16 +81,27 @@ body,h1, h2, h3 {
                   <title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
                   <path d="M21 21l-5.2-5.2" /></svg></a> 
                   <c:choose>
-					<c:when test="${empty memail}">
-						<a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign up</a>
-					</c:when>
-					<c:otherwise>
-						<div>
-						<font id="fontline" class="py-2" style="color:green; texg-align:center">${memail} 님 환영합니다</font>
-						</div>
-						<a class="py-2" href="../login/logout.do">로그아웃</a>
-					</c:otherwise>
-				</c:choose>
+		         <c:when test="${msg =='failure'}">
+		        <a class="btn btn-secondary" href="../login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
+		        </c:when> 
+		         <c:when test="${msg == null}"> <!-- 로그인X -->
+		         
+		         <% 
+		            if(memail == null){
+		         %>
+		           <a class="btn btn-secondary" href="../login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
+		          <%
+		            }else{
+		         %>
+		         <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
+		         <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
+		         <%} %>
+		         </c:when> 
+		         <c:otherwise>
+		         <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
+		         <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
+		         </c:otherwise>
+		         </c:choose>
          </div>
       </div>
    </header>

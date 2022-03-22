@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!--<jsp:include page="../login/login_check_module.jsp"/>-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,9 +76,18 @@ body,h1, h2, h3 {
                   stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
                   viewBox="0 0 24 24">
                   <title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
-                  <path d="M21 21l-5.2-5.2" /></svg>
-            </a> <a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign
-               up</a>
+                  <path d="M21 21l-5.2-5.2" /></svg></a> 
+                  <c:choose>
+					<c:when test="${empty memail}">
+						<a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign up</a>
+					</c:when>
+					<c:otherwise>
+						<div>
+						<font id="fontline" class="py-2" style="color:green; texg-align:center">${memail} 님 환영합니다</font>
+						</div>
+						<a class="py-2" href="../login/logout.do">로그아웃</a>
+					</c:otherwise>
+				</c:choose>
          </div>
       </div>
    </header>
@@ -87,7 +97,12 @@ body,h1, h2, h3 {
       <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
          <div class="col-md-6 px-0">
             <h1 class="display-4 fst-italic">숙소 이름: ${resVO.aname}</h1>
-            <p class="lead my-3">숙소 위치: ${resVO.aloc}<br/>숙소 가격: ${resVO.aprice}<br/>숙소 별점: ${resVO.apoint}<br/>숙소 타입: ${resVO.atype}<br/>숙소 최대 가능 인원: ${resVO.apeople}<br/></p>
+            <p class="lead my-3">
+            	숙소 위치: ${resVO.aloc}<br/>
+            	숙소 가격: ${resVO.aprice}<br/>
+            	숙소 별점: ${resVO.apoint}<br/>
+            	숙소 타입: ${resVO.atype}<br/>
+            	숙소 최대 가능 인원: ${resVO.apeople}<br/></p>
             <p class="lead mb-0">
                <a href="#" class="text-white fw-bold">무슨무슨 링크...</a>
             </p>
@@ -154,6 +169,9 @@ body,h1, h2, h3 {
                <h2 class="fw-bold">편의시설</h2>
                <div
                   class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+                  <c:set var="wifi" value="${resVO.wifi}" />
+                  <c:choose>
+                  <c:when test="${wifi == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -162,6 +180,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">와이파이</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="wave" value="${resVO.wave}" />
+                  <c:choose>
+                  <c:when test="${wave == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -170,6 +193,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">전자렌지</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="refg" value="${resVO.refg}" />
+                  <c:choose>
+                  <c:when test="${refg == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -178,6 +206,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">냉장고</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="bd" value="${resVO.bd}" />
+                  <c:choose>
+                  <c:when test="${bd == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -186,6 +219,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">비데</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="tv" value="${resVO.tv}" />
+                  <c:choose>
+                  <c:when test="${tv == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -194,6 +232,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">TV</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="pet" value="${resVO.pet}" />
+                  <c:choose>
+                  <c:when test="${pet == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -202,6 +245,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">반려견동반</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="kitchen" value="${resVO.kitchen}" />
+                  <c:choose>
+                  <c:when test="${kitchen == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -210,6 +258,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">주방</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="wash" value="${resVO.wash}" />
+                  <c:choose>
+                  <c:when test="${wash == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -218,7 +271,75 @@ body,h1, h2, h3 {
                         <p class="mb-0">세탁기</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="parking" value="${resVO.parking}" />
+                  <c:choose>
+                  <c:when test="${parking == 0}">
+                   <div class="col d-flex align-items-start">
+                   <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
+                      height="1.75em">
+                      <i class='fa fa-car'></i></svg>
+                   <div>
+                      <p class="mb-0">주차</p>
+                   </div>
+                </div>
+             	</c:when>
+             </c:choose>
+             <c:set var="fire" value="${resVO.fire}" />
+             <c:choose>
+             <c:when test="${fire == 0}">
+             <div class="col d-flex align-items-start">
+                   <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
+                      height="1.75em">
+                      <i class='fa fa-fire-extinguisher'></i></svg>
+                   <div>
+                      <p class="mb-0">화재경보기</p>
+                   </div>
+                </div>
+                </c:when>
+                </c:choose>
+                <c:set var="smoking" value="${resVO.smoking}" />
+	            <c:choose>
+	            <c:when test="${smoking == 0}">
+               <div class="col d-flex align-items-start">
+                     <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
+                        height="1.75em">
+                        <i class='fas fa-smoking'></i></svg>
+                     <div>
+                        <p class="mb-0">흡연 가능</p>
+                     </div>
+                  </div>
+                  </c:when>
+                  </c:choose>
+                <c:set var="roof" value="${resVO.roof}" />
+	            <c:choose>
+	            <c:when test="${roof == 0}">
+               <div class="col d-flex align-items-start">
+                     <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
+                        height="1.75em">
+                        <i class='fa fa-home'></i></svg>
+                     <div>
+                        <p class="mb-0">루프탑</p>
+                     </div>
+                  </div>
+                  </c:when>
+                  </c:choose>
+                <c:set var="bbq" value="${resVO.bbq}" />
+	            <c:choose>
+	            <c:when test="${bbq == 0}">
+               <div class="col d-flex align-items-start">
+                     <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
+                        height="1.75em">
+                        <i class="fa-solid fa-utensils accom-op"></i></svg>
+                     <div>
+                        <p class="mb-0">루프탑</p>
+                     </div>
+                  </div>
+                  </c:when>
+                  </c:choose>
                </div>
+           
                <hr>
                <h2 class="fw-bold">숙소 공지사항</h2>
                <p>${resVO.anotice}</p>

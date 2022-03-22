@@ -76,9 +76,9 @@ h2, h3,p {
   </thead>
   <tbody>
     <tr>
-      <td>허희진</td>
-      <td>huhheejin249@gmail.com</td>
-      <td>010-5014-7899</td>
+      <td>${member.mname}</td>
+      <td>${member.memail}</td>
+      <td>${member.mcallnum}</td>
     </tr>
   </tbody>
 </table>

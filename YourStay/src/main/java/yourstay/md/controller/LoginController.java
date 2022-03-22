@@ -1,6 +1,11 @@
 package yourstay.md.controller;
 
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +21,7 @@ import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.mapper.MemberMapper;
 
+
 @Log4j
 @AllArgsConstructor
 @Controller
@@ -25,6 +31,7 @@ public class LoginController {
 	@Autowired
 	MemberMapper mapper;
 	
+	
 	@GetMapping(value="/loginPage")
     public ModelAndView loginPage(ModelAndView mv){
         log.info("Logincontroller -> loginPage 로그인 시도 요청");
@@ -33,7 +40,7 @@ public class LoginController {
     }
 	@PostMapping("loginCheck.do")
     public ModelAndView loginCheck(@RequestParam String memail, String mpwd, HttpSession session, HttpServletRequest request){
-        System.out.println(memail + "   " + mpwd);
+        System.out.println(memail + "   " + mpwd);	
 		boolean result = mapper.login(memail, mpwd);
         ModelAndView mav = new ModelAndView();
         if (result == true) { // 로그인 성공
@@ -65,24 +72,24 @@ public class LoginController {
         return mv;
     }
 	@RequestMapping("join.do")
-	   public ModelAndView join(@RequestParam String mname, String memail, String mpwd, int mcallnum) {
+	public ModelAndView join(@RequestParam String mname, String memail, String mpwd, int mcallnum) {
    
-	      MemberVO memberVo = mapper.getUser(memail);
-	      ModelAndView mav = new ModelAndView();
-	      if(memberVo == null)
-	      {
-	    	  mapper.addUser(new MemberVO(-1, mname, memail, mpwd , mcallnum, -1));
-		      mav.setViewName("login/loginPage");
-		      mav.addObject("msg","success");
-		      System.out.println("ddd");
-		      return mav;
-	      }
-	      else
-	      {
-	         mav.setViewName("login/joinPage");
-	         mav.addObject("msg","fail");
-	         System.out.println("cccc");
-	         return mav;
-	      }
-	   }
+	   MemberVO memberVo = mapper.getUser(memail);
+	   ModelAndView mav = new ModelAndView();
+	   if(memberVo == null)
+	   {
+	    mapper.addUser(new MemberVO(-1, mname, memail, mpwd , mcallnum, -1));
+		   mav.setViewName("login/loginPage");
+	      mav.addObject("msg","success");
+	      System.out.println("ddd");
+	      return mav;
+      }
+      else
+      {
+         mav.setViewName("login/joinPage");
+         mav.addObject("msg","fail");
+         System.out.println("cccc");
+         return mav;
+      }
+   }
 }

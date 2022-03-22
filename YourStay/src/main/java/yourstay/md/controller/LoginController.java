@@ -20,6 +20,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.mapper.MemberMapper;
+import yourstay.md.service.LoginService;
+import static yourstay.md.domain.LoginConst.*;
+
 
 
 @Log4j
@@ -45,7 +48,7 @@ public class LoginController {
         ModelAndView mav = new ModelAndView();
         if (result == true) { // 로그인 성공
             // main.jsp로 이동
-            mav.setViewName("room/roomRegister");
+            mav.setViewName("info/info");
             mav.addObject("msg", "success");
             session.setAttribute("memail", memail);
             session.setAttribute("mpwd", mpwd);
@@ -63,7 +66,7 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		session.setAttribute("memail", null);
 		session.setAttribute("mpwd", null);
-		return "room/roomRegister";
+		return "redirect:/";
 	}
 	@GetMapping(value="/joinPage")
     public ModelAndView requestJoin(ModelAndView mv){
@@ -92,4 +95,23 @@ public class LoginController {
          return mav;
       }
    }
+//	private void check(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		String memail = request.getParameter("memail");
+//		String mpwd = request.getParameter("mpwd");
+//		//유효성 검사(클라이언트측 View:js, 서버측 Controller:java)
+//		System.out.println("email: "+memail+", pwd: "+mpwd);
+//		
+//		LoginService service = LoginService.getInstance();
+//		int result = service.check(memail,mpwd);
+//		System.out.println("result: "+result);
+//		
+//		if(result == YES_ID_PWD) {
+//			MemberVO m = service.getMemberS(memail);
+//			HttpSession session = request.getSession();
+//			session.setAttribute("loginOkUser", m);
+//		}
+//		request.setAttribute("result", result);
+//
+//		ModelAndView mv = new ModelAndView("msg", "result", result);
+//	}
 }

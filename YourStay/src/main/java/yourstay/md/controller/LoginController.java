@@ -19,8 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.MemberVO;
+import yourstay.md.domain.resultVO;
 import yourstay.md.mapper.MemberMapper;
-import yourstay.md.service.LoginService;
+import yourstay.md.mapper.SearchMapper;
+
 import static yourstay.md.domain.LoginConst.*;
 
 
@@ -34,34 +36,38 @@ public class LoginController {
 	@Autowired
 	MemberMapper mapper;
 	
+	@Autowired
+	SearchMapper searchMapper;
+	
 	
 	@GetMapping(value="/loginPage")
-    public ModelAndView loginPage(ModelAndView mv){
+    public ModelAndView loginPage(@RequestParam Integer aid,ModelAndView mv){
         log.info("Logincontroller -> loginPage 로그인 시도 요청");
         mv.setViewName("login/loginPage");
+        resultVO resVO = searchMapper.getAccommodationByAccommodationId(aid);
         return mv;
     }
-	@PostMapping("loginCheck.do")
-    public ModelAndView loginCheck(@RequestParam String memail, String mpwd, HttpSession session, HttpServletRequest request){
-        System.out.println(memail + "   " + mpwd);	
-		boolean result = mapper.login(memail, mpwd);
-        ModelAndView mav = new ModelAndView();
-        if (result == true) { // 로그인 성공
-            // main.jsp로 이동
-            mav.setViewName("info/info");
-            mav.addObject("msg", "success");
-            session.setAttribute("memail", memail);
-            session.setAttribute("mpwd", mpwd);
-        } else {    // 로그인 실패
-            // login.jsp로 이동
-            mav.setViewName("login");
-            mav.addObject("msg", "failure");
-            session.setAttribute("memail", null);
-            session.setAttribute("mpwd", null);
-        }
-        
-        return mav;
-    }
+//	@PostMapping("loginCheck.do")
+//    public ModelAndView loginCheck(@RequestParam String memail, String mpwd, HttpSession session, HttpServletRequest request){
+//        System.out.println(memail + "   " + mpwd);	
+//		boolean result = mapper.login(memail, mpwd);
+//        ModelAndView mav = new ModelAndView();
+//        if (result == true) { // 로그인 성공
+//            // main.jsp로 이동
+//            mav.setViewName("info/info");
+//            mav.addObject("msg", "success");
+//            session.setAttribute("memail", memail);
+//            session.setAttribute("mpwd", mpwd);
+//        } else {    // 로그인 실패
+//            // login.jsp로 이동
+//            mav.setViewName("login");
+//            mav.addObject("msg", "failure");
+//            session.setAttribute("memail", null);
+//            session.setAttribute("mpwd", null);
+//        }
+//        
+//        return mav;
+//    }
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
 		session.setAttribute("memail", null);
@@ -95,23 +101,26 @@ public class LoginController {
          return mav;
       }
    }
-//	private void check(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String memail = request.getParameter("memail");
-//		String mpwd = request.getParameter("mpwd");
-//		//유효성 검사(클라이언트측 View:js, 서버측 Controller:java)
-//		System.out.println("email: "+memail+", pwd: "+mpwd);
-//		
-//		LoginService service = LoginService.getInstance();
-//		int result = service.check(memail,mpwd);
-//		System.out.println("result: "+result);
-//		
-//		if(result == YES_ID_PWD) {
-//			MemberVO m = service.getMemberS(memail);
-//			HttpSession session = request.getSession();
-//			session.setAttribute("loginOkUser", m);
-//		}
-//		request.setAttribute("result", result);
-//
-//		ModelAndView mv = new ModelAndView("msg", "result", result);
-//	}
+	@PostMapping("loginCheck.do")
+	private ModelAndView check(@RequestParam Integer aid, HttpServletRequest request, HttpServletResponse response,HttpSession session) throws ServletException, IOException {
+		String memail = request.getParameter("memail");
+		String mpwd = request.getParameter("mpwd");
+		ModelAndView mv = new ModelAndView();
+		//유효성 검사(클라이언트측 View:js, 서버측 Controller:java)
+		System.out.println("email: "+memail+", pwd: "+mpwd);
+		int result = mapper.login(memail, mpwd);
+		
+		
+		if(result == YES_ID_PWD) {
+			MemberVO m = mapper.getUser(memail);
+			session = request.getSession();
+			mv.addObject("msg", "success");
+			session.setAttribute("loginOkUser", m);
+			System.out.println("m: "+m);
+			resultVO resVO = searchMapper.getAccommodationByAccommodationId(aid);
+	        System.out.println(resVO.toString()); 
+	        new ModelAndView("info/info","resVO",resVO);
+		}
+		return mv;
+	}
 }

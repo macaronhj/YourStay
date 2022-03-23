@@ -5,6 +5,6 @@
 <c:if test="${empty loginOkUser}">
     <script>
         alert("회원서비스입니다. 먼저 로그인을 해주세요!");
-        location.href="../login/loginPage"
+        location.href="../login/loginPage?aid=${resVO.aid}"
     </script>
 </c:if>

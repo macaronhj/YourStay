@@ -179,7 +179,6 @@ $(document).ready(function(){
    
       <div class="loginForm">
       <form method="post" name="form1" class="form" action="loginCheck.do">
-      <input type='hidden' name='aid' value='${resVO.aid}'>
       <c:if test="${member == null}">
          <div class="box">
             <input type="text" name="memail" id="id" class="iText" placeholder="E-mail">

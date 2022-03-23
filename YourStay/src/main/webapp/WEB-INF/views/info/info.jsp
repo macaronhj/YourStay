@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="../login/login_check_module.jsp"/>
+<!--<jsp:include page="../login/login_check_module.jsp"/>-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,20 +81,28 @@ body,h1, h2, h3 {
                   <title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
                   <path d="M21 21l-5.2-5.2" /></svg></a> 
                   
-		         <c:choose>
-         <c:when test="${empty loginOkUser}">
-         	&nbsp;
-            <a class="py-2" href="../login/loginPage">로그인</a>
-            &nbsp;&nbsp;
-         </c:when>
+         <c:choose>
+         <c:when test="${msg =='failure'}">
+        <a class="btn btn-secondary" href="login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
+        </c:when> 
+         <c:when test="${msg == null}"> <!-- 로그인X -->
+         
+         <% 
+            if(memail == null){
+         %>
+           <a class="btn btn-secondary" href="login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
+          <%
+            }else{
+         %>
+         <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
+         <a href="/login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
+         <%} %>
+         </c:when> 
          <c:otherwise>
-            <div>
-            <font id="fontline" class="py-2 nav-link active" style="color:green; texg-align:center">${loginOkUser.memail} 님 환영합니다</font>
-            </div>
-         <li class="nav-item"><a class="py-2 nav-link active" href="../login/logout.do">로그아웃</a></li>
-            </c:otherwise>
-            </c:choose>
-            
+         <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
+         <a href="/login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
+         </c:otherwise>
+         </c:choose>
          </div>
       </div>
    </header>

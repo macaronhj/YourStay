@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 
 import yourstay.md.domain.MemberVO;
-import static yourstay.md.domain.LoginConst.*;
 @Primary
 @Repository
 public class MemberMapperImpl implements MemberMapper {
@@ -39,7 +38,7 @@ public class MemberMapperImpl implements MemberMapper {
 	}
 
 	@Override
-	public int login(String memail, String mpwd) {
+	public boolean login(String memail, String mpwd) {
 		Map<String, String> parameters = new HashMap<>();
 		parameters.put("memail", memail);
 		parameters.put("mpwd", mpwd);
@@ -47,9 +46,9 @@ public class MemberMapperImpl implements MemberMapper {
 		MemberVO result = session.selectOne("yourstay.md.mapper.MemberMapper.loginUser", parameters);
 		
 		if(result != null)
-			return YES_ID_PWD;
+			return true;
 		else
-			return EX_ID;
+			return false;
 	}
 
 }

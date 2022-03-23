@@ -12,5 +12,5 @@ public interface MemberMapper {
 	public int removeUser(String memail);
 	
 	// Functional Methods
-	public int login(String memail, String mpwd);
+	public boolean login(String memail, String mpwd);
 }

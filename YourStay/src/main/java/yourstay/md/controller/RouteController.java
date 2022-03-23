@@ -20,8 +20,7 @@ public class RouteController {
 //	AccommodationDAO adao;
 	@Autowired
 	SearchMapper mapper;
-//	@Autowired
-//	private Accommodation accommodation;
+
 	@RequestMapping(value = "searchInList.do" )
 	@ResponseBody
 	public List<Accommodation> searchList(@RequestParam String aloc,@RequestParam String startdate,@RequestParam String deadline,@RequestParam String person) {

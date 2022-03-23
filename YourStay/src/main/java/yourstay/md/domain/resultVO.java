@@ -18,6 +18,8 @@ public class resultVO {
 	private int iid;
 	private long mseq;
 	private String anotice;
+	private double ay;
+	private double ax;
 	private long oid;
 	private long rnum;
 	private int wifi;
@@ -45,4 +47,10 @@ public class resultVO {
 	private String mpwd;
 	private int mcallnum;
 	private int mstate;
+	private long renum;
+	private int point;
+	private String review;
+	private String rimg1;
+	private String rimg2;
+	private String rimg3;
 }

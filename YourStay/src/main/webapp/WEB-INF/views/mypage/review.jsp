@@ -157,11 +157,12 @@
       </div>
    </header>
 
-   <!-- 본 내용  -->
+<!-- 본 내용  -->
    <main class="container">
      <h1 > <b>평가 및 후기 </b></h1>
    
    <!-- 이미지 등록부분  -->
+   <form method="post" enctype="multipart/form-data" action="/review/registerReview" >
      <div class="container px-4 py-5" id="custom-cards">
        <h2 class="pb-2 border-bottom">Review 이미지 등록</h2>
    
@@ -169,20 +170,19 @@
          
          
          <div class="col">
-           <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg imageUp" id="image-show" style="background-image: url('unsplash-photo-1.jpg');">
+           <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg imageUp" id="image-show1" style="background-image: url('unsplash-photo-1.jpg');">
              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"  id="divImg1" style="z-index: 1; align-items: center; padding-left: 0px; padding-top: 3rem; padding-bottom: 300px;">
+                 
                  <div class="container">
-                    <div style="margin-top:50px;" class="image-upload" id="image-upload">
-            
-                        <form method="post" enctype="multipart/form-data">
-                            <div class="button">
-                                <label for="chooseFile">
-                                       사진등록 <span> </span>
-                                       <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-                                </label>
-                            </div>
-                            <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
-                        </form>
+                    <div style="margin-top:50px;" class="image-upload" id="image-upload1">
+                        <div class="button">
+                            <label for="chooseFile">
+                                   <span>사진등록</span>
+                                   <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                            </label>
+                        </div>
+                        <input type="file" id="chooseFile" name="C:/img/BMW.jpg" accept="image/*" onchange="loadFile(this, 1)">
+                        
                         <div class="fileContainer">
                             <div class="fileInput" style="border: none;">
                                <p id="fileName"></p> 
@@ -190,6 +190,7 @@
                         </div>
                     </div>
                 </div>
+                
              </div>
             </div>
          </div>
@@ -198,16 +199,14 @@
              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"  id="divImg1" style="z-index: 1; align-items: center; padding-left: 0px; padding-top: 3rem; padding-bottom: 300px;">
                  <div class="container">
                     <div style="margin-top:50px;" class="image-upload" id="image-upload2">
-            
-                        <form method="post" enctype="multipart/form-data">
-                            <div class="button">
-                                <label for="chooseFile2">
-                                       사진등록 <span> </span>
-                                       <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-                                </label>
-                            </div>
-                            <input type="file" id="chooseFile2" name="chooseFile" accept="image/*" onchange="loadFile2(this)">
-                        </form>
+                        <div class="button">
+                            <label for="chooseFile2">
+                                   <span>사진등록</span>
+                                   <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                            </label>
+                        </div>
+                        <input type="file" id="chooseFile2" name="C:/img/DS.jpg" accept="image/*" onchange="loadFile(this, 2)">
+                        
                         <div class="fileContainer">
                             <div class="fileInput" style="border: none;">
                                <p id="fileName"></p> 
@@ -223,16 +222,14 @@
              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"  id="divImg1" style="z-index: 1; align-items: center; padding-left: 0px; padding-top: 3rem; padding-bottom: 300px;">
                  <div class="container">
                     <div style="margin-top:50px;" class="image-upload" id="image-upload3">
-            
-                        <form method="post" enctype="multipart/form-data">
-                            <div class="button">
-                                <label for="chooseFile3">
-                                       사진등록 <span> </span>
-                                       <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-                                </label>
-                            </div>
-                            <input type="file" id="chooseFile3" name="chooseFile" accept="image/*" onchange="loadFile3(this)">
-                        </form>
+                        <div class="button">
+                            <label for="chooseFile3">
+                                   <span>사진등록</span>
+                                   <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                            </label>
+                        </div>
+                        <input type="file" id="chooseFile3" name="C:/img/기아.jpg" accept="image/*" onchange="loadFile(this, 3)">
+                        
                         <div class="fileContainer">
                             <div class="fileInput" style="border: none;">
                                <p id="fileName"></p> 
@@ -256,8 +253,8 @@
           <div class="div-shape" >  </div>
 
          <p class="pb-3 mb-0 small lh-sm border-bottom" style="margin-left: 10px">
-           <strong class="d-block text-gray-dark">@사용자 이름(자동입력)</strong><br/>
-           <textarea rows="4" cols="150" width="100%" height="auto"></textarea>
+           <strong class="d-block text-gray-dark">${member.mname}</strong><br/>
+           <textarea rows="4" cols="150" width="100%" height="auto" name="review"></textarea>
             
          </p>
        </div>
@@ -268,15 +265,15 @@
       <div > <span class="border-bottom" style="margin-left:20px"> 평점 </span>
          <div class="star-rating space-x-4 mx-auto">
             
-            <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+            <input type="radio" id="5-stars" name="point" value="5" v-model="ratings"/>
             <label for="5-stars" class="star pr-4">★</label>
-            <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+            <input type="radio" id="4-stars" name="point" value="4" v-model="ratings"/>
             <label for="4-stars" class="star">★</label>
-            <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+            <input type="radio" id="3-stars" name="point" value="3" v-model="ratings"/>
             <label for="3-stars" class="star">★</label>
-            <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+            <input type="radio" id="2-stars" name="point" value="2" v-model="ratings"/>
             <label for="2-stars" class="star">★</label>
-            <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+            <input type="radio" id="1-star" name="point" value="1" v-model="ratings" />
             <label for="1-star" class="star">★</label>
          </div>
       </div>
@@ -285,23 +282,10 @@
        </small>
      </div>
      
-     <!-- 체크박스 부분 (사용 시 해제하기)  -->
-     <!-- <form method="get" action="form-action.html">
-         <p>Color</p>
-         <label><input type="checkbox" name="color" value="blue"> Blue</label>
-         <label><input type="checkbox" name="color" value="red"> Red</label>
-         <input name="checkbox1" type="checkbox" value="1" onclick="oneCheckbox(this);" style="zoom:1.5;"> 1 &nbsp &nbsp &nbsp
-        <input name="checkbox1" type="checkbox" value="2" onclick="oneCheckbox(this);" style="zoom:1.5;"> 2 &nbsp &nbsp &nbsp
-        <input name="checkbox1" type="checkbox" value="3" onclick="oneCheckbox(this);" style="zoom:1.5;"> 3 &nbsp &nbsp &nbsp
-        <input name="checkbox1" type="checkbox" value="4" onclick="oneCheckbox(this);" style="zoom:1.5;"> 4 &nbsp &nbsp &nbsp
-        <input name="checkbox1" type="checkbox" value="5" onclick="oneCheckbox(this);" style="zoom:1.5;"> 5 &nbsp &nbsp &nbsp
-         <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
-     </form> -->
-     
-     <button class="btn btn-info" name="ResisterButton" type="button" onclick="ResisterButton()">
-        등록하기
-     </button>
-     
+     <input type="submit" >
+              등록하기  <!-- class="btn btn-info" -->
+     </input>
+     </form>
    </main>
 
    

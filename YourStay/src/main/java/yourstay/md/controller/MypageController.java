@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,9 +37,17 @@ public class MypageController {
         return mv;
     }
 	@GetMapping(value="/review")
-    public ModelAndView checkBook(ModelAndView mv){
+    public ModelAndView checkBook(HttpSession session){
         log.info("MypageController -> checkBook 요청");
-        mv.setViewName("mypage/review");
+        MemberVO vo = memberMapper.getUser((String)session.getAttribute("memail"));
+        ModelAndView mv = new ModelAndView("mypage/review","member",vo);
+        return mv;
+    }
+	@PostMapping(value="/wishlist")
+    public ModelAndView wishlist(HttpSession session){
+        log.info("MypageController -> wishlist 요청");
+        MemberVO vo = memberMapper.getUser((String)session.getAttribute("memail"));
+        ModelAndView mv = new ModelAndView("mypage/review","member",vo);
         return mv;
     }
 }

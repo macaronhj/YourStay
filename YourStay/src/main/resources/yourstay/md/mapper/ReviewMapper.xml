@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yourstay.md.mapper.ReviewMapper">
+<!-- 로그인 -->
+	<select id="getReview" resultType="yourstay.md.domain.reviewVO">
+      select * from review where renum=#{renum}
+   </select>
+   
+   <insert id="insertReview" parameterType="yourstay.md.domain.reviewVO">
+      insert into review values(review_seq.nextval, #{aid}, #{mseq}, #{point}, #{review}, #{rimg1}, #{rimg2}, #{rimg3})
+   </insert>
+   <delete id="deleteReview">
+      delete from review where renum=#{renum}
+   </delete>
+   
+</mapper>
+<!-- resultType : 결과반환 Object / return 값이라고 생각하면 될 듯?
+	 parameterType : 조회결과 Object
+ -->

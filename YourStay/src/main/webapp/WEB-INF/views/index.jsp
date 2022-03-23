@@ -30,34 +30,6 @@
    href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
    rel="stylesheet">
 
-<!-- DataTimePicker template 
-<script type="text/javascript"
-   src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript"
-   src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-<script type="text/javascript"
-   src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
-<link rel="stylesheet"
-   href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
-<link rel="stylesheet"
-   href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />-->
-
-<!-- <script type="text/javascript">
-   $(function() {
-      $("#datetimepicker1").datetimepicker({
-         format : 'L'
-      });
-      $("#datetimepicker2").datetimepicker({
-         format : 'L'
-      });
-      $("#datetimepicker1").on("change.datetimepicker", function(e) {
-         $('#datetimepicker2').datetimepicker('minDate', e.date);
-      });
-      $("#datetimepicker2").on("change.datetimepicker", function(e) {
-         $('#datetimepicker1').datetimepicker('maxDate', e.date);
-      });
-   });
-</script> -->
 
 <script>
    $(document)
@@ -169,12 +141,12 @@
           <%
             }else{
          %>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
+         <a style="margin-top: 3%; margin-right: 3%;" href="/mypage/home"><%=memail %>님 반갑습니다!</a>
          <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          <%} %>
          </c:when> 
          <c:otherwise>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
+         <a style="margin-top: 3%; margin-right: 3%;" href="/mypage/home"><%=memail%>님 반갑습니다!</a>
          <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          </c:otherwise>
          </c:choose>

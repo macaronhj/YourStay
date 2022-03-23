@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>info</title>
 
-<!-- DataTimePicker template -->
+<!-- DataTimePicker template 
 <script type="text/javascript"
    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript"
@@ -19,6 +19,7 @@
    href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
 <link rel="stylesheet"
    href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
+-->
 
 <!-- Fontawesome -->
 <link rel="stylesheet"
@@ -35,7 +36,8 @@
    rel="stylesheet">
    
 <!-- Bootstrap core CSS -->
-<link href="/css/info_bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"
+   media="all" />
 <link href="/css/info_blog.css" rel="stylesheet">
 <link href="/css/info_footers.css" rel="stylesheet">
 <link href="/css/info_cheatsheet.css" rel="stylesheet">
@@ -44,25 +46,29 @@
 <link href="/css/info_review.css" rel="stylesheet">
 <link href="/css/info_slide.css" rel="stylesheet">
 <link href="/css/info_bill.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/airDnDCSS.css">
 
 <!-- JS -->
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/info_calendar.js"></script>
-<script src="/js/info_bootstrap.bundle.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+   href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
    
- <script type="text/javascript">
-   $(function() {
-      $("#startdate").datetimepicker({
-    	  dateFormat : 'yy-mm-dd'
-      });
-      $("#deadline").datetimepicker({
-    	  dateFormat : 'yy-mm-dd'
-      });
-   })
+<script>
+   $(document).ready(
+		   $("#datepicker1").datepicker({
+               dateFormat : 'yy-mm-dd'
+            });
+            $("#datepicker2").datepicker({
+               dateFormat : 'yy-mm-dd'
+            });
+          })
 </script>
 <style>
 body,h1, h2, h3 {
@@ -103,7 +109,7 @@ body,h1, h2, h3 {
          class="row flex-nowrap justify-content-between align-items-center">
          <div class="col-4 pt-1"></div>
          <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="#">YourTrip</a>
+            <a class="blog-header-logo text-dark" href="/">YourTrip</a>
          </div>
          <div class="col-4 d-flex justify-content-end align-items-center">
             <a class="link-secondary" href="#" aria-label="Search"> <svg
@@ -1456,36 +1462,24 @@ body,h1, h2, h3 {
                <div class='col-md-3 col-xs-4'>
                   <div class="form-group">
                      <div class="input-group date" id="datetimepicker1"
-                        data-target-input="nearest" style="width:400%!important;">
-                        <input type="text" class="form-control datetimepicker-input"
-                           data-target="#datetimepicker1" placeholder="Start-date"
-                           onkeyup="invalid()" id="startdate" name="startdate">
-                        <div class="input-group-append" data-target="#datetimepicker1"
-                           data-toggle="datetimepicker">
-                           <div class="input-group-text">
-                              <i class="fa fa-calendar"></i>
-                           </div>
-                        </div>
+                        data-target-input="nearest">
+                        <input type="text" id="datepicker1" name="startdate"
+                           placeholder="날짜를 선택해주세요." style="margin-left: 7px!important;">
+
                      </div>
                   </div>
                </div>
                <div class='col-md-3 col-xs-4'>
                   <div class="form-group">
                      <div class="input-group date" id="datetimepicker2"
-                        data-target-input="nearest" style="width:400%!important;">
-                        <input type="text" class="form-control datetimepicker-input"
-                           data-target="#datetimepicker2" placeholder="Deadline"
-                           onkeyup="invalid()" id="deadline" name="deadline">
-                        <div class="input-group-append" data-target="#datetimepicker2"
-                           data-toggle="datetimepicker">
-                           <div class="input-group-text">
-                              <i class="fa fa-calendar"></i>
-                           </div>
-                        </div>
+                        data-target-input="nearest">
+                        <input type="text" id="datepicker2" name="deadline"
+                           placeholder="날짜를 선택해주세요." style="margin-left: 7px!important;">
+
                      </div>
                   </div>
+                  </div>
                </div>
-
                <main class="page payment-page">
                   <section class="payment-form dark">
                      <div class="container">
@@ -1522,6 +1516,9 @@ body,h1, h2, h3 {
          </div>
       </div>
    </main>
+               </div>
+
+               
    <!-- 푸터 -->
    <div class="container">
       <footer class="py-3 my-4">

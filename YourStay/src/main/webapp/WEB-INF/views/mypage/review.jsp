@@ -114,11 +114,9 @@
        });
               
    </script>
-   <%
-   String memail = (String) session.getAttribute("memail");
-%>
+   
   </head>
-  
+   
   <body>
    <header class="blog-header py-3" style="margin-bottom: 5%;">
       <div class="row flex-nowrap justify-content-between align-items-center">
@@ -131,33 +129,12 @@
           <a class="link-secondary" href="#" aria-label="Search">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
           </a>
-          <c:choose>
-         <c:when test="${msg =='failure'}">
-        <a class="btn btn-secondary" href="../login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
-        </c:when> 
-         <c:when test="${msg == null}"> <!-- 로그인X -->
-         
-         <% 
-            if(memail == null){
-         %>
-           <a class="btn btn-secondary" href="../login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
-          <%
-            }else{
-         %>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
-         <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
-         <%} %>
-         </c:when> 
-         <c:otherwise>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
-         <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
-         </c:otherwise>
-         </c:choose>
+          <a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign up</a>
         </div>
       </div>
    </header>
 
-<!-- 본 내용  -->
+   <!-- 본 내용  -->
    <main class="container">
      <h1 > <b>평가 및 후기 </b></h1>
    
@@ -181,7 +158,7 @@
                                    <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
                             </label>
                         </div>
-                        <input type="file" id="chooseFile" name="C:/img/BMW.jpg" accept="image/*" onchange="loadFile(this, 1)">
+                        <input type="file" id="chooseFile" name="files" accept="image/*" onchange="loadFile(this, 1)">
                         
                         <div class="fileContainer">
                             <div class="fileInput" style="border: none;">
@@ -205,7 +182,7 @@
                                    <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
                             </label>
                         </div>
-                        <input type="file" id="chooseFile2" name="C:/img/DS.jpg" accept="image/*" onchange="loadFile(this, 2)">
+                        <input type="file" id="chooseFile2" name="files" accept="image/*" onchange="loadFile(this, 2)">
                         
                         <div class="fileContainer">
                             <div class="fileInput" style="border: none;">
@@ -228,7 +205,7 @@
                                    <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
                             </label>
                         </div>
-                        <input type="file" id="chooseFile3" name="C:/img/기아.jpg" accept="image/*" onchange="loadFile(this, 3)">
+                        <input type="file" id="chooseFile3" name="files" accept="image/*" onchange="loadFile(this, 3)">
                         
                         <div class="fileContainer">
                             <div class="fileInput" style="border: none;">
@@ -265,15 +242,15 @@
       <div > <span class="border-bottom" style="margin-left:20px"> 평점 </span>
          <div class="star-rating space-x-4 mx-auto">
             
-            <input type="radio" id="5-stars" name="point" value="5" v-model="ratings"/>
+            <input type="radio" id="5-stars" name="point" value=5 v-model="ratings"/>
             <label for="5-stars" class="star pr-4">★</label>
-            <input type="radio" id="4-stars" name="point" value="4" v-model="ratings"/>
+            <input type="radio" id="4-stars" name="point" value=4 v-model="ratings"/>
             <label for="4-stars" class="star">★</label>
-            <input type="radio" id="3-stars" name="point" value="3" v-model="ratings"/>
+            <input type="radio" id="3-stars" name="point" value=3 v-model="ratings"/>
             <label for="3-stars" class="star">★</label>
-            <input type="radio" id="2-stars" name="point" value="2" v-model="ratings"/>
+            <input type="radio" id="2-stars" name="point" value=2 v-model="ratings"/>
             <label for="2-stars" class="star">★</label>
-            <input type="radio" id="1-star" name="point" value="1" v-model="ratings" />
+            <input type="radio" id="1-star" name="point" value=1 v-model="ratings" />
             <label for="1-star" class="star">★</label>
          </div>
       </div>
@@ -282,9 +259,8 @@
        </small>
      </div>
      
-     <input type="submit" >
-              등록하기  <!-- class="btn btn-info" -->
-     </input>
+     
+     <button class="btn btn-sm btn-outline-secondary" type="submit">등록하기</button>
      </form>
    </main>
 

@@ -42,7 +42,7 @@ public class ReviewController {
 		  log.info("MypageController -> addreview 요청");
 		  service.write(reviewVo, mpRequest);
 			
-			return "/home";
+			return "/mypage/home";
 	   }
 //		@GetMapping(value="/review")
 //	    public ModelAndView review(HttpSession session){

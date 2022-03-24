@@ -53,7 +53,7 @@ public class MypageController {
     public ModelAndView roomHistory(HttpSession session){
         log.info("MypageController -> roomHistory 요청");
         List<reservationVO> vo = roomService.getRoomList((String)session.getAttribute("memail"));
-        ModelAndView mv = new ModelAndView("mypage/roomHistory","member",vo);
+        ModelAndView mv = new ModelAndView("mypage/roomHistory","vo",vo);
         log.info("####vo:"+vo.toString());
        
         

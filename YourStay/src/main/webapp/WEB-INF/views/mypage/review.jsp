@@ -140,6 +140,7 @@
    
    <!-- 이미지 등록부분  -->
    <form method="post" enctype="multipart/form-data" action="/review/registerReview" >
+   <input type="hidden" name="renum" value="${member.renum}">
      <div class="container px-4 py-5" id="custom-cards">
        <h2 class="pb-2 border-bottom">Review 이미지 등록</h2>
    
@@ -158,7 +159,7 @@
                                    <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
                             </label>
                         </div>
-                        <input type="file" id="chooseFile" name="files" accept="image/*" onchange="loadFile(this, 1)">
+                        <input type="file" id="chooseFile" name="files" accept="image/*" onchange="loadFile(this, 1)" multiple="multiple">
                         
                         <div class="fileContainer">
                             <div class="fileInput" style="border: none;">
@@ -182,7 +183,7 @@
                                    <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
                             </label>
                         </div>
-                        <input type="file" id="chooseFile2" name="files" accept="image/*" onchange="loadFile(this, 2)">
+                        <input type="file" id="chooseFile2" name="files" accept="image/*" onchange="loadFile(this, 2)" multiple="multiple">
                         
                         <div class="fileContainer">
                             <div class="fileInput" style="border: none;">
@@ -205,7 +206,7 @@
                                    <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
                             </label>
                         </div>
-                        <input type="file" id="chooseFile3" name="files" accept="image/*" onchange="loadFile(this, 3)">
+                        <input type="file" id="chooseFile3" name="files" accept="image/*" onchange="loadFile(this, 3)" multiple="multiple">
                         
                         <div class="fileContainer">
                             <div class="fileInput" style="border: none;">
@@ -217,9 +218,6 @@
              </div>
             </div>
          </div>
-         
-        
-         
        </div>
      </div>
 

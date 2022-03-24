@@ -46,4 +46,5 @@
 	
      <mybatis-spring:scan base-package="yourstay.md.mapper"/>
      <context:component-scan base-package="yourstay.md.mapper"/>
+     <context:component-scan base-package="yourstay.md.fileset"></context:component-scan>
 </beans>

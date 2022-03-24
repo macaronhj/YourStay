@@ -1,5 +1,8 @@
 package yourstay.md.controller;
 
+
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.MemberVO;
+import yourstay.md.domain.reviewVO;
 import yourstay.md.mapper.MemberMapper;
+import yourstay.md.mapper.ReviewMapper;
 
 @Log4j
 @AllArgsConstructor
@@ -22,6 +27,9 @@ import yourstay.md.mapper.MemberMapper;
 public class MypageController {
 	@Autowired
 	MemberMapper memberMapper;
+	
+	@Autowired
+	ReviewMapper reviewMapper;
 	
 	@GetMapping(value="/home")
     public ModelAndView gohome(HttpSession session){
@@ -37,17 +45,19 @@ public class MypageController {
         return mv;
     }
 	@GetMapping(value="/review")
-    public ModelAndView checkBook(HttpSession session){
-        log.info("MypageController -> checkBook 요청");
-        MemberVO vo = memberMapper.getUser((String)session.getAttribute("memail"));
+    public ModelAndView review(HttpSession session){
+        log.info("MypageController -> review 요청");
+        List<reviewVO> vo = reviewMapper.getUser((String)session.getAttribute("memail"));
         ModelAndView mv = new ModelAndView("mypage/review","member",vo);
+        log.info("####vo:"+vo);
+        
         return mv;
     }
-	@PostMapping(value="/wishlist")
-    public ModelAndView wishlist(HttpSession session){
-        log.info("MypageController -> wishlist 요청");
-        MemberVO vo = memberMapper.getUser((String)session.getAttribute("memail"));
-        ModelAndView mv = new ModelAndView("mypage/review","member",vo);
-        return mv;
-    }
+//	@PostMapping(value="/wishlist")
+//    public ModelAndView wishlist(HttpSession session){
+//        log.info("MypageController -> wishlist 요청");
+//        MemberVO vo = memberMapper.getUser((String)session.getAttribute("memail"));
+//        ModelAndView mv = new ModelAndView("mypage/review","member",vo);
+//        return mv;
+//    }
 }

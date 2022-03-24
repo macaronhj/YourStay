@@ -1,35 +1,33 @@
 package yourstay.md.mapper;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 import yourstay.md.domain.reviewVO;
-@Primary
-@Repository
-public class ReviewMapperImpl implements ReviewMapper {
 
+public class ReviewMapperImpl implements ReviewMapper {
+	
 	@Autowired
 	SqlSession session;
 	
 	@Override
-	public List<reviewVO> getReview(long renum) {
-		return session.selectOne("yourstay.md.mapper.ReviewMapper.getReview", renum);
+	public void insertFile(Map<String, Object> map) throws Exception {
+		session.insert("yourstay.md.mapper.ReviewMapper.insertFile", map);
+
 	}
 
 	@Override
-	public reviewVO insertReview(ArrayList<MultipartFile> files, String review) {
-		return (reviewVO) session.selectMap("yourstay.md.mapper.ReviewMapper.getReview", files, review);
+	public void insert(reviewVO reviewVo) {
+		session.insert("yourstay.md.mapper.ReviewMapper.insert",reviewVo);
+		
 	}
 
 	@Override
-	public reviewVO deleteReview() {
-		return session.selectOne("yourstay.md.mapper.ReviewMapper.getReview");
+	public List<reviewVO> getUser(String memail) {
+		return session.selectList("yourstay.md.mapper.ReviewMapper.getUser", memail);
 	}
 
 }

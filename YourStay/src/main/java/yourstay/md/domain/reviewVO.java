@@ -8,12 +8,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class reviewVO {
+	//review
 	private long renum;
 	private long aid;
-	private String mseq;
+	private long mseq;
 	private int point;
 	private String review;
-	private int rimg1;
-	private int rimg2;
-	private int rimg3;
+	//review_file
+	private long file_no;
+	private String org_file_name;
+	private String stored_file_name;
+	private int file_size;
+	//member
+	private String mname;
+	private String memail;
+	private String mpwd;
+	private int mcallnum;
+	private int mstate;
 }

@@ -140,7 +140,8 @@
    
    <!-- 이미지 등록부분  -->
    <form method="post" enctype="multipart/form-data" action="/review/registerReview" >
-   <input type="hidden" name="renum" value="${member.renum}">
+	 <input type="hidden" name="aid" value="${member.aid}">
+   <input type="hidden" name="mseq" value="${member.mseq}">
      <div class="container px-4 py-5" id="custom-cards">
        <h2 class="pb-2 border-bottom">Review 이미지 등록</h2>
    
@@ -159,7 +160,7 @@
                                    <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
                             </label>
                         </div>
-                        <input type="file" id="chooseFile" name="files" accept="image/*" onchange="loadFile(this, 1)" multiple="multiple">
+                        <input type="file" id="chooseFile" name="file" accept="image/*" onchange="loadFile(this, 1)" >
                         
                         <div class="fileContainer">
                             <div class="fileInput" style="border: none;">
@@ -172,52 +173,7 @@
              </div>
             </div>
          </div>
-          <div class="col">
-           <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg imageUp" id="image-show2" style="background-image: url('unsplash-photo-1.jpg');">
-             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"  id="divImg1" style="z-index: 1; align-items: center; padding-left: 0px; padding-top: 3rem; padding-bottom: 300px;">
-                 <div class="container">
-                    <div style="margin-top:50px;" class="image-upload" id="image-upload2">
-                        <div class="button">
-                            <label for="chooseFile2">
-                                   <span>사진등록</span>
-                                   <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-                            </label>
-                        </div>
-                        <input type="file" id="chooseFile2" name="files" accept="image/*" onchange="loadFile(this, 2)" multiple="multiple">
-                        
-                        <div class="fileContainer">
-                            <div class="fileInput" style="border: none;">
-                               <p id="fileName"></p> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-             </div>
-            </div>
-         </div>
-         <div class="col">
-           <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg imageUp" id="image-show3" style="background-image: url('unsplash-photo-1.jpg');">
-             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"  id="divImg1" style="z-index: 1; align-items: center; padding-left: 0px; padding-top: 3rem; padding-bottom: 300px;">
-                 <div class="container">
-                    <div style="margin-top:50px;" class="image-upload" id="image-upload3">
-                        <div class="button">
-                            <label for="chooseFile3">
-                                   <span>사진등록</span>
-                                   <img src="/images/camera2.png" id="img1" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-                            </label>
-                        </div>
-                        <input type="file" id="chooseFile3" name="files" accept="image/*" onchange="loadFile(this, 3)" multiple="multiple">
-                        
-                        <div class="fileContainer">
-                            <div class="fileInput" style="border: none;">
-                               <p id="fileName"></p> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-             </div>
-            </div>
-         </div>
+
        </div>
      </div>
 

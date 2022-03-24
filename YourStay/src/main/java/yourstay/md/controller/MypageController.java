@@ -16,9 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.MemberVO;
+import yourstay.md.domain.reservationVO;
 import yourstay.md.domain.reviewVO;
 import yourstay.md.mapper.MemberMapper;
 import yourstay.md.mapper.ReviewMapper;
+import yourstay.md.service.RoomHistoryService;
 
 @Log4j
 @AllArgsConstructor
@@ -31,6 +33,9 @@ public class MypageController {
 	@Autowired
 	ReviewMapper reviewMapper;
 	
+	@Autowired
+	RoomHistoryService roomService;
+	
 	@GetMapping(value="/home")
     public ModelAndView gohome(HttpSession session){
         log.info("MypageController -> gohome 요청");
@@ -42,6 +47,16 @@ public class MypageController {
     public ModelAndView wishlist(ModelAndView mv){
         log.info("MypageController -> wishlist 요청");
         mv.setViewName("mypage/wishlist");
+        return mv;
+    }
+	@GetMapping(value="/roomHistory")
+    public ModelAndView roomHistory(HttpSession session){
+        log.info("MypageController -> roomHistory 요청");
+        List<reservationVO> vo = roomService.getRoomList((String)session.getAttribute("memail"));
+        ModelAndView mv = new ModelAndView("mypage/roomHistory","member",vo);
+        log.info("####vo:"+vo.toString());
+       
+        
         return mv;
     }
 	@GetMapping(value="/review")

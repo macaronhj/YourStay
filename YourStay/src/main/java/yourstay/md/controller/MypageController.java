@@ -47,7 +47,7 @@ public class MypageController {
 	@GetMapping(value="/review")
     public ModelAndView review(HttpSession session){
         log.info("MypageController -> review 요청");
-        List<reviewVO> vo = reviewMapper.getUser((String)session.getAttribute("memail"));
+        reviewVO vo = reviewMapper.getUser((String)session.getAttribute("memail"));
         ModelAndView mv = new ModelAndView("mypage/review","member",vo);
         log.info("####vo:"+vo);
         

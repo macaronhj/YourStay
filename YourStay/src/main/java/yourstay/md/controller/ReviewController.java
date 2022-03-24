@@ -50,7 +50,6 @@ public class ReviewController {
 //	        reviewVO vo = reviewMapper.getUser((String)session.getAttribute("memail"));
 //	        ModelAndView mv = new ModelAndView("mypage/review","member",vo);
 //	        log.info("####vo:"+vo);
-//	        
 //	        return mv;
 //	    }
 }

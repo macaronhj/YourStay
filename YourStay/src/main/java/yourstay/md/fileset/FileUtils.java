@@ -17,7 +17,7 @@ import yourstay.md.domain.reviewVO;
 
 @Component("fileUtils")
 public class FileUtils {
-	public static final String FILE_STORE="./webapp/resources/images/";
+	public static final String FILE_STORE="C:/heejin/Final/image/";
 	
 	public List<Map<String, Object>> parseInsertFileInfo(reviewVO reviewVO, 
 			MultipartHttpServletRequest mpRequest) throws Exception{

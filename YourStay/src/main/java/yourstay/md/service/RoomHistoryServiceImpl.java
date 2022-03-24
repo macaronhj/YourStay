@@ -16,8 +16,8 @@ public class RoomHistoryServiceImpl implements RoomHistoryService {
 	@Autowired
 	RoomHistoryMapper mapper;
 	@Override
-	public List<reservationVO> getRoomList(String memail) {
-		List<reservationVO> vo = mapper.getRoomList(memail);
+	public List<reservationVO> getRoomList(long mseq) {
+		List<reservationVO> vo = mapper.getRoomList(mseq);
 		return vo;
 	}
 

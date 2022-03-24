@@ -5,6 +5,6 @@
 <mapper namespace="yourstay.md.mapper.RoomHistoryMapper">
 
 	<select id="getRoomList" resultType="yourstay.md.domain.reservationVO">
-      select * from reservation R ,accommodation A , member M where  R.mseq=#{mseq}
+      select * from reservation R, accommodation A, member M where R.mseq=M.mseq and A.aid= R.aid and R.mseq=#{mseq}
    </select>
 </mapper>

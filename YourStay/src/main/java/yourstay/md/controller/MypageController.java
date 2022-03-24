@@ -50,9 +50,9 @@ public class MypageController {
         return mv;
     }
 	@GetMapping(value="/roomHistory")
-    public ModelAndView roomHistory(HttpSession session){
+    public ModelAndView roomHistory(long mseq){
         log.info("MypageController -> roomHistory 요청");
-        List<reservationVO> vo = roomService.getRoomList((String)session.getAttribute("memail"));
+        List<reservationVO> vo = roomService.getRoomList(mseq);
         ModelAndView mv = new ModelAndView("mypage/roomHistory","vo",vo);
         log.info("####vo:"+vo.toString());
        

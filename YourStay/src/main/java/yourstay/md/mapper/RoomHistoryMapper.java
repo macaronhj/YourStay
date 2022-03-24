@@ -5,5 +5,5 @@ import java.util.List;
 import yourstay.md.domain.reservationVO;
 
 public interface RoomHistoryMapper {
-	public List<reservationVO> getRoomList(String memail);
+	public List<reservationVO> getRoomList(long mseq);
 }

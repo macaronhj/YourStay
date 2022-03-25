@@ -83,7 +83,8 @@ h2, h3,p {
   </tbody>
 </table>
 <div class="container px-4 py-5" id="featured-3">
-<h3>바로 가기</h3>
+<h3>바로 가기</h3><a class="btn btn-secondary" type="submit" href="roomRegister?mseq=${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">리뷰 쓰러 가기</a>
+
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
       <div class="feature col">
           <img class="bi" id="like" width="63em" height="63em" src="../images/like.png"/>

@@ -42,4 +42,7 @@
 			#{file_size}
 		)
     </insert>
+    <select id="select" resultType="yourstay.md.domain.resultVO">
+      select * from member where mseq=#{mseq}
+   </select>
 </mapper>

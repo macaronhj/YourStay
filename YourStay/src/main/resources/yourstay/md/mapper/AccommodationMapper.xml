@@ -11,29 +11,38 @@
     	5. utility 테이블 insert
      -->
      
-	<!-- 숙소 옵션 가져오기 -->
-	<select id="getAccomoption"
-		resultType="yourstay.md.domain.Accomoption">
-		SELECT * FROM accomoption WHERE accomoption_seq =
-		#{accomoption_seq}
-	</select>
 	<!-- 회원 아이디 가져오기 -->
 	<select id="getRegisterMemberSeq"
 		resultType="yourstay.md.domain.MemberVO">
 		SELECT * FROM member WHERE mseq = #{mseq}
 	</select>
+	
+	
 	<!-- 숙소 등록 -->
 	<insert id="insertAccommodation"
 		parameterType="yourstay.md.domain.Accommodation">
-		INSERT INTO accommodation
-		VALUES(accommodation_seq.nextval,#{aname},#{aloc},#{aprice},#{apoint},#{atype},#{apeople},#{iid},#{mseq},#{anotice})
+		insert all
+		into accommodation (aid, aname, aloc, aprice, apoint, atype, apeople,iid,mseq, anotice, ax, ay)
+		values
+		(accommodation_seq.nextval, #{aname},#{aloc},#{aprice},#{apoint},#{atype},#{apeople},#{iid},#{mseq},#{anotice},#{ax},#{ay})
+		into accomoption (oid,aid, rnum,wifi ,tnum , bnum, wave,refg , bd,tv ,pet ,kitchen ,wash ,parking ,fire , smoking,roof,bbq)
+		values
+		(accomoption_seq.nextval, #{aid},#{rnum},#{wifi},#{tnum},#{bnum},#{wave},#{refg},#{bd},#{tv},#{pet},#{kitchen},#{wash},#{parking},#{fire},#{smoking},#{roof},#{bbq}) 
+		into utility (utid, aid, ures, ucafe, ucon,uact)
+		values
+		(utility_seq.nextval,#{aid}, #{ures},#{ucafe},#{ucon},#{uact})
+		select * from dual
 	</insert>
-	<!-- 숙소 옵션 등록 -->
+		<!-- 숙소 옵션 등록
 	<insert id="insertAccomoption"
 		parameterType="yourstay.md.domain.Accomoption">
-		INSERT INTO accomoption
-		VALUES(accomoption_seq.nextval,#{aid},#{rnum},#{wifi},#{tnum},#{bnum},#{wave},#{refg},#{bd},#{tv},#{pet},#{kitchen},#{wash},#{parking},#{fire},#{smoking},#{roof},#{bbq})
-	</insert>
+		INSERT INTO accomoption oid, rnum, wifi, tnum, bnum, wave, refg, bd, tv, pet, kitchen, wash,parking ,fire ,smoking , roof,bbq
+		VALUES(accomoption_seq.nextval,#{rnum},#{wifi},#{tnum},#{bnum},#{wave},#{refg},#{bd},#{tv},#{pet},#{kitchen},#{wash},#{parking},#{fire},#{smoking},#{roof},#{bbq})
+	</insert> 
+	<insert id="insertUtil" parameterType="yourstay.md.domain.Utility">
+		INSERT INTO utility utid, ures, ucafe, ucon, uact
+		VALUES(utility_seq.nextval, #{ures},#{ucafe},#{ucon},#{uact})
+	</insert>-->
 	<!-- 이미지 등록 -->
 	<insert id="insertImage"
 		parameterType="yourstay.md.domain.Image">

@@ -121,7 +121,7 @@ p {
 		</header>
 
 		<main class="container">
-			<form name="roomoption" method="post" action="../mypage/register.do"
+			<form name="roomoption" method="post" action="../mypage/register.do?mseq=${vo.mseq}"
 				enctype="multipart/form-data">
 				<input type="hidden" name="memail" value="${memail}">
 				<div class="row mb-2">
@@ -212,6 +212,49 @@ p {
 									<option value=6>인원 6명</option>
 								</select>
 							</div>
+						</div>
+					</div>
+					<div class="col-md-6" style="width: 33%;">
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							<div class="col p-4 d-flex flex-column position-static">
+								<span class="badge rounded-pill bg-secondary"
+									style="width: 18%; margin-bottom: 2%;">YourStay</span>
+								<h3 class="mb-0">Accomodation's notice</h3>
+								<p class="card-text mb-auto">Please write your
+									accomodation's notice.</p>
+							</div>
+							<input class="form-control me-2" type="text" name="anotice"
+								size="60" placeholder="Room's Name" style="margin-bottom: 11%;">
+						</div>
+					</div>
+					<div class="col-md-6" style="width: 33%;">
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							<div class="col p-4 d-flex flex-column position-static">
+								<span class="badge rounded-pill bg-secondary"
+									style="width: 18%; margin-bottom: 2%;">YourStay</span>
+								<h3 class="mb-0">Accomodation's ax</h3>
+								<p class="card-text mb-auto">Please write your
+									accomodation's ax.</p>
+							</div>
+							<input class="form-control me-2" type="text" name="ax"
+								size="60" placeholder="Room's Location"
+								style="margin-bottom: 11%;">
+						</div>
+					</div>
+					<div class="col-md-6" style="width: 33%;">
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							<div class="col p-4 d-flex flex-column position-static">
+								<span class="badge rounded-pill bg-secondary"
+									style="width: 18%; margin-bottom: 2%;">YourStay</span>
+								<h3 class="mb-0">Accomodation's ay</h3>
+								<p class="card-text mb-auto">Please write your
+									accomodation's ay.</p>
+							</div>
+							<input class="form-control me-2" type="text" name="ay"
+								size="60" placeholder="Room's Price" style="margin-bottom: 11%;">
 						</div>
 					</div>
 					<div class="col-md-6" style="width: 33%;">

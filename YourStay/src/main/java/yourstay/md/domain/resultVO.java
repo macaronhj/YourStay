@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class resultVO {
+	//accommodation
 	private long aid;
 	private String aname;
 	private String aloc;
@@ -20,6 +21,7 @@ public class resultVO {
 	private String anotice;
 	private double ay;
 	private double ax;
+	//accomoption
 	private long oid;
 	private long rnum;
 	private int wifi;
@@ -42,11 +44,13 @@ public class resultVO {
 	private String ucafe;
 	private String ucon;
 	private String uact;
+	//member
 	private String mname;
 	private String memail;
 	private String mpwd;
 	private int mcallnum;
 	private int mstate;
+	//review
 	private long renum;
 	private int point;
 	private String review;

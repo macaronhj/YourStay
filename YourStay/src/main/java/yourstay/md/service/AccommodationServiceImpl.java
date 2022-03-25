@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import yourstay.md.domain.Accommodation;
-import yourstay.md.domain.Accomoption;
 import yourstay.md.domain.Image;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.mapper.AccommodationMapper;
@@ -21,20 +20,7 @@ public class AccommodationServiceImpl implements AccommodationService {
 	public void insertAccommodationS(Accommodation ac) {
 		accommodationMapper.insertAccommodation(ac);
 	}
-	/*
-	 * 숙소 옵션 테이블에 등록
-	 */
-	@Override
-	public void insertAccomoptionS(Accomoption aco) {
-		accommodationMapper.insertAccomoption(aco);
-	}
-	/*
-	 * 숙소 옵션 정보들 가져오기
-	 */
-	@Override
-	public Accomoption getAccomoptionS(long aid) {
-		return null;
-	}
+
 	/*
 	 * 이미지 테이블 등록
 	 */
@@ -50,5 +36,7 @@ public class AccommodationServiceImpl implements AccommodationService {
 	public MemberVO getRegisterMemberSeqS(long mseq) {
 		return accommodationMapper.getRegisterMemberSeq(mseq);
 	}
+
+
 
 }

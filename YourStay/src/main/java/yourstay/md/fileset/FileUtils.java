@@ -13,12 +13,19 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.reviewVO;
 
 @Component("fileUtils")
 public class FileUtils {
 	public static final String FILE_STORE="C:/heejin/Final/image/";
 	
+	//작성자별로 폴더 생성 하기 위한 메소드
+	public static String writerPath(Accommodation accommodation) { 
+		final String FILE_FINAL_PATH = FILE_STORE+accommodation.getIid()+"/";
+		return FILE_FINAL_PATH;
+	}
+		
 	public List<Map<String, Object>> parseInsertFileInfo(reviewVO reviewVO, 
 			MultipartHttpServletRequest mpRequest) throws Exception{
 		

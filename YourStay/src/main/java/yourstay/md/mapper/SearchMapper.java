@@ -10,7 +10,7 @@ public interface SearchMapper {
 //		public int addAccommodation(AccommodationVO accom);
 //		public int removeAccommodation(int accommodationId);
 //		public int updateAccommodation(AccommodationVO accom);
-		public resultVO getAccommodationByAccommodationId(long aid);
+		public List<resultVO> getAccommodationByAccommodationId(long aid);
 //		
 //		// Functional Methods
 //		public float getAveragePoint();

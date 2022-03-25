@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
+import lombok.extern.log4j.Log4j;
+import sun.util.logging.resources.logging;
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.resultVO;
-
+@Log4j
 @Primary
 @Repository
 public class SearchMapperImpl implements SearchMapper {
@@ -32,7 +34,8 @@ public class SearchMapperImpl implements SearchMapper {
 		return session.selectList("yourstay.md.mapper.SearchMapper.getAccommodationListBySearchBar", parameters);
 	}
 	@Override
-	public resultVO getAccommodationByAccommodationId(long aid) {
-		return session.selectOne("yourstay.md.mapper.SearchMapper.getAccommodationByAccommodationId", aid);
+	public List<resultVO> getAccommodationByAccommodationId(long aid) {
+		log.info("SearchMapperImpl  getAccommodationByAccommodationId aid : "+ aid);
+		return session.selectList("yourstay.md.mapper.SearchMapper.getAccommodationByAccommodationId", aid);
 	}
 }

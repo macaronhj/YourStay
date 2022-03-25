@@ -12,5 +12,12 @@ public class MainController {
       
       return "index";
    }
+
+   
+//   @RequestMapping("/test")
+//   public String index1() {
+//      
+//      return "roomsAdd";
+//   }
    
 }

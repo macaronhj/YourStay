@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reservationdateMapper">
+	<!-- 해당 숙박번호를 가진 숙소의 예약날짜 선택-->
+	<select id="getreservationdateListByAccommodationId" resultType="yourstay.md.domain.ReservationDate">
+		select * from reservationdate where accom_id=#{value}
+	</select>
+	<select id="getreservationdateListByReserveId" resultType="yourstay.md.domain.ReservationDate">
+		select * from reservationdate where accom_id=#{value}
+	</select>
+	<!-- 사용자 선택 기간내에 있는 예약날짜 선택 -->
+	<select id="getReserveDateIdListByDates" parameterType="hashmap" resultType="yourstay.md.domain.ReservationDate">
+		select * from reservationdate where reserv_date between TO_DATE(#{startDate},'yyyy-MM-dd') and TO_DATE(#{endDate},'yyyy-MM-dd')
+	</select>
+	<!-- 예약날짜테이블에 insert -->
+	<insert id="insertreservationdate" parameterType="yourstay.md.domain.ReservationDate">
+		insert into reservationdate values (#{accom_id}, RD_ID_AUTOINC.NEXTVAL, TO_DATE(#{reserv_date}, 'yyyy-MM-dd'), #{reserv_id}) 
+	</insert>
+	<!-- 예약날짜테이블에 insert -->
+	<delete id="deletereservationdateByreservationdateId">
+		delete from reservationdate where rd_id = #{value}
+	</delete>
+	<delete id="deletereservationdateByReservationId">
+		delete from reservationdate where reserv_id = #{value}
+	</delete>
+	<delete id="deleteReservedListByreservIdDates" parameterType="hashmap">
+		delete from reservationdate where reserv_id = #{reserv_id}
+		and reserv_date <![CDATA[>=]]> #{start_date}
+		and reserv_date <![CDATA[<=]]> #{end_date}
+	</delete>
+
+	<select id="checkreservationdate" parameterType="hashmap" resultType="yourstay.md.domain.ReservationDate">
+		select accom_id, rd_id, reserv_date 
+		from reservationdate 
+		where accom_id = #{accom_id}
+		and reserv_date between TO_DATE(#{startDate},'yyyy-MM-dd') 
+			and TO_DATE(#{endDate},'yyyy-MM-dd')
+	</select>
+	
+	
+	
+	<!-- 	<insert id="insertreservationdateList" parameterType="java.util.List"> -->
+<!-- 		insert into reservationdate  -->
+<!-- 		(accom_id, rd_id, reserv_date) -->
+<!-- 		values -->
+<!-- 		<foreach collection="list" item="element" index="index" separator=","> -->
+<!-- 			 (#{element.accom_id}, RD_ID_AUTOINC.NEXTVAL, TO_DATE(#{element.reserv_date}, 'yyyy-MM-dd')) -->
+<!-- 		</foreach> -->
+<!-- 	</insert> -->
+</mapper>

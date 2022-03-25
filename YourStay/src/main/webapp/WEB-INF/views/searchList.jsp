@@ -171,7 +171,7 @@ div.list-font {
          class="row flex-nowrap justify-content-between align-items-center">
          <div class="col-4 pt-1"></div>
          <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="#"
+            <a class="blog-header-logo text-dark" href="/"
                style="text-decoration: none">YourTrip</a>
          </div>
          <div class="col-4 d-flex justify-content-end align-items-center">
@@ -196,12 +196,12 @@ div.list-font {
           <%
             }else{
          %>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
+         <a style="margin-top: 3%; margin-right: 3%;" href="/mypage/home"><%=memail %>님 반갑습니다!</a>
          <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          <%} %>
          </c:when> 
          <c:otherwise>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
+         <a style="margin-top: 3%; margin-right: 3%;" href="/mypage/home"><%=memail%>님 반갑습니다!</a>
          <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          </c:otherwise>
          </c:choose>
@@ -274,7 +274,7 @@ div.list-font {
                <p class="card-text mb-auto">
                   숙소 가격 : ${acvo.aprice}<br/>숙소 타입 : ${acvo.atype}<br/>최대 가능 인원 :
                   ${acvo.apeople}<br/>
-                  <a id="godetail" href="roomDetailInfo?aid=${acvo.aid}" style="text-decoration:none;">숙소 상세 정보 보러가기</a>
+                  <a id="godetail" href="roomDetailInfo?aid=${acvo.aid}&rstart=${startDate}&rend=${endDate}" style="text-decoration:none;">숙소 상세 정보 보러가기</a>
                </p>
 
             </div>

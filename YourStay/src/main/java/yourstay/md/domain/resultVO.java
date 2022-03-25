@@ -50,7 +50,8 @@ public class resultVO {
 	private long renum;
 	private int point;
 	private String review;
-	private String rimg1;
-	private String rimg2;
-	private String rimg3;
+	private String rstart;
+	private String rend;
+	private long days;//추가
+	private long resultprice;//추가
 }

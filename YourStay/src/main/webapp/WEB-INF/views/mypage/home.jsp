@@ -51,12 +51,12 @@ h2, h3,p {
           <%
             }else{
          %>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
+         <a style="margin-top: 3%; margin-right: 3%;" href="/mypage/home"><%=memail %>님 반갑습니다!</a>
          <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          <%} %>
          </c:when> 
          <c:otherwise>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
+         <a style="margin-top: 3%; margin-right: 3%;" href="/mypage/home"><%=memail%>님 반갑습니다!</a>
          <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          </c:otherwise>
          </c:choose>
@@ -89,13 +89,13 @@ h2, h3,p {
           <img class="bi" id="like" width="63em" height="63em" src="../images/like.png"/>
         <h2>찜 목록</h2>
         <p>찜한 숙소들을 보고 싶으시면 아래 버튼을 눌러주세요!</p>
-        <a class="btn btn-secondary" type="submit" href="wishlist" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">찜 목록</a>
+        <a class="btn btn-secondary" type="submit" href="wishlist/${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">찜 목록</a>
       </div>
       <div class="feature col">
-		<img class="bi" id="reservation" width="63em" height="63em" src="../images/reservation.png"/>
+      <img class="bi" id="reservation" width="63em" height="63em" src="../images/reservation.png"/>
         <h2>예약 목록</h2>
         <p>예약 목록을 보고 싶으시면 아래 버튼을 눌러주세요!</p>
-        <a class="btn btn-secondary" type="submit" href="wishlist" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">예약 목록</a>
+        <a class="btn btn-secondary" type="submit" href="roomReservation?mseq=${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">예약 목록</a>
       </div>
       <div class="feature col">
         <img class="bi" id="review" width="63em" height="63em" src="../images/review.png"/>

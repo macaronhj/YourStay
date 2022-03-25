@@ -10,7 +10,6 @@
 <meta name="author"
    content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
-
 <!-- bootstrap-css -->
 <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"
    media="all" />
@@ -31,7 +30,6 @@
    href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
    rel="stylesheet">
 
-
 <script>
    $(document)
          .ready(
@@ -51,7 +49,7 @@
                                        || $("#datepicker2").val() == "") {
                                     alert("도착 날짜를 입력해 주세요.");
                                  } else {
-                                    location.href = "searchInListFromMainGet.do?aloc="
+                                    location.href = "../searchInListFromMainGet.do?aloc="
                                           + $("#aloc").val()
                                           + "&startdate="
                                           + $("#datepicker1")

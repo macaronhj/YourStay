@@ -40,12 +40,12 @@
           <%
             }else{
          %>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
+         <a href="/mypage/home" style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</a>
          <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          <%} %>
          </c:when> 
          <c:otherwise>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
+         <a href="/mypage/home" style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</a>
          <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          </c:otherwise>
          </c:choose>
@@ -56,7 +56,11 @@
 <main>
   <div class="album py-5 bg-light">
     <div class="container">
+    
+    <c:set value="${wishMap.wishlist}" var="wishlist"/>
+	<c:set value="${wishMap.accommoList}" var="accommolist"/>
 
+	<c:forEach items="${accommolist}" var="vo" varStatus="status">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
@@ -64,7 +68,7 @@
             <image class="cover" href="/resources/images/reservation30.jpg"/>
             </svg>
             <div class="card-body">
-              <p class="card-text">숙소 간단한 설명 !!! </p>
+              <p class="card-text">${vo.aname}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
@@ -73,116 +77,8 @@
             </div>
           </div>
         </div>
+      </c:forEach>
         
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
-            <image class="cover" href="/resources/images/reservation29.jpg"/>
-            </svg>
-            <div class="card-body">
-              <p class="card-text">숙소 간단한 설명 !!! </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
-            <image class="cover" href="/resources/images/reservation28.jpg"/>
-            </svg>
-            <div class="card-body">
-              <p class="card-text">숙소 간단한 설명 !!! </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
-            <image class="cover" href="/resources/images/reservation27.jpg"/>
-            </svg>
-            <div class="card-body">
-              <p class="card-text">숙소 간단한 설명 !!! </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
-            <image class="cover" href="/resources/images/reservation25.jpg"/>
-            </svg>
-            <div class="card-body">
-              <p class="card-text">숙소 간단한 설명 !!! </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
-            <image class="cover" href="/resources/images/reservation24.jpg"/>
-            </svg>
-            <div class="card-body">
-              <p class="card-text">숙소 간단한 설명 !!! </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
-            <image class="cover" href="/resources/images/reservation20.jpg"/>
-            </svg>
-
-            <div class="card-body">
-              <p class="card-text">숙소 간단한 설명 !!! </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
-            <image class="cover" href="/resources/images/reservation18.jpg"/>
-            </svg>
-
-            <div class="card-body">
-              <p class="card-text">숙소 간단한 설명 !!! </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         
       </div>
     </div>

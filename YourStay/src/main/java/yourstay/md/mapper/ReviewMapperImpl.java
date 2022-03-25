@@ -26,8 +26,8 @@ public class ReviewMapperImpl implements ReviewMapper {
 	}
 
 	@Override
-	public reviewVO getUser(String memail) {
-		return session.selectOne("yourstay.md.mapper.ReviewMapper.getUser", memail);
+	public List<reviewVO> getUser(String memail) {
+		return session.selectList("yourstay.md.mapper.ReviewMapper.getUser", memail);
 	}
 
 }

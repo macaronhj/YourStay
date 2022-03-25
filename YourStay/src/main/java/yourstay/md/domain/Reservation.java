@@ -5,22 +5,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class reservationVO {
-	//reservation
+@NoArgsConstructor
+public class Reservation {
 	private long rid;
 	private long aid;
 	private long mseq;
 	private String rstart;
 	private String rend;
 	private int rpeople;
-	private int rprice;
+	private int price;
 	//accommodation
-	private String aname;
-	private String aloc;
-	private int aprice;
-	//member
-	private String mname;
-	private String memail;
+    private String aname;
+    private String aloc;
+    private int aprice;
+    //member
+    private String mname;
+    private String memail;
 }

@@ -32,7 +32,7 @@
       <div class="col-4 pt-1">
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#" style="text-decoration:none">YourTrip</a>
+        <a class="blog-header-logo text-dark" href="/" style="text-decoration:none">YourTrip</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="link-secondary" href="#" aria-label="Search">
@@ -51,12 +51,12 @@
           <%
             }else{
          %>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
+         <a href="/mypage/home" style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</a>
          <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          <%} %>
          </c:when> 
          <c:otherwise>
-         <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
+         <a href="/mypage/home" style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</a>
          <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
          </c:otherwise>
          </c:choose>
@@ -69,6 +69,9 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <c:forEach items="${vo}" var="vo">
+      <form action="review" method="get">
+      <input type="hidden" name="aid" value="${vo.aid}">
+      <input type="hidden" name="mseq" value="${vo.mseq}">
         <div class="col">
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
@@ -78,17 +81,17 @@
               <p class="card-text">숙소 위치: ${vo.aloc}<br/>숙소 이름: ${vo.aname}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="review" type="submit" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</a>
+                  <button type="submit" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
                 </div>
               </div>
             </div>
           </div>
-        </div>  
+        </div>
+        </form>
         </c:forEach>
       </div>
     </div>
   </div>
-
 </main>
 
 <!-- 푸터 -->

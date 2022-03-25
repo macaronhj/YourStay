@@ -17,4 +17,5 @@ public class Accommodation {
 	private int apeople;
 	private int iid;
 	private long mseq;
+	private String anotice;
 }

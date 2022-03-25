@@ -123,7 +123,7 @@ p {
 		<main class="container">
 			<form name="roomoption" method="post" action="../mypage/register.do?mseq=${vo.mseq}"
 				enctype="multipart/form-data">
-				<input type="hidden" name="memail" value="${memail}">
+				<input type="hidden" name="mseq" value="${vo.mseq}">
 				<div class="row mb-2">
 					<div class="col-md-6" style="width: 33%;">
 						<div

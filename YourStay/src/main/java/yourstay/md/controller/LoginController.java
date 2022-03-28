@@ -46,27 +46,6 @@ public class LoginController {
         mv.setViewName("login/loginPage");
         return mv;
     }
-//	@PostMapping("loginCheck.do")
-//    public ModelAndView loginCheck(@RequestParam String memail, String mpwd, HttpSession session, HttpServletRequest request){
-//        System.out.println(memail + "   " + mpwd);	
-//		boolean result = mapper.login(memail, mpwd);
-//        ModelAndView mav = new ModelAndView();
-//        if (result == true) { // 로그인 성공
-//            // main.jsp로 이동
-//            mav.setViewName("info/info");
-//            mav.addObject("msg", "success");
-//            session.setAttribute("memail", memail);
-//            session.setAttribute("mpwd", mpwd);
-//        } else {    // 로그인 실패
-//            // login.jsp로 이동
-//            mav.setViewName("login");
-//            mav.addObject("msg", "failure");
-//            session.setAttribute("memail", null);
-//            session.setAttribute("mpwd", null);
-//        }
-//        
-//        return mav;
-//    }
 	
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {

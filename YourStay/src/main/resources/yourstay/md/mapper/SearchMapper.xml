@@ -3,31 +3,34 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="yourstay.md.mapper.SearchMapper">
-	<select id="getAccommodationListBySearchBar" parameterType="hashmap" resultType="yourstay.md.domain.Accommodation">
-		select * from accommodation where not exists (
-			select distinct aid, rdid, rdate 
-			from reservationdate
-			where rdate between to_date(#{startdate},'yyyy-MM-dd') 
-				and to_date(#{deadline},'yyyy-MM-dd') 
-		) 
-		and aloc like '%'||#{aloc}||'%'
-		and apeople <![CDATA[>=]]> #{apeople}
-	</select>
-	<select id="getAccommodationByAccommodationId" resultType="yourstay.md.domain.resultVO">
+   <select id="getAccommodationListBySearchBar" parameterType="hashmap" resultType="yourstay.md.domain.Accommodation">
+      select * from accommodation where not exists (
+         select distinct aid, rdid, rdate 
+         from reservationdate
+         where rdate between to_date(#{startdate},'yyyy-MM-dd') 
+            and to_date(#{deadline},'yyyy-MM-dd') 
+      ) 
+      and aloc like '%'||#{aloc}||'%'
+      and apeople <![CDATA[>=]]> #{apeople}
+   </select>
+   <select id="getAccommodationByAccommodationId" resultType="yourstay.md.domain.resultVO">
       select ay,ax, point, review, mseq, mname, memail, mpwd, mcallnum, mstate, aname, aloc, aprice, apoint, atype, apeople, anotice, oid, rnum, wifi, tnum, bnum, wave, refg, bd, tv, pet, kitchen, wash, parking, fire, smoking, roof, bbq, utid, ures, ucafe, ucon, uact from 
       accomoption natural join member natural join utility natural join review natural join accommodation where aid=${value}
    </select>
+   <select id="getReviewByAccommodationId" resultType="yourstay.md.domain.reviewVO">
+         select * from review natural join member where aid = #{aid}
+   </select>
 </mapper>
 <!-- resultType : 결과반환 Object / return 값이라고 생각하면 될 듯?
-	 parameterType : 조회결과 Object
+    parameterType : 조회결과 Object
  -->
  <!-- 
  select * from accommodation where not exists (
-			select distinct aid, rdid, rdate 
-			from reservationdate 
-			where rdate between '2022-03-19'
-				and '2022-03-22'
-		) 
-		and aloc like '%가평%'
-		and apeople >= 3
+         select distinct aid, rdid, rdate 
+         from reservationdate 
+         where rdate between '2022-03-19'
+            and '2022-03-22'
+      ) 
+      and aloc like '%가평%'
+      and apeople >= 3
   -->

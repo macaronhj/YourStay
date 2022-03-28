@@ -17,9 +17,24 @@
 		SELECT * FROM member WHERE mseq = #{mseq}
 	</select>
 	
-	
+	<insert id="insertFile" parameterType="yourstay.md.domain.Accommodation" useGeneratedKeys="true" keyProperty="renum">
+	    <selectKey keyProperty="iid" resultType="long" order="BEFORE">
+	    	SELECT image_seq.NEXTVAL FROM DUAL
+	    </selectKey>
+	    INSERT INTO image(    iid 
+	    					   , ipath1
+	    					   , ipath2
+	   					       , ipath2 
+	   					         )
+	                  VALUES(    #{iid}
+	                  		   , #{ipath1}
+	                  		   , #{ipath2}
+	                 		   , #{ipath3}
+	                 			  )
+   
+    </insert>
 	<!-- 숙소 등록 -->
-	<insert id="insertAccommodation"
+	<insert id="insert"
 		parameterType="yourstay.md.domain.Accommodation">
 		insert all
 		into accommodation (aid, aname, aloc, aprice, apoint, atype, apeople,iid,mseq, anotice, ax, ay)

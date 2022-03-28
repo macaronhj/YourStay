@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.support.ModelAndViewContainer;
@@ -57,13 +58,18 @@ public class MypageController {
         ModelAndView mv = new ModelAndView("mypage/home","member",vo);
         return mv;
     }
-	@PostMapping("/register.do")
-	@ResponseBody
-	public String roomRegister(ModelAndView mv,  Accommodation ac, MultipartHttpServletRequest mpRequest, long mseq) {
+   @GetMapping(value="/roomRegister")
+   public ModelAndView roomRegister(@RequestParam long mseq) {
+	   resultVO vo = reviewMapper.select(mseq);
+	   ModelAndView mv = new ModelAndView("room/roomRegister","vo",vo);
+       return mv;
+   }
+   @PostMapping(value="/DoRoomRegister")
+	public String roomRegister(ModelAndView mv,  Accommodation ac, MultipartHttpServletRequest mpRequest, long mseq) throws Exception{
 		log.info("roomOption Data -> info 전달");
 		log.info("로그인한 회원의 번호: " + mseq);
 //		accommodationService.insertImageS(img);// 이미지 테이블에 insert
-		accommodationService.insertAccommodationS(ac);// 숙소  테이블에 insert
+		accommodationService.insertAccommodationS(ac, mpRequest);// 숙소  테이블에 insert
 //		log.info("옵션번호: "+ aco.getAid() +", 숙소번호 : "+aco.getOid()+", 방개수 : "+aco.getRnum()+", TV유무 : "+ aco.getTv());
 		//여기에  info페이지로 값을 전달 
 		return "redirect:/home";
@@ -109,10 +115,5 @@ public class MypageController {
         
         return mv;
     }
-   @GetMapping(value="/roomRegister")
-   public ModelAndView roomRegister(@RequestParam long mseq) {
-	   resultVO vo = reviewMapper.select(mseq);
-	   ModelAndView mv = new ModelAndView("room/roomRegister","vo",vo);
-       return mv;
-   }
+
 }

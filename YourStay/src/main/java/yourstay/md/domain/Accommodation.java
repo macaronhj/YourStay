@@ -16,7 +16,7 @@ public class Accommodation {
 	private long apoint;
 	private String atype;
 	private int apeople;
-	private int iid;
+	private long iid;
 	private long mseq;
 	private String anotice;
 	private double ax;
@@ -46,7 +46,9 @@ public class Accommodation {
    private String ucon;
    private String uact;
    //image
-   private String ipath;
+   private String ipath1;
+   private String ipath2;
+   private String ipath3;
    //member
    private String memail;
 }

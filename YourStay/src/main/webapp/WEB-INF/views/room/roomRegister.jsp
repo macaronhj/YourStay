@@ -62,6 +62,7 @@ p {
 		input.aname.focus();
 	}
 </script>
+
 <body>
 
 	<div class="container">
@@ -121,8 +122,7 @@ p {
 		</header>
 
 		<main class="container">
-			<form name="roomoption" method="post" action="../mypage/register.do?mseq=${vo.mseq}"
-				enctype="multipart/form-data">
+			<form name="roomoption" method="post" action="/mypage/DoRoomRegister" enctype="multipart/form-data">
 				<input type="hidden" name="mseq" value="${vo.mseq}">
 				<div class="row mb-2">
 					<div class="col-md-6" style="width: 33%;">
@@ -182,10 +182,10 @@ p {
 								style="width: 400px !important; height: 81px !important; margin-top: 0px !important; margin-bottom: 11%;">
 								<p class="searchFont">Room Type</p>
 								<select id="personnel" name="atype">
-									<option value=1>집전체</option>
-									<option value=2>개인실</option>
-									<option value=3>호텔객실</option>
-									<option value=4>다인실</option>
+									<option value="집전체">집전체</option>
+									<option value="개인실">개인실</option>
+									<option value="호텔객실">호텔객실</option>
+									<option value="다인실">다인실</option>
 								</select>
 							</div>
 						</div>
@@ -593,13 +593,13 @@ p {
 								<p class="card-text mb-auto">Please add your accomodation's
 									Image.</p>
 							</div>
-							<input class="form-control me-2" type='file' id="img" name='img' size="60"
+							<input class="form-control me-2" type='file' id="ipath1" name='ipath1' size="60"
 								placeholder="Room's Image"
 								style="margin-bottom: 1%; height: 8%;">  <input
-								class="form-control me-2" type='file' id="img" name='img' size="60"
+								class="form-control me-2" type='file' id="ipath2" name='ipath2' size="60"
 								placeholder="Room's Image"
 								style="margin-bottom: 1%; height: 8%;"> <input
-								class="form-control me-2" type='file' id="img" name='img' size="60"
+								class="form-control me-2" type='file' id="ipath3" name='ipath3' size="60"
 								placeholder="Room's Image"
 								style="margin-bottom: 1%; height: 8%;">
 						</div>
@@ -619,15 +619,19 @@ p {
 								style="margin-bottom: 11%;">
 						</div>
 					</div>
+					</div>
+					
 					<div class="col-md-6" style="width: 33%;">
 						<div
 							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative"
 							style="height: 100px;">
-							<input type="hidden" id="mseq" name="mseq" value="${vo.mseq}">
-							<input id="addRoomsBtn" type="submit" class="btn btn-secondary" value="Room Register"
+							<button id="addRoomsBtn" type="submit" class="btn btn-secondary"
 								style="padding: 0.9999rem 0.75rem !important; font-weight: 999 !important; line-height: 1.7 !important; background-color: #2AC1BC !important; border-color: #2AC1BC !important;">
+						Room Register
+						</button>
 						</div>
-
+						</div>
+						</form>
 						<div
 							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative"
 							style="height: 100px;">
@@ -636,9 +640,9 @@ p {
 								style="padding: 0.9999rem 0.75rem !important; font-weight: 999 !important; line-height: 1.7 !important; background-color: #f25546 !important; border-color: #f25546 !important;">
 								다시 입력</button>
 						</div>
+						</main>
 					</div>
-			</form>
-		</main>
+					
 		<footer class="blog-footer">
 			<p>
 				Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a>

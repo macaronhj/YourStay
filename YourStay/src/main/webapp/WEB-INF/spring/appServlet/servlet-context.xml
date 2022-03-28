@@ -42,5 +42,4 @@
 	
 	<context:component-scan base-package="yourstay.md.controller" />
 	
-	
 </beans:beans>

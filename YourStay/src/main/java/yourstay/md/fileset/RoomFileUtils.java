@@ -26,7 +26,7 @@ public class RoomFileUtils {
 		return FILE_FINAL_PATH;
 	}
 		
-	public List<Map<String, Object>> parseInsertFileInfo(reviewVO reviewVO, Accommodation accommodation,
+	public List<Map<String, Object>> parseInsertFileInfo(Accommodation accommodation,
 			MultipartHttpServletRequest mpRequest) throws Exception{
 
 		
@@ -40,7 +40,7 @@ public class RoomFileUtils {
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 		Map<String, Object> listMap = null;
 		
-		long renum = reviewVO.getRenum();
+		long iid = accommodation.getIid();
 		
 		File file = new File(writerPath(accommodation));
 		if(file.exists() == false) {
@@ -57,7 +57,7 @@ public class RoomFileUtils {
 				file = new File(writerPath(accommodation) + storedFileName);
 				multipartFile.transferTo(file);
 				listMap = new HashMap<String, Object>();
-				listMap.put("renum", renum);
+				listMap.put("iid", iid);
 				listMap.put("org_file_name", originalFileName);
 				listMap.put("stored_file_name", storedFileName);
 				listMap.put("file_size", multipartFile.getSize());

@@ -46,5 +46,8 @@ public class Accommodation {
    private String ucon;
    private String uact;
    //image
+   private String ipath;
+   //member
+   private String memail;
 }
 

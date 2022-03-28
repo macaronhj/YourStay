@@ -593,19 +593,13 @@ p {
 								<p class="card-text mb-auto">Please add your accomodation's
 									Image.</p>
 							</div>
-							<input class="form-control me-2" type='file' name='iid' size="60"
+							<input class="form-control me-2" type='file' id="img" name='img' size="60"
+								placeholder="Room's Image"
+								style="margin-bottom: 1%; height: 8%;">  <input
+								class="form-control me-2" type='file' id="img" name='img' size="60"
 								placeholder="Room's Image"
 								style="margin-bottom: 1%; height: 8%;"> <input
-								class="form-control me-2" type='file' name='iid' size="60"
-								placeholder="Room's Image"
-								style="margin-bottom: 1%; height: 8%;"> <input
-								class="form-control me-2" type='file' name='iid' size="60"
-								placeholder="Room's Image"
-								style="margin-bottom: 1%; height: 8%;"> <input
-								class="form-control me-2" type='file' name='iid' size="60"
-								placeholder="Room's Image"
-								style="margin-bottom: 1%; height: 8%;"> <input
-								class="form-control me-2" type='file' name='iid' size="60"
+								class="form-control me-2" type='file' id="img" name='img' size="60"
 								placeholder="Room's Image"
 								style="margin-bottom: 1%; height: 8%;">
 						</div>
@@ -629,10 +623,11 @@ p {
 						<div
 							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative"
 							style="height: 100px;">
-							<button id="registerbtn" type="submit" class="btn btn-secondary"
+							<input type="hidden" id="mseq" name="mseq" value="${vo.mseq}">
+							<input id="addRoomsBtn" type="submit" class="btn btn-secondary" value="Room Register"
 								style="padding: 0.9999rem 0.75rem !important; font-weight: 999 !important; line-height: 1.7 !important; background-color: #2AC1BC !important; border-color: #2AC1BC !important;">
-								Room Register</button>
 						</div>
+
 						<div
 							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative"
 							style="height: 100px;">

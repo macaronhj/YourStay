@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.support.ModelAndViewContainer;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.AllArgsConstructor;
@@ -56,14 +58,15 @@ public class MypageController {
         return mv;
     }
 	@PostMapping("/register.do")
-	public String roomRegister(ModelAndView mv,  Accommodation ac, Image img, long mseq) {
+	@ResponseBody
+	public String roomRegister(ModelAndView mv,  Accommodation ac, MultipartHttpServletRequest mpRequest, long mseq) {
 		log.info("roomOption Data -> info 전달");
 		log.info("로그인한 회원의 번호: " + mseq);
-		accommodationService.insertImageS(img);// 이미지 테이블에 insert
+//		accommodationService.insertImageS(img);// 이미지 테이블에 insert
 		accommodationService.insertAccommodationS(ac);// 숙소  테이블에 insert
 //		log.info("옵션번호: "+ aco.getAid() +", 숙소번호 : "+aco.getOid()+", 방개수 : "+aco.getRnum()+", TV유무 : "+ aco.getTv());
 		//여기에  info페이지로 값을 전달 
-		return "redirect:home";
+		return "redirect:/home";
 	}
 	
 	@GetMapping(value="/wishlist/{mseq}")

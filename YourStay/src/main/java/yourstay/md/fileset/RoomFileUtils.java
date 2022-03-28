@@ -16,17 +16,17 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.reviewVO;
 
-@Component("fileUtils")
-public class FileUtils {
-	public static final String FILE_STORE="C:/heejin/Final/image/reviewImg/";
+@Component("roomfileUtils")
+public class RoomFileUtils {
+	public static final String FILE_STORE="C:/heejin/Final/image/roomImg/";
 	
 	//작성자별로 폴더 생성 하기 위한 메소드
-	public static String writerPath(reviewVO reviewVO) { 
-		final String FILE_FINAL_PATH = FILE_STORE+reviewVO.getRenum()+"/";
+	public static String writerPath(Accommodation accommodation) { 
+		final String FILE_FINAL_PATH = FILE_STORE+accommodation.getIid()+"/";
 		return FILE_FINAL_PATH;
 	}
 		
-	public List<Map<String, Object>> parseInsertFileInfo(reviewVO reviewVO,
+	public List<Map<String, Object>> parseInsertFileInfo(reviewVO reviewVO, Accommodation accommodation,
 			MultipartHttpServletRequest mpRequest) throws Exception{
 
 		
@@ -42,7 +42,7 @@ public class FileUtils {
 		
 		long renum = reviewVO.getRenum();
 		
-		File file = new File(writerPath(reviewVO));
+		File file = new File(writerPath(accommodation));
 		if(file.exists() == false) {
 			file.mkdirs();
 		}
@@ -54,7 +54,7 @@ public class FileUtils {
 				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
 				storedFileName = getRandomString() + originalFileExtension;
 				
-				file = new File(writerPath(reviewVO) + storedFileName);
+				file = new File(writerPath(accommodation) + storedFileName);
 				multipartFile.transferTo(file);
 				listMap = new HashMap<String, Object>();
 				listMap.put("renum", renum);

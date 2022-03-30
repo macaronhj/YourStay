@@ -21,6 +21,7 @@ public class Accommodation {
    private String anotice;
    private double ax;
    private double ay;
+   private String amap;
    //accommoption
    private long oid;
    private long rnum;

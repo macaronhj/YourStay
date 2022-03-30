@@ -21,6 +21,7 @@ public class resultVO {
    private String anotice;
    private double ay;
    private double ax;
+   private String amap;
    //accomoption
    private long oid;
    private long rnum;

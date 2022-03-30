@@ -18,6 +18,7 @@ public class roomRegisterVO {
 	   private String anotice;
 	   private double ax;
 	   private double ay;
+	   private String amap;
 	   private int rnum;
 	   private int wifi;
 	   private int tnum;

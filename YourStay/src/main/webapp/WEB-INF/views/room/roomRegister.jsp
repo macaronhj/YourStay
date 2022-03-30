@@ -227,25 +227,12 @@ body, h3 {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">숙소 위도</h3>
-                        <p class="card-text mb-auto">숙소 위치의 위도를 입력해주세요.</p>
+                        <h3 class="mb-0">숙소 주소</h3>
+                        <p class="card-text mb-auto">숙소 위치의 주소를 입력해주세요.</p>
                      </div>
-                     <input class="form-control me-2" type="number" step="0.01" name="ax"
+                     <input class="form-control me-2" type="text" step="0.01" name="amap"
                         size="60" placeholder="Room's Location"
                         style="margin-bottom: 11%;">
-                  </div>
-               </div>
-               <div class="col-md-6" style="width: 33%;">
-                  <div
-                     class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                     <div class="col p-4 d-flex flex-column position-static">
-                        <span class="badge rounded-pill bg-secondary"
-                           style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">숙소 경도</h3>
-                        <p class="card-text mb-auto">숙소 위치의 경도를 입력해주세요.</p>
-                     </div>
-                     <input class="form-control me-2" type="number" step="0.01" name="ay"
-                        size="60" placeholder="Room's Price" style="margin-bottom: 11%;">
                   </div>
                </div>
                <div class="col-md-6" style="width: 33%;">

@@ -18,7 +18,7 @@ import yourstay.md.domain.reviewVO;
 
 @Component("fileUtils")
 public class FileUtils {
-	public static final String FILE_STORE="C:/heejin/Final/image/reviewImg/";
+	public static final String FILE_STORE="C:/heejin/Final/Git/YourStay/src/main/webapp/resources/images/reviewImg/";
 	
 	//작성자별로 폴더 생성 하기 위한 메소드
 	public static String writerPath(reviewVO reviewVO) { 

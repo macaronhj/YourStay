@@ -30,7 +30,7 @@ public class ReviewMapperImpl implements ReviewMapper {
 	public List<reviewVO> getUser(String memail) {
 		return session.selectList("yourstay.md.mapper.ReviewMapper.getUser", memail);
 	}
-
+	
 	@Override
 	public resultVO select(long mseq) {
 		return session.selectOne("yourstay.md.mapper.ReviewMapper.select", mseq);

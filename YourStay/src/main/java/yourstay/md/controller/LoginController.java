@@ -46,6 +46,27 @@ public class LoginController {
         mv.setViewName("login/loginPage");
         return mv;
     }
+//	@PostMapping("loginCheck.do")
+//    public ModelAndView loginCheck(@RequestParam String memail, String mpwd, HttpSession session, HttpServletRequest request){
+//        System.out.println(memail + "   " + mpwd);	
+//		boolean result = mapper.login(memail, mpwd);
+//        ModelAndView mav = new ModelAndView();
+//        if (result == true) { // 로그인 성공
+//            // main.jsp로 이동
+//            mav.setViewName("info/info");
+//            mav.addObject("msg", "success");
+//            session.setAttribute("memail", memail);
+//            session.setAttribute("mpwd", mpwd);
+//        } else {    // 로그인 실패
+//            // login.jsp로 이동
+//            mav.setViewName("login");
+//            mav.addObject("msg", "failure");
+//            session.setAttribute("memail", null);
+//            session.setAttribute("mpwd", null);
+//        }
+//        
+//        return mav;
+//    }
 	
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
@@ -84,6 +105,7 @@ public class LoginController {
    }
 	@PostMapping("loginCheck.do")
 	private ModelAndView check(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws ServletException, IOException {
+//		log.info("loginCon check aid:" + aid + ", startDate : " + rstart + ", endDate : " + rend);
 		String memail = request.getParameter("memail");
 		String mpwd = request.getParameter("mpwd");
 		ModelAndView mv = new ModelAndView();
@@ -94,7 +116,6 @@ public class LoginController {
 		
 		if(result == YES_ID_PWD) { //로그인 성공시
 			log.info("로그인 성공");	
-			mv.setViewName("info/info");
 			MemberVO m = mapper.getUser(memail);
 			session = request.getSession();
 			mv.addObject("msg", "success");

@@ -8,20 +8,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Accommodation {
-	//accommodation
-	private long aid;
-	private String aname;
-	private String aloc;
-	private long aprice;
-	private long apoint;
-	private String atype;
-	private int apeople;
-	private long iid;
-	private long mseq;
-	private String anotice;
-	private double ax;
-	private double ay;
-	//accommoption
+   //accommodation
+   private long aid;
+   private String aname;
+   private String aloc;
+   private long aprice;
+   private long apoint;
+   private String atype;
+   private int apeople;
+   private long iid;
+   private long mseq;
+   private String anotice;
+   private double ax;
+   private double ay;
+   //accommoption
    private long oid;
    private long rnum;
    private int wifi;
@@ -52,4 +52,3 @@ public class Accommodation {
    //member
    private String memail;
 }
-

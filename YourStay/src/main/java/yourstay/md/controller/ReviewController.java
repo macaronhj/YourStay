@@ -29,15 +29,16 @@ public class ReviewController {
 //        return mv;
 //    }
 	
-		@PostMapping(value="/registerReview")
-	    public ModelAndView addreview(reviewVO reviewVo, MultipartHttpServletRequest mpRequest)throws Exception {
-	       //작은미션: (멀티파트업로드) 구현! 
-	      log.info("MypageController -> addreview 요청");
-	      service.write(reviewVo, mpRequest);
-	      ModelAndView mv = new ModelAndView();
-	      mv.setViewName("redirect:/mypage/home");
-	       return mv;
-	    }
+	@PostMapping(value="/registerReview")
+    public ModelAndView addreview(reviewVO reviewVo, MultipartHttpServletRequest mpRequest)throws Exception {
+       //작은미션: (멀티파트업로드) 구현! 
+      log.info("MypageController -> addreview 요청");
+      log.info("MypageController -> addreview reviewVo: "+ reviewVo.getReview());
+      service.write(reviewVo, mpRequest);
+      ModelAndView mv = new ModelAndView();
+      mv.setViewName("redirect:/mypage/home");
+       return mv;
+    }
 //		@GetMapping(value="/review")
 //	    public ModelAndView review(HttpSession session){
 //	        log.info("MypageController -> review 요청");

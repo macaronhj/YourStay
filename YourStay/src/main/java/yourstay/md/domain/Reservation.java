@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Reservation {
+	//reservation
 	private long rid;
 	private long aid;
 	private long mseq;

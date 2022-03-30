@@ -24,9 +24,9 @@
           SELECT accommodation_seq.NEXTVAL FROM DUAL
        </selectKey>
       insert
-      into accommodation (aid, aname, aloc, aprice, atype, apeople, mseq, anotice, amap)
+      into accommodation (aid, aname, aloc, aprice, atype, apeople, mseq, anotice, ax, ay,amap)
       values
-      (#{aid}, #{aname},#{aloc},#{aprice},#{apoint},#{apeople}, #{mseq},#{anotice},#{amap})
+      (#{aid}, #{aname},#{aloc},#{aprice},#{atype},#{apeople}, #{mseq},#{anotice},#{ax},#{ay},#{amap})
    </insert>
    
    <insert id="insertOption"

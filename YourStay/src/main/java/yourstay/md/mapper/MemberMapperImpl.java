@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
+
+import lombok.extern.slf4j.Slf4j;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -14,6 +17,7 @@ import yourstay.md.domain.MemberVO;
 import static yourstay.md.domain.LoginConst.*;
 @Primary
 @Repository
+@Slf4j
 public class MemberMapperImpl implements MemberMapper {
 	@Autowired
 	SqlSession session;
@@ -45,11 +49,17 @@ public class MemberMapperImpl implements MemberMapper {
 		parameters.put("mpwd", mpwd);
 		
 		MemberVO result = session.selectOne("yourstay.md.mapper.MemberMapper.loginUser", parameters);
-		
-		if(result != null)
-			return YES_ID_PWD;
-		else
-			return EX_ID;
+		if(result == null) {
+			return NO_ID;
+		}else {
+			String pwd = result.getMpwd();
+			if(pwd != null) pwd = pwd.trim();
+			
+			if(!pwd.equals(mpwd)) {
+				return NO_PWD;
+			}else {
+    			return YES_ID_PWD; //email과 pwd가 맞음 
+    		}
+		}
 	}
-
 }

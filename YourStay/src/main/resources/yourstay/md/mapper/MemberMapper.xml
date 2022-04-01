@@ -20,7 +20,7 @@
 	</delete>
 	<select id="loginUser" parameterType="hashmap"
 		resultType="yourstay.md.domain.MemberVO">
-		select * from member where memail=#{memail} and mpwd=#{mpwd}
+		select * from member where memail=#{memail}
 	</select>
 </mapper>
 <!-- resultType : 결과반환 Object / return 값이라고 생각하면 될 듯? parameterType : 조회결과 

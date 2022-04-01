@@ -7,6 +7,6 @@
 		alert("비밀번호가 맞지 않아요");
 		location.href="loginPage";
 	}else{
-		location.href="../roomDetailInfo";
+		location.href="/";
 	}
 </script>

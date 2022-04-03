@@ -189,9 +189,6 @@ $(document).ready(function(){
                   <p class="message">ID가 없으신가요? <a href="joinPage">회원가입</a></p>
          </div>
          </c:if>
-		<c:if test="${msg == false}">
-			<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
-		</c:if>
       </form>
    </div>
    </div> 

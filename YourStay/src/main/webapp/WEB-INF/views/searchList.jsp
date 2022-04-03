@@ -354,7 +354,7 @@ div.list-font {
                           '           </div>' + 
                           '            <div class="desc">' + 
                           '                <div class="ellipsis">${maps.amap}</div>' + 
-                          '                <div><a href="https://map.kakao.com/link/to/${maps.aname},${maps.amap}, ${maps.ay}" target="_blank" class="link">길찾기</a>' + 
+                          '                <div><a href="https://map.kakao.com/link/to/${maps.aname},${maps.amap}" target="_blank" class="link">길찾기</a>' + 
                           '            </div>' + 
                           '        </div>' + 
                           '    </div>' +    

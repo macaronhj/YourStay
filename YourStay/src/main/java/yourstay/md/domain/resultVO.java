@@ -19,8 +19,6 @@ public class resultVO {
    private int iid;
    private long mseq;
    private String anotice;
-   private double ay;
-   private double ax;
    private String amap;
    //accomoption
    private long oid;

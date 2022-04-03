@@ -221,7 +221,7 @@ body, h3 {
                         size="60" placeholder="Room's Name" style="margin-bottom: 11%;">
                   </div>
                </div>
-                              <div class="col-md-6" style="width: 33%;">
+                <div class="col-md-6" style="width: 33%;">
                   <div
                      class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                      <div class="col p-4 d-flex flex-column position-static">
@@ -230,7 +230,7 @@ body, h3 {
                         <h3 class="mb-0">숙소 주소</h3>
                         <p class="card-text mb-auto">숙소 위치의 주소를 입력해주세요.</p>
                      </div>
-                     <input class="form-control me-2" type="text" step="0.01" name="amap"
+                     <input class="form-control me-2" type="text" name="amap"
                         size="60" placeholder="Room's Location"
                         style="margin-bottom: 11%;">
                   </div>

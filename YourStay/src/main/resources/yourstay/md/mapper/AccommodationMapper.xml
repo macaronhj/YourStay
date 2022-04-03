@@ -24,9 +24,9 @@
           SELECT accommodation_seq.NEXTVAL FROM DUAL
        </selectKey>
       insert
-      into accommodation (aid, aname, aloc, aprice, atype, apeople, mseq, anotice, ax, ay,amap)
+      into accommodation (aid, aname, aloc, aprice, atype, apeople, mseq, anotice,amap)
       values
-      (#{aid}, #{aname},#{aloc},#{aprice},#{atype},#{apeople}, #{mseq},#{anotice},#{ax},#{ay},#{amap})
+      (#{aid}, #{aname},#{aloc},#{aprice},#{atype},#{apeople}, #{mseq},#{anotice},#{amap})
    </insert>
    
    <insert id="insertOption"
@@ -62,7 +62,7 @@
     </insert>
     <update id="updateAccom" parameterType="yourstay.md.domain.roomRegisterVO"  useGeneratedKeys="false" keyProperty="aid">
 		update accommodation set aname=#{aname}, aloc=#{aloc}, aprice=#{aprice}, apoint=#{apoint}, 
-		atype=#{atype}, apeople=#{apeople}, anotice=#{anotice}, ax=#{ax}, ay=#{ay} where aid=#{aid}
+		atype=#{atype}, apeople=#{apeople}, anotice=#{anotice}, amap=#{amap} where aid=#{aid}
 	</update>
 	
    <update id="updateOption"

@@ -19,8 +19,6 @@ public class Accommodation {
    private long iid;
    private long mseq;
    private String anotice;
-   private double ax;
-   private double ay;
    private String amap;
    //accommoption
    private long oid;

@@ -239,27 +239,13 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Accomodation's ax</h3>
+                        <h3 class="mb-0">Accomodation's address</h3>
                         <p class="card-text mb-auto">Please write your
-                           accomodation's ax.</p>
+                           accomodation's address.</p>
                      </div>
-                     <input class="form-control me-2" type="number" step="0.01" name="ax"
+                     <input class="form-control me-2" type="text" name="amap"
                         size="60" placeholder="Room's Location"
-                        style="margin-bottom: 11%;" value="${vo[0].ax}">
-                  </div>
-               </div>
-               <div class="col-md-6" style="width: 33%;">
-                  <div
-                     class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                     <div class="col p-4 d-flex flex-column position-static">
-                        <span class="badge rounded-pill bg-secondary"
-                           style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Accomodation's ay</h3>
-                        <p class="card-text mb-auto">Please write your
-                           accomodation's ay.</p>
-                     </div>
-                     <input class="form-control me-2" type="number" step="0.01" name="ay"
-                        size="60" placeholder="Room's Price" style="margin-bottom: 11%;" value="${vo[0].ay}">
+                        style="margin-bottom: 11%;" value="${vo[0].amap}">
                   </div>
                </div>
                <div class="col-md-6" style="width: 33%;">

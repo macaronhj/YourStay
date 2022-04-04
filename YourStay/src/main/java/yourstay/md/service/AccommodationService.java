@@ -16,7 +16,9 @@ public interface AccommodationService {
     * 숙소 테이블 수정
     */
    public void updateAccommodationS(roomRegisterVO roomregisterVo, MultipartHttpServletRequest mpRequest) throws Exception;
-
+   
+   public String requestDelete(long aid);
+   
    /*
     * 등록하는 회원번호 가져오기
     */

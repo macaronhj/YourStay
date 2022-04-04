@@ -154,4 +154,10 @@ public class MypageController {
       mv.setViewName("redirect:/mypage/home");
       return mv;
    }
+    @PostMapping(value = "/delete")
+    public String requestDelete(Long aid){
+    	log.info("[MypageController -> aid]: "+aid);
+        log.info("[MypageController -> requestDelete 리스트 삭제 요청함]");
+        return accommodationService.requestDelete(aid);
+    }
 }

@@ -71,6 +71,16 @@ public void updateAccommodationS(roomRegisterVO roomregisterVo, MultipartHttpSer
 	
 }
 
+@Override
+public String requestDelete(long aid){
+    int result = accommodationMapper.requestDelete(aid);
+    String registerResult = "failed to delete the todolist!";
+    if(result > 0 ){
+        registerResult = "success to delete the todolist!";
+    }
+    return registerResult;
+}
+
 
 
 }

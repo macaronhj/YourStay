@@ -73,16 +73,20 @@
      
   </update>
   
-     <update id="updateUtil"
+   <update id="updateUtil"
       parameterType="yourstay.md.domain.roomRegisterVO">
       update utility set ures=#{ures}, ucafe=#{ucafe}, ucon=#{ucon}, uact=#{uact} where aid=#{aid}
    </update>
    
-     <update id="updateFile" parameterType="hashMap">
+   <update id="updateFile" parameterType="hashMap">
       
       update image set org_file_name=#{org_file_name}, stored_file_name=#{stored_file_name}, file_path=#{file_path} where aid=#{aid}
       
    </update>
+   
+   <delete id="deleteRoom" parameterType="long">
+   		delete from accommodation where aid=#{aid}
+   </delete>
     
 </mapper>
 <!-- resultType : 결과반환 Object / return 값이라고 생각하면 될 듯? parameterType : 조회결과 

@@ -16,6 +16,8 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
    rel="stylesheet">
+<script type="text/javascript" language="javascript" 
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <style>
 	body{
 		font-family: 'Poor Story', cursive;
@@ -31,9 +33,9 @@
     //룸 삭제 처리
     $(".deleteMyRoom").on("click", function () {
       // 아래는 비동기 처리
-      $.post("/checkList/delete", {seq: $(this).data("value")}, function (data) {
+      $.post("/mypage/delete", {aid: $(this).data("value")}, function (data) {
         alert(data);
-        $(location).attr("href", "/checkList/list");
+        $(location).attr("href", "/mypage/myRoom");
       });
     });
 
@@ -97,7 +99,7 @@
                 <div class="btn-group">
                   <button type="submit" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">숙소 수정하러 가기</button>
                   &nbsp; &nbsp; &nbsp;
-                  <button type="submit" class="btn btn-sm btn-outline-secondary deleteMyRoom" style="padding: 5px 30px;">숙소 삭제하기</button>
+                  <button value="${vo.aid}" type="submit" class="btn btn-sm btn-outline-secondary deleteMyRoom" style="padding: 5px 30px;">숙소 삭제하기</button>
                 </div>
               </div>
             </div>

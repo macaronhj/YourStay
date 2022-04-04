@@ -15,7 +15,7 @@ public class Reservation {
 	private String rstart;
 	private String rend;
 	private int rpeople;
-	private int price;
+	private int rprice;
 	//accommodation
     private String aname;
     private String aloc;

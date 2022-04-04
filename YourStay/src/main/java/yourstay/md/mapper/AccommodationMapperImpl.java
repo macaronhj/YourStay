@@ -72,5 +72,10 @@ public class AccommodationMapperImpl implements AccommodationMapper {
 		
 	}
 
+	@Override
+	public int requestDelete(long aid) {
+		return session.delete("yourstay.md.mapper.AccommodationMapper.deleteRoom", aid);
+	}
+
 
 }

@@ -25,6 +25,20 @@
    String memail = (String) session.getAttribute("memail");
 %>  
 </head>
+<script>
+  $(document).ready(function () {
+
+    //룸 삭제 처리
+    $(".deleteMyRoom").on("click", function () {
+      // 아래는 비동기 처리
+      $.post("/checkList/delete", {seq: $(this).data("value")}, function (data) {
+        alert(data);
+        $(location).attr("href", "/checkList/list");
+      });
+    });
+
+  });
+</script>
 <body>
     
 <header class="blog-header py-3" style="margin-bottom: 5%;">
@@ -82,6 +96,8 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="submit" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">숙소 수정하러 가기</button>
+                  &nbsp; &nbsp; &nbsp;
+                  <button type="submit" class="btn btn-sm btn-outline-secondary deleteMyRoom" style="padding: 5px 30px;">숙소 삭제하기</button>
                 </div>
               </div>
             </div>

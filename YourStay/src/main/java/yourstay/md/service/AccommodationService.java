@@ -17,7 +17,7 @@ public interface AccommodationService {
     */
    public void updateAccommodationS(roomRegisterVO roomregisterVo, MultipartHttpServletRequest mpRequest) throws Exception;
    
-   public String requestDelete(long aid);
+   public void requestDelete(long aid);
    
    /*
     * 등록하는 회원번호 가져오기

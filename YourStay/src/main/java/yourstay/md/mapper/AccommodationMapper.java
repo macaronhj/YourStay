@@ -29,7 +29,7 @@ public interface AccommodationMapper {
    public void updateUtil(roomRegisterVO roomregisterVo);
    public void updateFile(Map<String, Object> map) throws Exception;
 
-   public int requestDelete(long aid);
+   public void requestDelete(long aid);
    /*
     * 등록하는 회원번호 가져오기
     */

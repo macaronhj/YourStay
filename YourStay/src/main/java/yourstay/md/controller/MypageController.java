@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -155,9 +156,11 @@ public class MypageController {
       return mv;
    }
     @PostMapping(value = "/delete")
-    public String requestDelete(Long aid){
+    public ModelAndView requestDelete(ModelAndView mv, Long aid){
     	log.info("[MypageController -> aid]: "+aid);
         log.info("[MypageController -> requestDelete 리스트 삭제 요청함]");
-        return accommodationService.requestDelete(aid);
+        accommodationService.requestDelete(aid);
+        mv.setViewName("redirect:/mypage/home");
+        return mv;
     }
 }

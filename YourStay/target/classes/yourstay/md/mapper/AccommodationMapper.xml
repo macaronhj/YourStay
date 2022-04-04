@@ -84,7 +84,7 @@
       
    </update>
    
-   <delete id="deleteRoom" parameterType="long">
+   <delete id="requestDelete" parameterType="long">
    		delete from accommodation where aid=#{aid}
    </delete>
     

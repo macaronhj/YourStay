@@ -64,6 +64,7 @@ public class LoginController {
 			session = request.getSession();
 			mv.addObject("msg", "success");
 			session.setAttribute("memail", m.getMemail());
+			session.setAttribute("mseq", m.getMseq());
 			session.setAttribute("loginOkUser", m);
 			log.info("m: "+m);
 		}

@@ -11,4 +11,8 @@ public class WishListVO {
 	private long wid;
 	private long mseq;
 	private long aid;
+	
+	private String aname;
+	private int aprice; 
+	private String aloc;
 }

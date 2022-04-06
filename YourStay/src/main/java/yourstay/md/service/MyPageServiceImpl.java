@@ -25,7 +25,7 @@ public class MyPageServiceImpl implements MyPageService {
 	 */
 	@Override
 	public List<WishListVO> getWishAidS(long mseq) {
-		return session.selectList("yourstay.md.mapper.getWishAid", mseq);
+		return session.selectList("yourstay.md.mapper.MyPageMapper.getWishAid", mseq);
 	}
 
 	/*
@@ -33,7 +33,7 @@ public class MyPageServiceImpl implements MyPageService {
 	 */
 	@Override
 	public List<Accommodation> getWishListS(List<WishListVO> wishlist) {
-		return session.selectList("yourstay.md.mapper.getWishList", wishlist);
+		return session.selectList("yourstay.md.mapper.MyPageMapper.getWishList", wishlist);
 	}
 
 	@Override

@@ -22,6 +22,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.domain.Reservation;
+import yourstay.md.domain.WishListVO;
 import yourstay.md.domain.resultVO;
 import yourstay.md.domain.reviewVO;
 import yourstay.md.domain.roomRegisterVO;
@@ -76,15 +77,15 @@ public class MypageController {
 		return null;
 	}
 	
-	@GetMapping(value="/wishlist/{mseq}")
-    public String wishlist(@PathVariable("mseq") long mseq, Model model){
-        log.info("MypageController -> wishlist 요청");
-        Map<String, List> wishMap = myPageService.getWishS(mseq);
-    	
+	@GetMapping(value = "/wishlist/{mseq}")
+	public String wishlist(@PathVariable("mseq") long mseq, Model model) {
+		log.info("MypageController -> wishlist 요청");
+		Map<String, List> wishMap = myPageService.getWishS(mseq);
+
 		model.addAttribute("wishMap", wishMap);
-		
+
 		return "mypage/wishlist";
-    }
+	}
 	@GetMapping(value="/roomHistory")
     public ModelAndView roomHistory(long mseq){
         log.info("MypageController -> roomHistory 요청");

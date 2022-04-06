@@ -206,6 +206,12 @@ body, h1, h2, h3 {
 .info .link {
    color: #5085BB;
 }
+
+.like{
+	padding: 0;
+	border: none;
+	background: none;
+}
 </style>
 <%
    String memail = (String) session.getAttribute("memail");
@@ -239,7 +245,7 @@ body, h1, h2, h3 {
                <c:otherwise>
                   <div>
                      <a id="fontline" class="py-2 nav-link active"
-                        style="color: green; texg-align: center" href="/mypage/home">${loginOkUser.memail}
+                        style="color: green; texg-align: center" href="/mypage/home"><%=memail%>
                         님 환영합니다</a>
                   </div>
                   <li class="nav-item"><a class="py-2 nav-link active"
@@ -322,7 +328,7 @@ body, h1, h2, h3 {
          <div class="col-md-8">
             <article class="blog-post">
                <h2 class="blog-post-title">${resVO.mname}님이
-                  운영하는 숙소입니다 <i class='fas fa-hand-holding-heart'></i>
+                  운영하는 숙소입니다 <button class='fas fa-hand-holding-heart like' type="submit"></button>
                </h2>
                <p class="blog-post-meta">
                   방 갯수: ${resVO.rnum}<br />화장실 갯수: ${resVO.tnum}<br />침대 갯수:

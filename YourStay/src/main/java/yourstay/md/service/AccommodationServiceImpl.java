@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.Accommodation;
+import yourstay.md.domain.Image;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.domain.roomRegisterVO;
 import yourstay.md.fileset.RoomFileUtils;
@@ -76,6 +77,12 @@ public void requestDelete(long aid){
     accommodationMapper.requestDelete(aid);
 }
 
-
+/*
+ * 숙소 이미지 가져오기
+ */
+@Override
+public List<Image> selectRoomImageS(long aid) {
+	return accommodationMapper.selectRoomImage(aid);
+}
 
 }

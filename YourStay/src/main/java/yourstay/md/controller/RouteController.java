@@ -12,9 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.Accommodation;
+import yourstay.md.domain.Image;
 import yourstay.md.domain.resultVO;
 import yourstay.md.domain.reviewVO;
 import yourstay.md.mapper.SearchMapper;
+import yourstay.md.service.AccommodationService;
 import yourstay.md.service.PriceService;
 
 @Log4j
@@ -25,6 +27,9 @@ public class RouteController {
 
 	@Autowired
 	SearchMapper mapper;
+	
+	@Autowired
+	AccommodationService accommodationService;
 
 	@RequestMapping(value = "searchInList.do")
 	@ResponseBody
@@ -44,9 +49,16 @@ public class RouteController {
 			@RequestParam String deadline, @RequestParam String person) {
 		log.info(aloc + " " + startdate + " " + deadline + " " + person);
 		int p = Integer.parseInt(person);
-
 		List<Accommodation> acvo = mapper.getAccommodationListBySearchBar(aloc, startdate, deadline, p);
-		log.info(acvo.size());
+		log.info("List<Accommodation> acvo size : "+ acvo.size());
+		for(Accommodation ac:acvo) {//숙소리스트 이미지	
+			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
+			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
+			log.info("searchGetFromMain ///roomImage: " + roomImage);
+			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
+			ac.setIpath1(roomImage.get(0).getStored_file_name());
+		}	
+//		log.info("acvo 3번째 : "+acvo.get(3).getIpath1());
 		log.info(acvo.toString());
 		ModelAndView mv = new ModelAndView("searchList", "acvo", acvo);
 		mv.setViewName("searchList");
@@ -65,14 +77,23 @@ public class RouteController {
 			@RequestParam String rend) {
 		ModelAndView mv = new ModelAndView();
 		log.info("RouteCon searchDetail ////  aid : " + aid + ", startDate : " + rstart + ", endDate : " + rend);
+		List<Image> roomImage = accommodationService.selectRoomImageS(aid); //숙소이미지
+		String ipath1 = roomImage.get(0).getStored_file_name();
+		String ipath2 = roomImage.get(1).getStored_file_name();
+		String ipath3 = roomImage.get(2).getStored_file_name();
 		List<resultVO> reslist = mapper.getAccommodationByAccommodationId(aid);
 		List<reviewVO>  reviewlist = mapper.getReviewByAccommodationId(aid);
-		log.info("searchDetail reviewlist : "+ reviewlist);
-		log.info("searchDetail reslist : "+ reslist);
+		log.info("RouteCon searchDetail ipath1 : "+ ipath1);
+		log.info("RouteCon searchDetail roomImage : "+ roomImage);
+		log.info("RouteCon searchDetail reviewlist : "+ reviewlist);
+		log.info("RouteCon searchDetail reslist : "+ reslist);
 		resultVO resVO = reslist.get(0);
-		log.info("searchDetail resVO : "+ resVO);
+		log.info("RouteCon searchDetail resVO : "+ resVO);
 		long diffDays = priceService.daysCalc(rstart, rend);// 숙박일수 계산
 		long resultprice = priceService.resultPrice(resVO, diffDays);//숙박일수에 따른 최종 금액 계산
+		resVO.setIpath1(ipath1);
+		resVO.setIpath2(ipath2);
+		resVO.setIpath3(ipath3);
 		resVO.setResultprice(resultprice);//최종금액계산 적용
 		resVO.setRstart(rstart);// 사용자선택 시작날짜 적용
 		resVO.setRend(rend);// 사용자선택 끝날짜 적용

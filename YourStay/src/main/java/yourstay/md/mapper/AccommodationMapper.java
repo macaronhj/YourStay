@@ -1,8 +1,10 @@
 package yourstay.md.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import yourstay.md.domain.Accommodation;
+import yourstay.md.domain.Image;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.domain.roomRegisterVO;
 
@@ -34,4 +36,8 @@ public interface AccommodationMapper {
     * 등록하는 회원번호 가져오기
     */
    public MemberVO getRegisterMemberSeq(long mseq);
+   /*
+    * 숙소이미지 불러오기
+    */
+   public List<Image> selectRoomImage(long aid);
 }

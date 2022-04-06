@@ -1,5 +1,7 @@
 package yourstay.md.service;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import yourstay.md.domain.Accommodation;
@@ -19,6 +21,10 @@ public interface AccommodationService {
    
    public void requestDelete(long aid);
    
+   /*
+    * 숙소이미지 가져오기
+    */
+   public List<Image> selectRoomImageS(long aid);
    /*
     * 등록하는 회원번호 가져오기
     */

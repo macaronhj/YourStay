@@ -87,6 +87,10 @@
    <delete id="requestDelete" parameterType="long">
    		delete from accommodation where aid=#{aid}
    </delete>
+   <!-- 숙소 이미지 불러오기 -->
+    <select id="selectRoomImage" resultType="yourstay.md.domain.Image">
+    	select * from image where aid=#{aid}
+    </select>
     
 </mapper>
 <!-- resultType : 결과반환 Object / return 값이라고 생각하면 될 듯? parameterType : 조회결과 

@@ -287,7 +287,8 @@ body, h1, h2, h3 {
          </div>
          <div class="carousel-inner">
             <div class="carousel-item active"
-               style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
+               style="background:url('../../../resources/images/roomImg/${resVO.aid}/${resVO.ipath1}') no-repeat; background-position: center;
+  background-size: cover;">
                <div class="carousel-caption">
                   <h5>First slide label</h5>
                   <p>Some representative placeholder content for the first
@@ -295,7 +296,8 @@ body, h1, h2, h3 {
                </div>
             </div>
             <div class="carousel-item"
-               style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
+               style="background:url('../../../resources/images/roomImg/${resVO.aid}/${resVO.ipath2}') no-repeat;background-position: center;
+  background-size: cover;">
                <div class="carousel-caption">
                   <h5>Second slide label</h5>
                   <p>Some representative placeholder content for the second
@@ -303,7 +305,8 @@ body, h1, h2, h3 {
                </div>
             </div>
             <div class="carousel-item"
-               style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
+               style="background:url('../../../resources/images/roomImg/${resVO.aid}/${resVO.ipath3}') no-repeat;background-position: center;
+  background-size: cover;">
                <div class="carousel-caption">
                   <h5>Third slide label</h5>
                   <p>Some representative placeholder content for the third

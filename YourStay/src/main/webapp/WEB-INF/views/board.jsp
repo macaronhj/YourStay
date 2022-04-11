@@ -46,7 +46,7 @@
     </style>
 <%
    String memail = (String) session.getAttribute("memail");  
-%>
+%>  
 </head>
 <body>
     <header class="blog-header py-3" style="margin-bottom: 5%;margin-top: 1%;padding: 0px 65px 0;">

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.log4j.Log4j;
-import yourstay.md.dao.interfaces.ReservationDAO;
 import yourstay.md.domain.Image;
 import yourstay.md.domain.Reservation;
 import yourstay.md.domain.resultVO;

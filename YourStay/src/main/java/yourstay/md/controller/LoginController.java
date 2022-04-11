@@ -72,7 +72,7 @@ public class LoginController {
 		return mv;
 	}
 	
-	@RequestMapping("logout.do")
+	@GetMapping("logout.do")
 	public String logout(HttpSession session) {
 		log.info("肺弊酒眶 技记 null贸府");
 //		session.setAttribute("memail", null);
@@ -86,7 +86,7 @@ public class LoginController {
         mv.setViewName("login/joinPage");
         return mv;
     }
-	@RequestMapping("join.do")
+	@PostMapping("join.do")
 	public ModelAndView join(@RequestParam String mname, String memail, String mpwd, int mcallnum) {
    
 	   MemberVO memberVo = mapper.getUser(memail);

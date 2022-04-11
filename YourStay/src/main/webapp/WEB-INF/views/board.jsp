@@ -45,7 +45,7 @@
         }
     </style>
 <%
-   String memail = (String) session.getAttribute("memail");
+   String memail = (String) session.getAttribute("memail");  
 %>
 </head>
 <body>

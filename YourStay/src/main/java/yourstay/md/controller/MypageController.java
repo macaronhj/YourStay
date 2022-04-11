@@ -60,22 +60,6 @@ public class MypageController {
         ModelAndView mv = new ModelAndView("mypage/home","member",vo);
         return mv;
     }
-	@PostMapping(value = "/register.do")
-	   public ModelAndView roomRegister(ModelAndView mv, roomRegisterVO roomregisterVo,
-	         MultipartHttpServletRequest mpRequest) throws Exception {
-	      log.info("roomOption Data -> info 전달");
-	      log.info("mpRequest : " +  mpRequest);
-	      accommodationService.insertAccommodationS(roomregisterVo, mpRequest);
-	      log.info("roomregisterVo: " + roomregisterVo);
-	      mv.setViewName("redirect:/mypage/home");
-	      return mv;
-	   }
-	
-	@PostMapping(value="/regi")
-	public String test() {
-		log.info("test");
-		return null;
-	}
 	
 	@GetMapping(value = "/wishlist/{mseq}")
 	public String wishlist(@PathVariable("mseq") long mseq, Model model) {
@@ -145,23 +129,4 @@ public class MypageController {
 	   
        return mv;
    }
-
-	@PostMapping(value = "/modifyRoom")
-    public ModelAndView modifyRoom(ModelAndView mv, roomRegisterVO roomregisterVo,
-      MultipartHttpServletRequest mpRequest) throws Exception {
-      log.info("#modifyRoom 들어옴");
-      log.info("#roomregisterVo aid: "+roomregisterVo.getAid());
-      accommodationService.updateAccommodationS(roomregisterVo, mpRequest);
-      log.info("roomregisterVo: " + roomregisterVo);
-      mv.setViewName("redirect:/mypage/home");
-      return mv;
-   }
-    @PostMapping(value = "/delete")
-    public ModelAndView requestDelete(ModelAndView mv, Long aid){
-    	log.info("[MypageController -> aid]: "+aid);
-        log.info("[MypageController -> requestDelete 리스트 삭제 요청함]");
-        accommodationService.requestDelete(aid);
-        mv.setViewName("redirect:/mypage/home");
-        return mv;
-    }
 }

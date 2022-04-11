@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +32,7 @@ public class RouteController {
 	@Autowired
 	AccommodationService accommodationService;
 
-	@RequestMapping(value = "searchInList.do")
+	@GetMapping(value = "searchInList.do")
 	@ResponseBody
 	public List<Accommodation> searchList(@RequestParam String aloc, @RequestParam String startdate,
 			@RequestParam String deadline, @RequestParam String person) {
@@ -44,7 +45,7 @@ public class RouteController {
 		return acvo;
 	}
 
-	@RequestMapping(value = "searchInListFromMainGet.do", method = RequestMethod.GET)
+	@GetMapping(value = "searchInListFromMainGet.do")
 	public ModelAndView searchGetFromMain(@RequestParam String aloc, @RequestParam String startdate,
 			@RequestParam String deadline, @RequestParam String person) {
 		log.info(aloc + " " + startdate + " " + deadline + " " + person);
@@ -72,7 +73,7 @@ public class RouteController {
 		return mv;
 	}
 
-	@RequestMapping(value = "roomDetailInfo", method = RequestMethod.GET)
+	@GetMapping(value = "roomDetailInfo")
 	public ModelAndView searchDetail(@RequestParam long aid, @RequestParam String rstart,
 			@RequestParam String rend) {
 		ModelAndView mv = new ModelAndView();

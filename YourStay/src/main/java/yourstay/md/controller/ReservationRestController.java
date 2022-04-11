@@ -20,7 +20,7 @@ import yourstay.md.service.ReservationService;
 @Controller
 @RequestMapping("/res")
 @Log4j
-public class ReservationController {
+public class ReservationRestController {
 	@Autowired
 	SearchMapper searchMapper;
 	@Autowired

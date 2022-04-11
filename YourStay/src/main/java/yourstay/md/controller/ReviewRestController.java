@@ -16,18 +16,10 @@ import yourstay.md.service.FileService;
 @AllArgsConstructor
 @Controller
 @RequestMapping("/review")
-public class ReviewController {
+public class ReviewRestController {
 
 	@Autowired
 	FileService service;
-	
-//	@GetMapping(value="/registerReview")
-//    public ModelAndView gohome(HttpSession session){
-//        log.info("MypageController -> gohome 요청");
-//        int vo = mapper.insertReview((reviewVO)session.getAttribute("memail"));
-//        ModelAndView mv = new ModelAndView("mypage/home","member",vo);
-//        return mv;
-//    }
 	
 	@PostMapping(value="/registerReview")
     public ModelAndView addreview(reviewVO reviewVo, MultipartHttpServletRequest mpRequest)throws Exception {
@@ -39,12 +31,4 @@ public class ReviewController {
       mv.setViewName("redirect:/mypage/home");
        return mv;
     }
-//		@GetMapping(value="/review")
-//	    public ModelAndView review(HttpSession session){
-//	        log.info("MypageController -> review 요청");
-//	        reviewVO vo = reviewMapper.getUser((String)session.getAttribute("memail"));
-//	        ModelAndView mv = new ModelAndView("mypage/review","member",vo);
-//	        log.info("####vo:"+vo);
-//	        return mv;
-//	    }
 }

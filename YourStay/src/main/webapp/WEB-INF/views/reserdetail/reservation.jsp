@@ -1,5 +1,6 @@
-<%@ page contentType="text/html;charset=utf-8" session="false" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 	<head>
@@ -32,34 +33,84 @@
 		   href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
 	   <!-- 인원수 -->
 	   <link rel="stylesheet" href="../css/airDnDCSS.css">
-	
+	<%
+   		String memail = (String) session.getAttribute("memail");
+		long mseq = (long) session.getAttribute("mseq");
+	%>
 	</head>
 	<body>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 		</script>
 		<header class="blog-header py-3" style="margin-bottom: 5%;">
-      		<div class="row flex-nowrap justify-content-between align-items-center">
-       		<div class="col-4 pt-1"></div>
-	        <div class="col-4 text-center">
-	          <a class="blog-header-logo text-dark" href="/" style="text-decoration:none">YourTrip</a>
-	        </div>
-      		<div class="col-4 d-flex justify-content-end align-items-center">
-         	<a class="link-secondary" href="#" aria-label="Search">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-         	</a>
-         	<a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign up</a>
-      	    </div>
-     	    </div>
-  		</header>
- 
+		<div
+			class="row flex-nowrap justify-content-between align-items-center">
+			<div class="col-4 pt-1"></div>
+			<div class="col-4 text-center">
+				<a class="blog-header-logo text-dark" href="/"
+					style="text-decoration: none">YourTrip</a>
+			</div>
+			<div class="col-4 d-flex justify-content-end align-items-center">
+				<a class="link-secondary" href="#" aria-label="Search"> <svg
+						xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+						fill="none" stroke="currentColor" stroke-linecap="round"
+						stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+						viewBox="0 0 24 24">
+						<title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
+						<path d="M21 21l-5.2-5.2" /></svg>
+				</a>
+				<c:choose>
+					<c:when test="${msg =='failure'}">
+						<a class="btn btn-secondary" href="../login/loginPage"
+							style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">Sign
+							up</a>
+					</c:when>
+					<c:when test="${msg == null}">
+						<!-- 로그인X -->
+
+						<%
+							if (memail == null) {
+						%>
+						<a class="btn btn-secondary" href="../login/loginPage"
+							style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">Sign
+							up</a>
+						<%
+							} else {
+						%>
+						<a href="/mypage/home" style="margin-top: 3%; margin-right: 3%;"><%=memail%>님
+							반갑습니다!
+						</a>
+						<a href="../login/logout.do" class="btn btn-secondary"
+							style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">로그아웃</a>
+						<%
+							}
+						%>
+					</c:when>
+					<c:otherwise>
+						<a href="/mypage/home" style="margin-top: 3%; margin-right: 3%;"><%=memail%>님
+							반갑습니다!
+						</a>
+						<a href="../login/logout.do" class="btn btn-secondary"
+							style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">로그아웃</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+	</header>
+ 		<form action="/res/reservation.do" method="post">
+ 		<input type="hidden" value="${rdetail.aid}" name="aid">
+ 		<input type="hidden" value="<%=mseq%>" name="mseq">
+ 		<input type="hidden" value="${rdetail.apeople}" name="rpeople">
+ 		<input type="hidden" value="${rdetail.rstart}" name="rstart">
+ 		<input type="hidden" value="${rdetail.rend}" name="rend">
+ 		<input type="hidden" value="${rdetail.aprice}" name="rprice">
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center my-5 ">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
-                <div class="col-lg-5">
+                <div class="col-lg-5"><img class="img-fluid rounded mb-4 mb-lg-0" src="../../../resources/images/roomImg/${rdetail.aid}/${rdetail.ipath1}" alt="..." /></div>
+                <div class="col-lg-7">
                     <h6 class="font-weight-light">${rdetail.aname}</h6>
                     </br>
-                    <h3>숙소정보</h3>
+                    <h3>${rdetail.anotice}</h3>
                     </br>
                  	<span class="badge bg-warning text-dark">${rdetail.apoint}</span>
                 </div>
@@ -106,10 +157,11 @@
 	                <p class="text-white m-3">아래 버튼을 선택함으로써, 호스트가 설정한 숙소 이용규칙, 
 	                에어비앤비 코로나19 방역 수칙 및 게스트 환불 정책에 동의합니다.</p>
 	               	<div class="d-grid gap-2">
-  					<button class="btn btn-warning text-white" type="button">예약 완료하기</button>
+  					<button class="btn btn-warning text-white" type="submit">예약 완료하기</button>
 	                </div>
                 </div>
             </div>
+            </form>
 
 <!-- Modal -->
 
@@ -243,30 +295,31 @@
     </div>
   </div>
 </div>
-<script>
-	$('#testBtn').click(function(e){
-		e.preventDefault();
-		$('#testModal').modal("show");
-	});
-</script>
+	<script>
+		$('#testBtn').click(function(e){
+			e.preventDefault();
+			$('#testModal').modal("show");
+		});
+	</script>
+	
 
- <!-- 푸터 -->
- <div class="container">
-    <footer class="py-3 my-4">
-       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item"><a href="#"
-             class="nav-link px-2 text-muted">Home</a></li>
-          <li class="nav-item"><a href="#"
-             class="nav-link px-2 text-muted">Features</a></li>
-          <li class="nav-item"><a href="#"
-             class="nav-link px-2 text-muted">Pricing</a></li>
-          <li class="nav-item"><a href="#"
-             class="nav-link px-2 text-muted">FAQs</a></li>
-          <li class="nav-item"><a href="#"
-             class="nav-link px-2 text-muted">About</a></li>
-       </ul>
-       <p class="text-center text-muted">© 2021 Company, Inc</p>
-    </footer>
- </div>
-</body>
+   <!-- 푸터 -->
+   <div class="container">
+      <footer class="py-3 my-4">
+         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#"
+               class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#"
+               class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="#"
+               class="nav-link px-2 text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="#"
+               class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#"
+               class="nav-link px-2 text-muted">About</a></li>
+         </ul>
+         <p class="text-center text-muted">© 2021 Company, Inc</p>
+      </footer>
+   </div>
+	</body>
 </html>

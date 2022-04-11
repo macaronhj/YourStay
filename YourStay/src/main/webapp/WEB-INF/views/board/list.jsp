@@ -38,6 +38,8 @@
         /*html{position:relative;min-height:100%;}*/
         body{
             margin-bottom:60px;
+            font-family: 'Poor Story', cursive!important;
+            font-size: 20px;
         }
 
         body > .container{
@@ -49,7 +51,7 @@
 %>  
 </head>
 <body>
-    <header class="blog-header py-3" style="margin-bottom: 5%;margin-top: 1%;padding: 0px 65px 0;">
+    <header class="blog-header py-3" style="margin-top: 1%;padding: 0px 65px 0;">
          <div
             class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1"></div>
@@ -105,55 +107,92 @@
       </header>
     	<div style="padding: 0px 65px 0;">
         <div class="page-header">
-            <h1>게시글 목록</h1>
+            <h1>공지사항</h1>
         </div>
+        <c:if test="${empty listResult}">
+			<tr align="center" noshade>
+			   <td colspan="5">데이터가 하나도 없음</td>
+			</tr>
+		</c:if>
         <div class="pull-right" style="width:100px;margin:10px 0;">
-            <a href="/board" class="btn btn-primary btn-block">등록</a>
+            <a href="/board" class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">
+            등록</a>
         </div>
         <br/><br/><br/>
 
         <div id="mainHide">
             <table class="table table-hover">
-                <thead>
+            
                 <tr>
-                    <th class="col-md-1">#</th>
+                    <th class="col-md-1">글번호</th>
                     <th class="col-md-2">서비스분류</th>
                     <th class="col-md-5">제목</th>
                     <th class="col-md-2">작성날짜</th>
-                    <th class="col-md-2">수정날짜</th>
                 </tr>
-                </thead>
-                <tbody>
                 <tr>
-                    <td>qq</td>
-                    <td>22</td>
-                    <td>ee<a></a></td>
-                    <td>rr</td>
-                    <td>rr</td>
+                <c:forEach items="${listResult.list}" var="board">
+                    <td>${board.boardnum}</td>
+                    <td>${board.category}</td>
+                    <td><a href="content.do?boardnum=${board.boardnum}">
+					    ${board.subject}
+					  </a></td>
+                    <td>${board.rdate}</td>
                 </tr>
-                </tbody>
+                </c:forEach>
             </table>
         </div>
     <br/>
+    <hr width='600' size='2' color='gray' noshade>
+<div style="margin-left: 500px;">
+    (총페이지수 : ${listResult.totalPageCount})
+    &nbsp;&nbsp;&nbsp;
+    <c:forEach begin="1" end="${listResult.totalPageCount}" var="i">
+        <a href="list.do?cp=${i}">
+   			<c:choose>
+   			    <c:when test="${i==listResult.cp}">
+                	<strong>${i}</strong>
+                </c:when>
+                <c:otherwise>
+                    ${i}
+                </c:otherwise>
+			</c:choose>
+    	</a>&nbsp;
+    </c:forEach>
+    ( TOTAL : ${listResult.totalCount} )
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       페이지 싸이즈 : 
+    <select id="psId" name="ps" onchange="f(this)">
+    	<c:choose>
+    		<c:when test="${listResult.ps == 3}">
+    		   <option value="3" selected>3</option>
+		       <option value="5">5</option>
+		       <option value="10">10</option>
+    		</c:when>
+    		<c:when test="${listResult.ps == 5}">
+    		   <option value="3">3</option>
+		       <option value="5" selected>5</option>
+		       <option value="10">10</option>
+    		</c:when>
+    		<c:when test="${listResult.ps == 10}">
+    		   <option value="3">3</option>
+		       <option value="5">5</option>
+		       <option value="10" selected>10</option>
+    		</c:when>
+    	</c:choose>
+    </select>
 </div>
-    <nav aria-label="Page navigation" style="text-align:center;">
-        <ul class="pagination">
-            <li><a aria-label="Previous" href="/board/list?page=1">&laquo;</a></li>
-            <li>
-                <a>&lsaquo;</a>
-            </li>
 
-            <li>
-                <a><span class="sr-only"></span></a>
-            </li>
-
-            <li>
-                <a>&rsaquo;</a>
-            </li>
-            <li><a>&raquo;</a></li>
-        </ul>
-    </nav>
-    <footer class="blog-footer">
+    
+    <script language="javascript">
+       function f(select){
+           //var el = document.getElementById("psId");
+           var ps = select.value;
+           //alert("ps : " + ps);
+           location.href="list.do?ps="+ps;
+       }
+    </script>	
+    <footer class="blog-footer" style="margin-top: 8%;">
          <p>
             Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a>
             by <a href="https://twitter.com/mdo">@mdo</a>.

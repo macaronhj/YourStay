@@ -42,7 +42,7 @@ public class LoginController {
 	
 	@GetMapping(value="/loginPage")
     public ModelAndView loginPage(ModelAndView mv){
-        log.info("Logincontroller -> loginPage ë¡œê·¸ì¸ ì‹œë„ ìš”ì²­");
+        log.info("Logincontroller -> loginPage ·Î±×ÀÎ ½Ãµµ ¿äÃ»");
         mv.setViewName("login/loginPage");
         return mv;
     }
@@ -53,13 +53,13 @@ public class LoginController {
 		String memail = request.getParameter("memail");
 		String mpwd = request.getParameter("mpwd");
 		ModelAndView mv = new ModelAndView();
-		//ìœ íš¨ì„± ê²€ì‚¬(í´ë¼ì´ì–¸íŠ¸ì¸¡ View:js, ì„œë²„ì¸¡ Controller:java)
+		//À¯È¿¼º °Ë»ç(Å¬¶óÀÌ¾ðÆ®Ãø View:js, ¼­¹öÃø Controller:java)
 		log.info("loginCon check //email: "+memail+", pwd: "+mpwd);
 		int result = mapper.login(memail, mpwd);
-		log.info("ë¡œê·¸ì¸ ê²°ê³¼(3>ì„±ê³µ) : " + result);		
+		log.info("·Î±×ÀÎ °á°ú(3>¼º°ø) : " + result);		
 		
-		if(result == YES_ID_PWD) { //ë¡œê·¸ì¸ ì„±ê³µì‹œ
-			log.info("ë¡œê·¸ì¸ ì„±ê³µ");	
+		if(result == YES_ID_PWD) { //·Î±×ÀÎ ¼º°ø½Ã
+			log.info("·Î±×ÀÎ ¼º°ø");	
 			MemberVO m = mapper.getUser(memail);
 			session = request.getSession();
 			mv.addObject("msg", "success");
@@ -74,7 +74,7 @@ public class LoginController {
 	
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
-		log.info("ë¡œê·¸ì•„ì›ƒ ì„¸ì…˜ nullì²˜ë¦¬");
+		log.info("·Î±×¾Æ¿ô ¼¼¼Ç nullÃ³¸®");
 //		session.setAttribute("memail", null);
 //		session.setAttribute("mpwd", null);
 		session.invalidate();
@@ -82,7 +82,7 @@ public class LoginController {
 	}
 	@GetMapping(value="/joinPage")
     public ModelAndView requestJoin(ModelAndView mv){
-        log.info("Logincontroller -> requestLogin ë¡œê·¸ì¸ ì‹œë„ ìš”ì²­");
+        log.info("Logincontroller -> requestLogin ·Î±×ÀÎ ½Ãµµ ¿äÃ»");
         mv.setViewName("login/joinPage");
         return mv;
     }

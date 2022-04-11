@@ -58,7 +58,7 @@ public class MemberMapperImpl implements MemberMapper {
 			if(!pwd.equals(mpwd)) {
 				return NO_PWD;
 			}else {
-    			return YES_ID_PWD; //emailê³¼ pwdê°€ ë§ìŒ 
+    			return YES_ID_PWD; //email°ú pwd°¡ ¸ÂÀ½ 
     		}
 		}
 	}

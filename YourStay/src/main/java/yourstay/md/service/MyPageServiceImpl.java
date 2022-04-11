@@ -21,7 +21,7 @@ public class MyPageServiceImpl implements MyPageService {
 	SqlSession session;
 
 	/*
-	 * íšŒì›ì˜ ì°œì •ë³´ë½‘ê¸°
+	 * È¸¿øÀÇ ÂòÁ¤º¸»Ì±â
 	 */
 	@Override
 	public List<WishListVO> getWishAidS(long mseq) {
@@ -29,7 +29,7 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	/*
-	 * íšŒì›ì´ ì°œí•œ ìˆ™ë°•ì—…ì²´ ë¦¬ìŠ¤íŠ¸
+	 * È¸¿øÀÌ ÂòÇÑ ¼÷¹Ú¾÷Ã¼ ¸®½ºÆ®
 	 */
 	@Override
 	public List<Accommodation> getWishListS(List<WishListVO> wishlist) {

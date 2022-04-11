@@ -13,7 +13,7 @@ public class InfoServiceImpl implements InfoService {
 	private InfoMapper infoMapper;
 	
 	/*
-	 * ìˆ™ì†Œë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” ìˆ™ì†Œì •ë³´ë“¤ì„ ì €ì¥
+	 * ¼÷¼Ò¹øÈ£¿¡ ÇØ´çÇÏ´Â ¼÷¼ÒÁ¤º¸µéÀ» ÀúÀå
 	 */
 	@Override
 	public Accommodation selectAccommodation(long aid) {

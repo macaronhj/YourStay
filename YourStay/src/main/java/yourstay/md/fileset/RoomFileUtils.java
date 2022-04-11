@@ -23,7 +23,7 @@ import yourstay.md.domain.roomRegisterVO;
 public class RoomFileUtils {
    public static final String FILE_STORE = "C:/heejin/Final/Git/YourStay/src/main/webapp/resources/images/roomImg/";
 
-   // ì‘ì„±ìë³„ë¡œ í´ë” ìƒì„± í•˜ê¸° ìœ„í•œ ë©”ì†Œë“œ
+   // ÀÛ¼ºÀÚº°·Î Æú´õ »ı¼º ÇÏ±â À§ÇÑ ¸Ş¼Òµå
    public static String writerPath(roomRegisterVO roomregisterVo) {
       final String FILE_FINAL_PATH = FILE_STORE + roomregisterVo.getAid() + "/";
       return FILE_FINAL_PATH;
@@ -34,7 +34,7 @@ public class RoomFileUtils {
       
       List<MultipartFile> fileList = mpRequest.getFiles("file");
 //      Iterator<String> iterator = mpRequest.getFileNames();
-//      log.error("RoomFileUtilsë‚´  // iterator : " + iterator);
+//      log.error("RoomFileUtils³»  // iterator : " + iterator);
 //      MultipartFile multipartFile = null;
       String originalFileName = null;
       String originalFileExtension = null;
@@ -65,14 +65,14 @@ public class RoomFileUtils {
             listMap.put("file_path", writerPath(roomregisterVo));
             listMap.put("aid", aid);
             list.add(listMap);
-            log.error("RoomFileUtilsë‚´  // list : " + list);
+            log.error("RoomFileUtils³»  // list : " + list);
          }
       }
       return list;
 
    }
 
-   public static String getRandomString() {// 32ê¸€ìì˜ ëœë¤í•œ ë¬¸ìì—´(ìˆ«ìí¬í•¨)ì„ ë§Œë“¤ì–´ì„œ ë°˜í™˜í•´ì£¼ëŠ” ê¸°ëŠ¥
+   public static String getRandomString() {// 32±ÛÀÚÀÇ ·£´ıÇÑ ¹®ÀÚ¿­(¼ıÀÚÆ÷ÇÔ)À» ¸¸µé¾î¼­ ¹İÈ¯ÇØÁÖ´Â ±â´É
       return UUID.randomUUID().toString().replaceAll("-", "");
    }
 }

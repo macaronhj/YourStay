@@ -8,11 +8,11 @@ import yourstay.md.domain.WishListVO;
 
 public interface MyPageService {
 	/*
-	 * íšŒì›ì˜ ì°œì •ë³´ë½‘ê¸°
+	 * È¸¿øÀÇ ÂòÁ¤º¸»Ì±â
 	 */
 	public List<WishListVO> getWishAidS(long mseq);
 	/*
-	 * íšŒì›ì´ ì°œí•œ ìˆ™ë°•ì—…ì²´ ë¦¬ìŠ¤íŠ¸
+	 * È¸¿øÀÌ ÂòÇÑ ¼÷¹Ú¾÷Ã¼ ¸®½ºÆ®
 	 */
 	public List<Accommodation> getWishListS(List<WishListVO> wishlist);
 	/*

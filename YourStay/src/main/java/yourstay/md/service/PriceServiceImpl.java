@@ -12,7 +12,7 @@ import yourstay.md.domain.resultVO;
 @Service
 public class PriceServiceImpl implements PriceService {
 	/*
-	 * ìˆ™ë°•ì¼ìˆ˜ ê³„ì‚°
+	 * ¼÷¹ÚÀÏ¼ö °è»ê
 	 */
 	@Override
 	public long daysCalc(String rstart, String rend) {
@@ -23,21 +23,21 @@ public class PriceServiceImpl implements PriceService {
 		try {
 			format1 = new SimpleDateFormat("yyyy-MM-dd").parse(rstart);
 			format2 = new SimpleDateFormat("yyyy-MM-dd").parse(rend);
-			diffSec = (format1.getTime() - format2.getTime()) / 1000; //ì´ˆ ì°¨ì´
-			diffDays = -1*(diffSec / (24 * 60 * 60)); // ì¼ììˆ˜ ì°¨ì´
+			diffSec = (format1.getTime() - format2.getTime()) / 1000; //ÃÊ Â÷ÀÌ
+			diffDays = -1*(diffSec / (24 * 60 * 60)); // ÀÏÀÚ¼ö Â÷ÀÌ
 		} catch (ParseException e) {
 			log.info("searchDetail // ParseException : " + e);
 		}
-		log.info(diffDays + "ì¼ ì°¨ì´");
+		log.info(diffDays + "ÀÏ Â÷ÀÌ");
 		return diffDays;
 	}
 	/*
-	 * ìˆ™ë°•ì¼ìˆ˜ì— ë”°ë¥¸ ìµœì¢… ê¸ˆì•¡ ê³„ì‚°
+	 * ¼÷¹ÚÀÏ¼ö¿¡ µû¸¥ ÃÖÁ¾ ±İ¾× °è»ê
 	 */
 	@Override
 	public long resultPrice(resultVO resVO, long diffDays) {
 		long resultprice = diffDays * resVO.getAprice();
-		log.info("ìµœì¢… ê¸ˆì•¡ : "+ resultprice + "ì›");
+		log.info("ÃÖÁ¾ ±İ¾× : "+ resultprice + "¿ø");
 		return resultprice;
 	}
 

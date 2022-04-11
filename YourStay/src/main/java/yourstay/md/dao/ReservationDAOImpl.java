@@ -24,25 +24,25 @@ public class ReservationDAOImpl implements ReservationDAO {
 	@Override
 	public List<String> addReservation(Reservation reserv) {
 		/**
-		 * ì¶œë ¥ìš© ë©”ì†Œë“œ ì…ë‹ˆë‹¤. (ì˜ˆì•½ì´ ê°€ëŠ¥í•œì§€ ë¶ˆê°€ëŠ¥í•œì§€ íŒë³„ìš©) >> í•´ë‹¹ ë§¤ì†Œë“œì˜ ë°˜í™˜ê°’ì—ë”°ë¼ ì¡°ê±´ì„ì¤Œ ì˜ˆ)) ì˜ˆì•½ë‚ ì§œ ì„ íƒì‹œ ê²¹ì¹˜ëŠ” ë‚ ì§œê°€ì—†ì„ë©´ ì˜ˆì•½ì„±ê³µ! ê²¹ì¹˜ëŠ” ë‚ ì§œê°€ ìˆì„ì‹œ ì˜ˆì•½ ë¶ˆê°€ë¡œ ì´ë™
-		 * @param Reservation Reservation í…Œì´ë¸”ì— ì¶”ê°€í•  ì˜ˆì•½ì •ë³´ê°€ ë‹´ê¸´ VO
-		 * @return ì„±ê³µ [TRUE, Insertëœ ROWê°¯ìˆ˜], ì˜ˆì•½ë‚ ì§œê°€ ê²¹ì¹˜ë©´ [FALSE, ê²¹ì¹œë‚ ì§œì˜ String...]
+		 * Ãâ·Â¿ë ¸Ş¼Òµå ÀÔ´Ï´Ù. (¿¹¾àÀÌ °¡´ÉÇÑÁö ºÒ°¡´ÉÇÑÁö ÆÇº°¿ë) >> ÇØ´ç ¸Å¼ÒµåÀÇ ¹İÈ¯°ª¿¡µû¶ó Á¶°ÇÀ»ÁÜ ¿¹)) ¿¹¾à³¯Â¥ ¼±ÅÃ½Ã °ãÄ¡´Â ³¯Â¥°¡¾øÀ»¸é ¿¹¾à¼º°ø! °ãÄ¡´Â ³¯Â¥°¡ ÀÖÀ»½Ã ¿¹¾à ºÒ°¡·Î ÀÌµ¿
+		 * @param Reservation Reservation Å×ÀÌºí¿¡ Ãß°¡ÇÒ ¿¹¾àÁ¤º¸°¡ ´ã±ä VO
+		 * @return ¼º°ø [TRUE, InsertµÈ ROW°¹¼ö], ¿¹¾à³¯Â¥°¡ °ãÄ¡¸é [FALSE, °ãÄ£³¯Â¥ÀÇ String...]
 		 */
 		List<String> resultList = new ArrayList<>();
 		
 		String sDate = reserv.getRstart();
 		String eDate = reserv.getRend();
 
-		// ì˜ˆì•½ì¼ì˜ ì‹œì‘~ëì¼ê¹Œì§€ì˜ ë‚ ì§œë¦¬ìŠ¤íŠ¸ë¥¼ ìƒì„±
+		// ¿¹¾àÀÏÀÇ ½ÃÀÛ~³¡ÀÏ±îÁöÀÇ ³¯Â¥¸®½ºÆ®¸¦ »ı¼º
 		List<String> dateList = DateMaker.getDateList(sDate, eDate);
 
-		// ë‚ ì§œë¦¬ìŠ¤íŠ¸ê°€ ì¤‘ë³µ ë˜ëŠ”ì§€ í™•ì¸
+		// ³¯Â¥¸®½ºÆ®°¡ Áßº¹ µÇ´ÂÁö È®ÀÎ
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("accom_id", reserv.getAid());
 		parameters.put("startDate", sDate);
 		parameters.put("endDate", eDate);
 		List<ReservationDate> rdList = session.selectList("reservedDateMapper.checkReservedDate", parameters);
-		if (!rdList.isEmpty()) // ì¤‘ë³µëœ ë‚ ì§œê°€ í•˜ë£¨ë¼ë„ ìˆë‹¤ë©´, ì˜ˆì•½ ë¶ˆê°€ëŠ¥
+		if (!rdList.isEmpty()) // Áßº¹µÈ ³¯Â¥°¡ ÇÏ·ç¶óµµ ÀÖ´Ù¸é, ¿¹¾à ºÒ°¡´É
 		{
 			resultList.add("FALSE");
 			for (ReservationDate ReservedDate : rdList) {
@@ -51,15 +51,15 @@ public class ReservationDAOImpl implements ReservationDAO {
 		} 
 		else 
 		{
-			// Reservationë¥¼ Insert
+			// Reservation¸¦ Insert
 			int insertedNum = session.insert("reservationMapper.insertReservation", reserv);
 			resultList.add("TRUE");
 			resultList.add(Integer.toBinaryString(insertedNum));
 			
-			// Insertë¡œ ì¸í•´ increase ëœ reserv_id ê°’ì„ ê°€ì ¸ì˜´
+			// Insert·Î ÀÎÇØ increase µÈ reserv_id °ªÀ» °¡Á®¿È
 			int currReservId = session.selectOne("reservationMapper.checkReservId");
 			
-			// ìƒì„±ëœ ë‚ ì§œë¦¬ìŠ¤íŠ¸ë¥¼ ReservedDateì— ë“±ë¡
+			// »ı¼ºµÈ ³¯Â¥¸®½ºÆ®¸¦ ReservedDate¿¡ µî·Ï
 			for (String stringDate : dateList) {
 				session.insert("reservedDateMapper.insertReservedDate",
 						new ReservationDate(reserv.getAid(), stringDate, currReservId));

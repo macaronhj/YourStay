@@ -11,18 +11,18 @@ import yourstay.md.domain.roomRegisterVO;
 public interface AccommodationMapper {
 
    /*
-    * ìˆ™ì†Œ í…Œì´ë¸”ì— ë“±ë¡
+    * ¼÷¼Ò Å×ÀÌºí¿¡ µî·Ï
     */
    public void insertAccom(roomRegisterVO roomregisterVo);
    
    public void insertOption(roomRegisterVO roomregisterVo);
    public void insertUtil(roomRegisterVO roomregisterVo);
    /*
-    * ì´ë¯¸ì§€ í…Œì´ë¸” ë“±ë¡
+    * ÀÌ¹ÌÁö Å×ÀÌºí µî·Ï
     */
    public void insertFile(Map<String, Object> map) throws Exception;
    /*
-    * ìˆ™ì†Œ í…Œì´ë¸” ìˆ˜ì •
+    * ¼÷¼Ò Å×ÀÌºí ¼öÁ¤
     */
    public void updateAccom(roomRegisterVO roomregisterVo);
    
@@ -33,11 +33,11 @@ public interface AccommodationMapper {
 
    public void requestDelete(long aid);
    /*
-    * ë“±ë¡í•˜ëŠ” íšŒì›ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°
+    * µî·ÏÇÏ´Â È¸¿ø¹øÈ£ °¡Á®¿À±â
     */
    public MemberVO getRegisterMemberSeq(long mseq);
    /*
-    * ìˆ™ì†Œì´ë¯¸ì§€ ë¶ˆëŸ¬ì˜¤ê¸°
+    * ¼÷¼ÒÀÌ¹ÌÁö ºÒ·¯¿À±â
     */
    public List<Image> selectRoomImage(long aid);
 }

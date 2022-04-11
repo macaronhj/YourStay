@@ -23,7 +23,7 @@ public class InfoController {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String home() {
-		log.info("í™ˆí˜ì´ì§€ ì´ë™");
+		log.info("È¨ÆäÀÌÁö ÀÌµ¿");
 		return "info/info";
 	}
 	

@@ -20,7 +20,7 @@ import yourstay.md.domain.reviewVO;
 public class FileUtils {
 	public static final String FILE_STORE="C:/heejin/Final/Git/YourStay/src/main/webapp/resources/images/reviewImg/";
 	
-	//ì‘ì„±ìë³„ë¡œ í´ë” ìƒì„± í•˜ê¸° ìœ„í•œ ë©”ì†Œë“œ
+	//ÀÛ¼ºÀÚº°·Î Æú´õ »ı¼º ÇÏ±â À§ÇÑ ¸Ş¼Òµå
 	public static String writerPath(reviewVO reviewVO) { 
 		final String FILE_FINAL_PATH = FILE_STORE+reviewVO.getRenum()+"/";
 		return FILE_FINAL_PATH;
@@ -67,7 +67,7 @@ public class FileUtils {
 		return list;
 	}
 	
-	public static String getRandomString() {//32ê¸€ìì˜ ëœë¤í•œ ë¬¸ìì—´(ìˆ«ìí¬í•¨)ì„ ë§Œë“¤ì–´ì„œ ë°˜í™˜í•´ì£¼ëŠ” ê¸°ëŠ¥
+	public static String getRandomString() {//32±ÛÀÚÀÇ ·£´ıÇÑ ¹®ÀÚ¿­(¼ıÀÚÆ÷ÇÔ)À» ¸¸µé¾î¼­ ¹İÈ¯ÇØÁÖ´Â ±â´É
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
 }

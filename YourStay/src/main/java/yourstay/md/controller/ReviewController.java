@@ -23,7 +23,7 @@ public class ReviewController {
 	
 //	@GetMapping(value="/registerReview")
 //    public ModelAndView gohome(HttpSession session){
-//        log.info("MypageController -> gohome ÏöîÏ≤≠");
+//        log.info("MypageController -> gohome ø‰√ª");
 //        int vo = mapper.insertReview((reviewVO)session.getAttribute("memail"));
 //        ModelAndView mv = new ModelAndView("mypage/home","member",vo);
 //        return mv;
@@ -31,8 +31,8 @@ public class ReviewController {
 	
 	@PostMapping(value="/registerReview")
     public ModelAndView addreview(reviewVO reviewVo, MultipartHttpServletRequest mpRequest)throws Exception {
-       //ÏûëÏùÄÎØ∏ÏÖò: (Î©ÄÌã∞ÌååÌä∏ÏóÖÎ°úÎìú) Íµ¨ÌòÑ! 
-      log.info("MypageController -> addreview ÏöîÏ≤≠");
+       //¿€¿∫πÃº«: (∏÷∆º∆ƒ∆Ææ˜∑ŒµÂ) ±∏«ˆ! 
+      log.info("MypageController -> addreview ø‰√ª");
       log.info("MypageController -> addreview reviewVo: "+ reviewVo.getReview());
       service.write(reviewVo, mpRequest);
       ModelAndView mv = new ModelAndView();
@@ -41,7 +41,7 @@ public class ReviewController {
     }
 //		@GetMapping(value="/review")
 //	    public ModelAndView review(HttpSession session){
-//	        log.info("MypageController -> review ÏöîÏ≤≠");
+//	        log.info("MypageController -> review ø‰√ª");
 //	        reviewVO vo = reviewMapper.getUser((String)session.getAttribute("memail"));
 //	        ModelAndView mv = new ModelAndView("mypage/review","member",vo);
 //	        log.info("####vo:"+vo);

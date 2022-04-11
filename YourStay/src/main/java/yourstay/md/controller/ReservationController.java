@@ -24,20 +24,20 @@ public class ReservationController {
 	@Autowired
 	SearchMapper searchMapper;
 	/*
-	 * ìˆ™ì†Œìƒì„¸í˜ì´ì§€ì—ì„œ ì‚¬ìš©ì ì„ íƒê°’ì„ë“¤ ë„˜ê²¨ë°›ì•„ì•¼í•¨
+	 * ¼÷¼Ò»ó¼¼ÆäÀÌÁö¿¡¼­ »ç¿ëÀÚ ¼±ÅÃ°ªÀ»µé ³Ñ°Ü¹Ş¾Æ¾ßÇÔ
 	 */
 	@RequestMapping("/reservation.do")
 	public ModelAndView reservation(Reservation reserv) {
-		List<String> result = reservationDAO.addReservation(reserv); //result ë¦¬ìŠ¤íŠ¸ì˜ 0ë²ˆì§¸ ê°’ì´ trueì´ë©´ ì˜ˆì•½ê°€ëŠ¥ falseì´ë©´ ì˜ˆì•½ ë¶ˆê°€ëŠ¥
+		List<String> result = reservationDAO.addReservation(reserv); //result ¸®½ºÆ®ÀÇ 0¹øÂ° °ªÀÌ trueÀÌ¸é ¿¹¾à°¡´É falseÀÌ¸é ¿¹¾à ºÒ°¡´É
 		if(result.get(0)=="TRUE") {
-			//ì˜ˆì•½ê°€ëŠ¥
+			//¿¹¾à°¡´É
 		}else {
-			//ì˜ˆì•½ë¶ˆê°€
+			//¿¹¾àºÒ°¡
 		}
 		return null;
 	}
 	/*
-	 * ìˆ™ì†Œìƒì„¸ë‚´ì—­ í˜ì´ì§€ ì´ë™
+	 * ¼÷¼Ò»ó¼¼³»¿ª ÆäÀÌÁö ÀÌµ¿
 	 */
 	@PostMapping("/reservdetail")
 	public ModelAndView reserdetailPage(@RequestParam Integer aid, @RequestParam String rstart, @RequestParam String rend, @RequestParam long resultprice, @RequestParam long days) {
@@ -46,10 +46,10 @@ public class ReservationController {
 	      
 		List<resultVO> rlist = searchMapper.getAccommodationByAccommodationId(aid);
 		resultVO rVO = rlist.get(0);
-		rVO.setRstart(rstart);//ì‚¬ìš©ìì„ íƒ ì‹œì‘ë‚ ì§œ ì ìš©
-		rVO.setRend(rend);//ì‚¬ìš©ìì„ íƒ ëë‚ ì§œ ì ìš©
-		rVO.setDays(days);//ìˆ™ë°•ì¼ìˆ˜ ì ìš©
-		rVO.setResultprice(resultprice); //ìµœì¢… ê¸ˆì•¡ ì ìš©
+		rVO.setRstart(rstart);//»ç¿ëÀÚ¼±ÅÃ ½ÃÀÛ³¯Â¥ Àû¿ë
+		rVO.setRend(rend);//»ç¿ëÀÚ¼±ÅÃ ³¡³¯Â¥ Àû¿ë
+		rVO.setDays(days);//¼÷¹ÚÀÏ¼ö Àû¿ë
+		rVO.setResultprice(resultprice); //ÃÖÁ¾ ±İ¾× Àû¿ë
 		rVO.setAid(aid);
 		
 		

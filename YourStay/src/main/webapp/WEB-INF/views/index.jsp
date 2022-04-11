@@ -122,7 +122,7 @@
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center" style="padding-right: 10px; padding-top: 14px;">
                <a class="link-secondary" href="#" aria-label="Search"> 
-				<i class='fa fa-bell' ></i>
+				<i class='fa fa-bell' style="margin-right: 30px;"></i>
                      <title>Search</title><circle cx="10.5" cy="10.5"
                         r="7.5" />
                      <path d="M21 21l-5.2-5.2" /></svg>
@@ -337,7 +337,7 @@
                class="nav-link px-2 text-muted">Features</a></li>
             <li class="nav-item"><a href="#"
                class="nav-link px-2 text-muted">Pricing</a></li>
-            <li class="nav-item"><a href="#"
+            <li class="nav-item"><a href="/board/list"
                class="nav-link px-2 text-muted">FAQs</a></li>
             <li class="nav-item"><a href="#"
                class="nav-link px-2 text-muted">About</a></li>

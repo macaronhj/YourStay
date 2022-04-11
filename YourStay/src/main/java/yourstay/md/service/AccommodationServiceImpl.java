@@ -26,7 +26,7 @@ public class AccommodationServiceImpl implements AccommodationService {
    private RoomFileUtils roomfileUtils;
    
    /*
-    * ìˆ™ì†Œ í…Œì´ë¸”ì— ë“±ë¡
+    * ¼÷¼Ò Å×ÀÌºí¿¡ µî·Ï
     */
    @Override
    public void insertAccommodationS(roomRegisterVO roomregisterVo, MultipartHttpServletRequest mpRequest) throws Exception {
@@ -45,7 +45,7 @@ public class AccommodationServiceImpl implements AccommodationService {
    }
    
    /*
-    * ë“±ë¡í•˜ëŠ” íšŒì›ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°
+    * µî·ÏÇÏ´Â È¸¿ø¹øÈ£ °¡Á®¿À±â
     */
    @Override
    public MemberVO getRegisterMemberSeqS(long mseq) {
@@ -78,7 +78,7 @@ public void requestDelete(long aid){
 }
 
 /*
- * ìˆ™ì†Œ ì´ë¯¸ì§€ ê°€ì ¸ì˜¤ê¸°
+ * ¼÷¼Ò ÀÌ¹ÌÁö °¡Á®¿À±â
  */
 @Override
 public List<Image> selectRoomImageS(long aid) {

@@ -55,7 +55,7 @@ public class MypageController {
 	
 	@GetMapping(value="/home")
     public ModelAndView gohome(HttpSession session){
-        log.info("MypageController -> gohome ÏöîÏ≤≠");
+        log.info("MypageController -> gohome ø‰√ª");
         MemberVO vo = memberMapper.getUser((String)session.getAttribute("memail"));
         ModelAndView mv = new ModelAndView("mypage/home","member",vo);
         return mv;
@@ -63,7 +63,7 @@ public class MypageController {
 	@PostMapping(value = "/register.do")
 	   public ModelAndView roomRegister(ModelAndView mv, roomRegisterVO roomregisterVo,
 	         MultipartHttpServletRequest mpRequest) throws Exception {
-	      log.info("roomOption Data -> info Ï†ÑÎã¨");
+	      log.info("roomOption Data -> info ¿¸¥ﬁ");
 	      log.info("mpRequest : " +  mpRequest);
 	      accommodationService.insertAccommodationS(roomregisterVo, mpRequest);
 	      log.info("roomregisterVo: " + roomregisterVo);
@@ -79,7 +79,7 @@ public class MypageController {
 	
 	@GetMapping(value = "/wishlist/{mseq}")
 	public String wishlist(@PathVariable("mseq") long mseq, Model model) {
-		log.info("MypageController -> wishlist ÏöîÏ≤≠");
+		log.info("MypageController -> wishlist ø‰√ª");
 		Map<String, List> wishMap = myPageService.getWishS(mseq);
 
 		model.addAttribute("wishMap", wishMap);
@@ -88,7 +88,7 @@ public class MypageController {
 	}
 	@GetMapping(value="/roomHistory")
     public ModelAndView roomHistory(long mseq){
-        log.info("MypageController -> roomHistory ÏöîÏ≤≠");
+        log.info("MypageController -> roomHistory ø‰√ª");
         List<Reservation> vo = roomService.getRoomList(mseq);
         ModelAndView mv = new ModelAndView("mypage/roomHistory","vo",vo);
         log.info("####vo:"+vo.toString());
@@ -102,7 +102,7 @@ public class MypageController {
         List<reviewVO> vo = reviewMapper.getUser((String) session.getAttribute("memail"));
         log.info("####vo:"+vo);
         reviewVO reviewvo = vo.get(0);
-        reviewvo.setAid(aid); //Ïú†Ï†ÄÍ∞Ä ÏÑ†ÌÉùÌïú ÏàôÏÜåÎ≤àÌò∏ ÏûÖÎ†•
+        reviewvo.setAid(aid); //¿Ø¿˙∞° º±≈√«— º˜º“π¯»£ ¿‘∑¬
         ModelAndView mv = new ModelAndView("mypage/review","member",reviewvo);
         
         return mv;
@@ -110,7 +110,7 @@ public class MypageController {
    
    @GetMapping(value="/roomReservation")
    public ModelAndView roomReservation(long mseq){
-       log.info("MypageController -> roomReservation ÏöîÏ≤≠");
+       log.info("MypageController -> roomReservation ø‰√ª");
        List<Reservation> vo = roomService.getRoomList(mseq);
        ModelAndView mv = new ModelAndView("mypage/roomReservation","vo",vo);
        log.info("####vo:"+vo.toString());
@@ -149,7 +149,7 @@ public class MypageController {
 	@PostMapping(value = "/modifyRoom")
     public ModelAndView modifyRoom(ModelAndView mv, roomRegisterVO roomregisterVo,
       MultipartHttpServletRequest mpRequest) throws Exception {
-      log.info("#modifyRoom Îì§Ïñ¥Ïò¥");
+      log.info("#modifyRoom µÈæÓø»");
       log.info("#roomregisterVo aid: "+roomregisterVo.getAid());
       accommodationService.updateAccommodationS(roomregisterVo, mpRequest);
       log.info("roomregisterVo: " + roomregisterVo);
@@ -159,7 +159,7 @@ public class MypageController {
     @PostMapping(value = "/delete")
     public ModelAndView requestDelete(ModelAndView mv, Long aid){
     	log.info("[MypageController -> aid]: "+aid);
-        log.info("[MypageController -> requestDelete Î¶¨Ïä§Ìä∏ ÏÇ≠Ï†ú ÏöîÏ≤≠Ìï®]");
+        log.info("[MypageController -> requestDelete ∏ÆΩ∫∆Æ ªË¡¶ ø‰√ª«‘]");
         accommodationService.requestDelete(aid);
         mv.setViewName("redirect:/mypage/home");
         return mv;

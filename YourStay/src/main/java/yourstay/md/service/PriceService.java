@@ -4,11 +4,11 @@ import yourstay.md.domain.resultVO;
 
 public interface PriceService {
 	/*
-	 * ìˆ™ë°•ì¼ìˆ˜ ê³„ì‚°
+	 * ¼÷¹ÚÀÏ¼ö °è»ê
 	 */
 	public long daysCalc(String rstart, String rend);
 	/*
-	 * ìˆ™ë°•ì¼ìˆ˜ì— ë”°ë¥¸ ìµœì¢… ê¸ˆì•¡ ê³„ì‚°
+	 * ¼÷¹ÚÀÏ¼ö¿¡ µû¸¥ ÃÖÁ¾ ±İ¾× °è»ê
 	 */
 	public long resultPrice(resultVO resVO, long diffDays);
 }

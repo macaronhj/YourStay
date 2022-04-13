@@ -29,17 +29,17 @@ public class MemberMapperImpl implements MemberMapper {
 
 	@Override
 	public List<MemberVO> getUserList() {
-		return session.selectList("yourstay.md.mapper.MemberMapper.getUsers");
+		return session.selectList("yourstay.md.mapper.MemberMapper.getUserList");
 	}
 
 	@Override
 	public int addUser(MemberVO user) {
-		return session.insert("yourstay.md.mapper.MemberMapper.insertUser", user);
+		return session.insert("yourstay.md.mapper.MemberMapper.addUser", user);
 	}
 
 	@Override
 	public int removeUser(String memail) {
-		return session.delete("yourstay.md.mapper.MemberMapper.deleteUser", memail);
+		return session.delete("yourstay.md.mapper.MemberMapper.removeUser", memail);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class MemberMapperImpl implements MemberMapper {
 		parameters.put("memail", memail);
 		parameters.put("mpwd", mpwd);
 		
-		MemberVO result = session.selectOne("yourstay.md.mapper.MemberMapper.loginUser", parameters);
+		MemberVO result = session.selectOne("yourstay.md.mapper.MemberMapper.login", parameters);
 		if(result == null) {
 			return NO_ID;
 		}else {

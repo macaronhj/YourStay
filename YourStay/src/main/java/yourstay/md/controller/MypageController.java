@@ -40,8 +40,6 @@ import yourstay.md.service.RoomHistoryService;
 @RequestMapping("/mypage")
 public class MypageController {
 	@Autowired
-	private AccommodationService accommodationService;
-	@Autowired
 	private MemberMapper memberMapper;
 	@Autowired
 	private MyPageService myPageService;

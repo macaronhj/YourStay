@@ -30,6 +30,9 @@ public class LoginRestController {
 	@Autowired
 	MemberMapper mapper;
 	
+//	@Autowired
+//	MemberService memberService;
+	
 	@Autowired
 	SearchMapper searchMapper;
 	

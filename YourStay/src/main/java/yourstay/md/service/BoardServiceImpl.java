@@ -23,8 +23,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public BoardListResult getBoardListResult(int cp, int ps) {
-		long totalCount = boardMapper.selectCount();//?–‰?˜ ê°??ˆ˜ (21)
-		BoardVO boardVo = new BoardVO(cp, ps);//cp, psê°? ë°›ì•„?˜¨ ê°’ìœ¼ë¡? ?„¸?Œ…
+		long totalCount = boardMapper.selectCount();
+		BoardVO boardVo = new BoardVO(cp, ps);
 		List<Board> list = boardMapper.selectPerPage(boardVo);
 		
 		return new BoardListResult(cp, totalCount, ps, list);

@@ -17,15 +17,13 @@ public class MyPageServiceImpl implements MyPageService {
 	@Autowired
 	MyPageMapper myPageMapper;
 
-	@Autowired
-	SqlSession session;
-
 	/*
 	 * È¸¿øÀÇ ÂòÁ¤º¸»Ì±â
 	 */
 	@Override
 	public List<WishListVO> getWishAidS(long mseq) {
-		return session.selectList("yourstay.md.mapper.MyPageMapper.getWishAid", mseq);
+		List<WishListVO> vo = myPageMapper.getWishAid(mseq);
+		return vo;
 	}
 
 	/*
@@ -33,7 +31,8 @@ public class MyPageServiceImpl implements MyPageService {
 	 */
 	@Override
 	public List<Accommodation> getWishListS(List<WishListVO> wishlist) {
-		return session.selectList("yourstay.md.mapper.MyPageMapper.getWishList", wishlist);
+		List<Accommodation> vo = myPageMapper.getWishList(wishlist);
+		return vo;
 	}
 
 	@Override

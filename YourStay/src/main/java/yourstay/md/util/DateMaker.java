@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-//시작 날짜 끝날짜를 받아서 DATE형식으로 변환 후 사이에있는 날짜들을 구해줌
 public class DateMaker {
 	public static List<String> getDateList(String inputStartDate, String inputEndDate)
 	{

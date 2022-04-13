@@ -21,6 +21,7 @@ import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.mapper.MemberMapper;
 import yourstay.md.mapper.SearchMapper;
+import yourstay.md.service.MemberService;
 
 @Log4j
 @AllArgsConstructor
@@ -30,8 +31,8 @@ public class LoginRestController {
 	@Autowired
 	MemberMapper mapper;
 	
-//	@Autowired
-//	MemberService memberService;
+	@Autowired
+	MemberService memberService;
 	
 	@Autowired
 	SearchMapper searchMapper;
@@ -44,7 +45,7 @@ public class LoginRestController {
 		ModelAndView mv = new ModelAndView();
 		//유효성 검사(클라이언트측 View:js, 서버측 Controller:java)
 		log.info("loginCon check //email: "+memail+", pwd: "+mpwd);
-		int result = mapper.login(memail, mpwd);
+		int result = memberService.login(memail, mpwd);
 		log.info("로그인 결과(3>성공) : " + result);		
 		
 		if(result == YES_ID_PWD) { //로그인 성공시

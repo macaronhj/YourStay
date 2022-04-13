@@ -19,6 +19,7 @@ import yourstay.md.domain.reviewVO;
 import yourstay.md.mapper.SearchMapper;
 import yourstay.md.service.AccommodationService;
 import yourstay.md.service.PriceService;
+import yourstay.md.service.SearchService;
 
 @Log4j
 @Controller
@@ -27,7 +28,7 @@ public class RouteController {
 	PriceService priceService;
 
 	@Autowired
-	SearchMapper mapper;
+	SearchService searchService;
 	
 	@Autowired
 	AccommodationService accommodationService;
@@ -39,7 +40,7 @@ public class RouteController {
 		System.out.println(aloc + " " + startdate + " " + deadline + " " + person);
 		int p = Integer.parseInt(person);
 
-		List<Accommodation> acvo = mapper.getAccommodationListBySearchBar(aloc, startdate, deadline, p);
+		List<Accommodation> acvo = searchService.getAccommodationListBySearchBar(aloc, startdate, deadline, p);
 		log.info(acvo.size());
 		log.info(acvo.toString());
 		return acvo;
@@ -50,7 +51,7 @@ public class RouteController {
 			@RequestParam String deadline, @RequestParam String person) {
 		log.info(aloc + " " + startdate + " " + deadline + " " + person);
 		int p = Integer.parseInt(person);
-		List<Accommodation> acvo = mapper.getAccommodationListBySearchBar(aloc, startdate, deadline, p);
+		List<Accommodation> acvo = searchService.getAccommodationListBySearchBar(aloc, startdate, deadline, p);
 		log.info("List<Accommodation> acvo size : "+ acvo.size());
 		for(Accommodation ac:acvo) {//숙소리스트 이미지	
 			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
@@ -82,8 +83,8 @@ public class RouteController {
 		String ipath1 = roomImage.get(0).getStored_file_name();
 		String ipath2 = roomImage.get(1).getStored_file_name();
 		String ipath3 = roomImage.get(2).getStored_file_name();
-		List<resultVO> reslist = mapper.getAccommodationByAccommodationId(aid);
-		List<reviewVO>  reviewlist = mapper.getReviewByAccommodationId(aid);
+		List<resultVO> reslist = searchService.getAccommodationByAccommodationId(aid);
+		List<reviewVO>  reviewlist = searchService.getReviewByAccommodationId(aid);
 		log.info("RouteCon searchDetail ipath1 : "+ ipath1);
 		log.info("RouteCon searchDetail roomImage : "+ roomImage);
 		log.info("RouteCon searchDetail reviewlist : "+ reviewlist);

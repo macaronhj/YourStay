@@ -43,8 +43,8 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.update(board);
 	}
 	@Override
-	public void remove(long seq) {
-		boardMapper.delete(seq);
+	public void remove(long boardnum) {
+		boardMapper.delete(boardnum);
 	}
 	@Override
 	public Board selectBySeq2S(long seq) {

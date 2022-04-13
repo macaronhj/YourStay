@@ -105,36 +105,48 @@
             </div>
          </div>
       </header>
-<form method="post" action="delete">
-<input type="hidden" value="${board.boardnum}" name="boardnum">
-<div style="padding: 0px 65px 0;">
+<form method="post" action="/board/write">
+<div style="padding: 0px 65px 0;">	
     <div class="table-responsive">
       <table class="table text-center" style="margin-top: 3%;">
+		
         <tbody>
           <tr>
             <th scope="row" class="text-center">서비스 분류</th>
-            <td>${board.category}</td>
+            <td>
+	           	<select id="personnel" name="category" style="margin-right: 82%;">
+                    <option value="숙소 예약">숙소 예약</option>
+                    <option value="체크아웃">체크아웃</option>
+                    <option value="체크인">체크인</option>
+                    <option value="숙소 등록">숙소 등록</option>
+                    <option value="환불 관련">환불 관련</option>
+                 </select>
+            </td>
           </tr>
           <tr>
             <th scope="row" class="text-center">제목</th>
-            <td>${board.subject}</td>
+            <td>
+            	<input class="form-control me-2" type="text" name="subject"
+                 size="60" placeholder="subject">
+            </td>
           </tr>
-          <th scope="row" class="text-center">내용</th>
-            <td>${board.content}</td>
+          <tr>
+            <th scope="row" class="text-center">내용</th>
+            <td>
+            	<textarea class="form-control me-2" type="text" name="content"
+                 placeholder="content" rows="10">
+                 </textarea>
+            </td>
           </tr>
 	</tbody>
 	</table>
-	<h4 style="margin-left: 88%;">작성 날짜: ${board.rdate}</h4>
+	
 	<hr width='600' size='2' color='gray' noshade>
 	<div class="pull-right" style="width:100px;margin:10px 0;">
-      <a href="/board/list" class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">
+	<button class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">
+             글 등록</button>
+	<a href="/board/list" class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;margin-top: 10%;">
             목록 보러 가기</a>
-     <c:if test="${memail=='admin'}">
-      <a href="/board/modify?boardnum=${board.boardnum}" class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;margin-top: 10%;">
-           글 수정하기</a>
-      <button type="submit"class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;margin-top: 10%;">
-           글 삭제하기</button>
-     </c:if>
         </div>
 	<hr width='600' size='2' color='gray' noshade>
 	</div>

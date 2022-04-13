@@ -114,10 +114,12 @@
 			   <td colspan="5">데이터가 하나도 없음</td>
 			</tr>
 		</c:if>
+		<c:if test="${memail=='admin'}">
         <div class="pull-right" style="width:100px;margin:10px 0;">
-            <a href="/board" class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">
+            <a href="/board/write" class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">
             등록</a>
         </div>
+        </c:if>
         <br/><br/><br/>
 
         <div id="mainHide">
@@ -126,14 +128,14 @@
                 <tr>
                     <th class="col-md-1">글번호</th>
                     <th class="col-md-2">서비스분류</th>
-                    <th class="col-md-5">제목</th>
+                    <th class="col-md-4">제목</th>
                     <th class="col-md-2">작성날짜</th>
                 </tr>
                 <tr>
                 <c:forEach items="${listResult.list}" var="board">
                     <td>${board.boardnum}</td>
                     <td>${board.category}</td>
-                    <td><a href="content.do?boardnum=${board.boardnum}">
+                    <td><a href="content?boardnum=${board.boardnum}">
 					    ${board.subject}
 					  </a></td>
                     <td>${board.rdate}</td>

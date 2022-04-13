@@ -29,7 +29,6 @@ public class SearchServiceImpl implements SearchService {
 	@Override
 	public List<Accommodation> getAccommodationListBySearchBar(String aloc, String startdate, String deadline,
 			int apeople) {
-		log.error("##############SearchMapperImpl  getAccommodationListBySearchBar aid : "+ startdate);
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("aloc", aloc);
 		parameters.put("startdate", startdate);

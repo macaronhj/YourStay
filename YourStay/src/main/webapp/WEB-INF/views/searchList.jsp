@@ -299,10 +299,10 @@ div.list-font {
       </div>
    </c:forEach>
    </div>
-   <div class="map-area" style="    bottom: -58% !important;
+   <div class="map-area" style="bottom: -15% !important;
     position: absolute !important;
     left: 53% !important;">
-      <div id="map" style="width: 600px; height: 530px;"></div>
+      <div id="map" style="width: 600px; height: 500px;"></div>
       <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b87f2182c111fec7ca0b3a2aaede2356&libraries=services,clusterer,drawing">
 </script>
 <script>
@@ -382,7 +382,7 @@ div.list-font {
 
    <!-- 푸터 -->
    <div class="container">
-      <footer class="py-3 my-4">
+      <footer class="py-3 my-4" style="margin-top: 10%!important;">
          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="#"
                class="nav-link px-2 text-muted">Home</a></li>

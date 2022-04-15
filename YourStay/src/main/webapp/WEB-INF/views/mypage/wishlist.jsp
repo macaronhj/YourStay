@@ -66,15 +66,12 @@
     </div>
   </header>
 
-<main>
   <div class="album py-5 bg-light">
     <div class="container">
-    
+   	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
     <c:set value="${wishMap.wishlist}" var="wishlist"/>
 	<c:set value="${wishMap.accommoList}" var="accommolist"/>
-
 	<c:forEach items="${accommolist}" var="vo" varStatus="status">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
@@ -84,20 +81,17 @@
               <p class="card-text">숙소 이름: ${vo.aname}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
+                  <a href="../../roomDetailInfo?aid=${vo.aid}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">View</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </c:forEach>
-        
-        
+        </c:forEach>
+        </div>       
       </div>
     </div>
-  </div>
 
-</main>
 
 <!-- 푸터 -->
    <div class="container">

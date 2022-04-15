@@ -33,13 +33,25 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void addUser(MemberVO user) {
-		memberMapper.addUser(user);
+	public int updateUser(MemberVO member) {
+		int result = memberMapper.updateUser(member); 
+		if(result>0) {
+			log.info("## Service UpdateUser 성공!!");
+		}else {
+			log.info("## Service UpdateUser 실패!!");
+		}
+		return result;
 	}
 
 	@Override
-	public void removeUser(String memail) {
-		memberMapper.removeUser(memail);
+	public int removeUser(String memail) {
+		int result = memberMapper.removeUser(memail);
+		if(result>0) {
+			log.info("## Service removeUser 성공!!");
+		}else {
+			log.info("## Service removeUser 실패!!");
+		}
+		return result;
 	}
 
 	@Override

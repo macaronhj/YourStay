@@ -15,9 +15,12 @@
 		insert into member values(member_seq.nextval, #{mname}, #{memail}, #{mpwd},
 		#{mcallnum}, 0)
 	</insert>
-	<delete id="removeUser">
+	<delete id="deleteUser">
 		delete from member where memail=#{memail}
 	</delete>
+	<update id="updateUser" parameterType="yourstay.md.domain.MemberVO">
+		update member set mpwd=#{mpwd}, mcallnum=#{mcallnum} where mseq=#{mseq}
+	</update>
 	<select id="login" parameterType="yourstay.md.domain.MemberVO"
 		resultType="yourstay.md.domain.MemberVO">
 		select * from member where memail=#{memail}

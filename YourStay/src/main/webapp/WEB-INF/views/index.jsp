@@ -232,45 +232,45 @@
    <div class="row mb-2">
       <div class="col-md-6">
          <div class="card" style="width: 18rem;">
-           <img class="card-img-top" src="../images/river.jpg"
+           <img class="card-img-top" src="../images/가평.jpg"
                   alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">${vo[0].aloc}</h5>
+                <p class="card-text">가평에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
+                <a href="/searchByLocation?aloc=${vo[0].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Go somewhere</a>
               </div>
          </div>
       </div>
       <div class="col-md-6">
          <div class="card" style="width: 18rem;">
-           <img class="card-img-top" src="../images/river.jpg"
+           <img class="card-img-top" src="../images/제주도.jpg"
                   alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">${vo[4].aloc}</h5>
+                <p class="card-text">제주도에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
+                <a href="/searchByLocation?aloc=${vo[4].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Go somewhere</a>
               </div>
          </div>
       </div>
       <div class="col-md-6">
          <div class="card" style="width: 18rem;">
-           <img class="card-img-top" src="../images/river.jpg"
+           <img class="card-img-top" src="../images/전주.jpg"
                   alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">${vo[2].aloc}</h5>
+                <p class="card-text">여주에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
+                <a href="/searchByLocation?aloc=${vo[2].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Go somewhere</a>
               </div>
          </div>
       </div>
       <div class="col-md-6">
          <div class="card" style="width: 18rem;">
-           <img class="card-img-top" src="../images/river.jpg"
+           <img class="card-img-top" src="../images/강원도.jpg"
                   alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">${vo[8].aloc}</h5>
+                <p class="card-text">강원도에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
+                <a href="/searchByLocation?aloc=${vo[8].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Go somewhere</a>
               </div>
          </div>
       </div>
@@ -331,12 +331,10 @@
    <div class="container">
       <footer class="py-3 my-4">
          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#"
+            <li class="nav-item"><a href="/"
                class="nav-link px-2 text-muted">Home</a></li>
-            <li class="nav-item"><a href="#"
-               class="nav-link px-2 text-muted">Features</a></li>
-            <li class="nav-item"><a href="#"
-               class="nav-link px-2 text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="/mypage/home"
+               class="nav-link px-2 text-muted">MyPage</a></li>
             <li class="nav-item"><a href="/board/list"
                class="nav-link px-2 text-muted">FAQs</a></li>
             <li class="nav-item"><a href="#"

@@ -10,7 +10,8 @@ public interface MemberMapper {
 	public MemberVO getUser(String memail);
 	public List<MemberVO> getUserList();
 	public void addUser(MemberVO user);
-	public void removeUser(String memail);
+	public int updateUser(MemberVO member);
+	public int removeUser(String memail);
 	
 	// Functional Methods
 	public MemberVO login(Map<String, String> parameters);

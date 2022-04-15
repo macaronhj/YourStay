@@ -25,4 +25,6 @@ public interface SearchMapper {
 //
 //		public List<AccommodationVO> getAccommodationByHostId(String host_id);
 //		public int checkLastAccomodationId();
+		public List<Accommodation> getAccommodationByLoc();
+		public List<Accommodation> getAccommodationListByLocation(String aloc);
 }

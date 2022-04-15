@@ -46,4 +46,16 @@ public class SearchServiceImpl implements SearchService {
 		return vo;
 	}
 
+	@Override
+	public List<Accommodation> getAccommodationByLoc() {
+		List<Accommodation> vo = searchMapper.getAccommodationByLoc();
+		return vo;
+	}
+
+	@Override
+	public List<Accommodation> getAccommodationListByLocation(String aloc) {
+		List<Accommodation> vo = searchMapper.getAccommodationListByLocation(aloc);
+		return vo;
+	}
+
 }

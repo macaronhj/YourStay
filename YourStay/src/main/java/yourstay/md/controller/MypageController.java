@@ -30,6 +30,7 @@ import yourstay.md.mapper.MemberMapper;
 import yourstay.md.mapper.ReviewMapper;
 import yourstay.md.service.AccommodationService;
 import yourstay.md.service.FileService;
+import yourstay.md.service.MemberService;
 import yourstay.md.service.MyPageService;
 import yourstay.md.service.MyRoomService;
 import yourstay.md.service.RoomHistoryService;
@@ -49,6 +50,8 @@ public class MypageController {
 	private RoomHistoryService roomService;
 	@Autowired
 	private MyRoomService myRoomService;
+	@Autowired
+	private MemberService memberService;
 	
 	
 	@GetMapping(value="/home")
@@ -127,4 +130,21 @@ public class MypageController {
 	   
        return mv;
    }
+   @GetMapping("updateUser")
+	public ModelAndView findMember(ModelAndView mv, String memail) {
+		log.info("updateUser -> updateUser 페이지 이동 ");
+		log.info("memail: "+ memail);
+		MemberVO findMember = memberService.getUser(memail);
+		log.info("mcallnum : " + findMember.getMcallnum());
+		mv.addObject("findMember", findMember);
+		mv.setViewName("/mypage/updatePage");
+		return mv;
+	}
+   @GetMapping("removeUser")
+	public ModelAndView findRemoveUser(ModelAndView mv, String memail) {
+		MemberVO findMember = memberService.getUser(memail);
+		mv.addObject("findMember", findMember);
+		mv.setViewName("/mypage/removePage");
+		return mv;
+	}
 }

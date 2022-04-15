@@ -81,6 +81,29 @@
          return date;
       }
    });
+      $(function(){//
+	      $(".wish").on("click", function(){
+	         $.ajax({ 
+	            url: "/mypage/wishlist/addwish",
+	            type: "POST",
+	            /* cache: "false", */
+	            data: {aid : $("#aid").val(), mseq : $("#mseq").val()},
+	            success: function(data){
+	            	if(data.trim()=='deleteWishList'){
+	            		alert("찜 취소 되었습니다.");
+	            		$('.wish').css({"color": "black"});
+	            	}else{
+	            		$('.wish').css({"color": "pink"});
+	            		alert("찜 등록 되었습니다.");
+	            	}
+	            },
+	            error : function (data) {
+	                alert('죄송!');
+	                return false;
+	            }  
+	         });
+	      });
+	   });
 </script>
 
 
@@ -331,7 +354,7 @@ body, h1, h2, h3 {
          <div class="col-md-8">
             <article class="blog-post">
                <h2 class="blog-post-title">${resVO.mname}님이
-                  운영하는 숙소입니다 <button class='fas fa-hand-holding-heart like' type="submit"></button>
+                  운영하는 숙소입니다 <i class='fas fa-hand-holding-heart wish'></i>
                </h2>
                <p class="blog-post-meta">
                   방 갯수: ${resVO.rnum}<br />화장실 갯수: ${resVO.tnum}<br />침대 갯수:
@@ -1537,7 +1560,8 @@ body, h1, h2, h3 {
                               onchange="daysPriceCalc()" type="text" id="to" name="rend"
                               value="${resVO.rend}">
                            <!-- 히든 value -->
-                           <input type="hidden" value="${resVO.aid}" name="aid">
+                           <input type="hidden" value="${resVO.aid}" name="aid" id="aid">
+                           <input type="hidden" value="${loginOkUser.mseq}" name="mseq" id="mseq">
                            <div class="products">
                               <h3 class="title">금액</h3>
                               <div class="item">

@@ -73,6 +73,25 @@ public class RouteController {
 
 		return mv;
 	}
+	@GetMapping(value = "searchByLocation")
+	public ModelAndView searchByLocation(String aloc) {
+		List<Accommodation> acvo = searchService.getAccommodationListByLocation(aloc);
+		log.info("List<Accommodation> acvo size : "+ acvo.size());
+		for(Accommodation ac:acvo) {//숙소리스트 이미지	
+			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
+			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
+			log.info("searchGetFromMain ///roomImage: " + roomImage);
+			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
+			ac.setIpath1(roomImage.get(0).getStored_file_name());
+		}	
+//		log.info("acvo 3번째 : "+acvo.get(3).getIpath1());
+		log.info(acvo.toString());
+		ModelAndView mv = new ModelAndView("searchList", "acvo", acvo);
+		mv.setViewName("searchList");
+		mv.addObject("acvo", acvo);
+
+		return mv;
+	}
 
 	@GetMapping(value = "roomDetailInfo")
 	public ModelAndView searchDetail(@RequestParam long aid, @RequestParam String rstart,

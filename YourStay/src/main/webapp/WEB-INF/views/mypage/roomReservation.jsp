@@ -74,8 +74,8 @@
       <input type="hidden" name="mseq" value="${vo.mseq}">
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
-            <image class="cover" href="/resources/images/reservation30.jpg"/>
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="0" xmlns="http://www.w3.org/2000/svg" >
+            <img class="cover" src="../../../resources/images/roomImg/${vo.aid}/${vo.ipath1}"/>
             </svg>
             <div class="card-body">
               <p class="card-text">숙소 위치: ${vo.aloc}<br/>숙소 이름: ${vo.aname}<br/>숙소기간: ${vo.rstart} ~ ${vo.rend}</p>
@@ -97,15 +97,13 @@
    <div class="container">
       <footer class="py-3 my-4">
          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#"
+            <li class="nav-item"><a href="/"
                class="nav-link px-2 text-muted">Home</a></li>
-            <li class="nav-item"><a href="#"
-               class="nav-link px-2 text-muted">Features</a></li>
-            <li class="nav-item"><a href="#"
-               class="nav-link px-2 text-muted">Pricing</a></li>
-            <li class="nav-item"><a href="#"
+            <li class="nav-item"><a href="/mypage/home"
+               class="nav-link px-2 text-muted">MyPage</a></li>
+            <li class="nav-item"><a href="/board/list"
                class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="#"
+            <li class="nav-item"><a href="/Projectreview"
                class="nav-link px-2 text-muted">About</a></li>
          </ul>
          <p class="text-center text-muted">© 2021 Company, Inc</p>

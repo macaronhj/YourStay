@@ -215,13 +215,6 @@
       </form>
       </div>
       <div background-repeat:no-repeat; width: 100%;"></div>
-   <!--   <div class=" mb-4 text-white flower-bg">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic"></h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
-    </div>
-  </div> -->
    <div class="image-box slider">
       <div class="img-w">
          <p class="img-w-p">설레는 다음 여행을 위한 아이디어</p>
@@ -237,7 +230,7 @@
               <div class="card-body">
                 <h5 class="card-title">${vo[0].aloc}</h5>
                 <p class="card-text">가평에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
-                <a href="/searchByLocation?aloc=${vo[0].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Go somewhere</a>
+                <a href="/searchByLocation?aloc=${vo[0].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Button</a>
               </div>
          </div>
       </div>
@@ -248,7 +241,7 @@
               <div class="card-body">
                 <h5 class="card-title">${vo[4].aloc}</h5>
                 <p class="card-text">제주도에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
-                <a href="/searchByLocation?aloc=${vo[4].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Go somewhere</a>
+                <a href="/searchByLocation?aloc=${vo[4].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Button</a>
               </div>
          </div>
       </div>
@@ -259,7 +252,7 @@
               <div class="card-body">
                 <h5 class="card-title">${vo[2].aloc}</h5>
                 <p class="card-text">여주에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
-                <a href="/searchByLocation?aloc=${vo[2].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Go somewhere</a>
+                <a href="/searchByLocation?aloc=${vo[2].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Button</a>
               </div>
          </div>
       </div>
@@ -270,62 +263,11 @@
               <div class="card-body">
                 <h5 class="card-title">${vo[8].aloc}</h5>
                 <p class="card-text">강원도에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
-                <a href="/searchByLocation?aloc=${vo[8].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Go somewhere</a>
+                <a href="/searchByLocation?aloc=${vo[8].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Button</a>
               </div>
          </div>
       </div>
    </div>
-   <!-- 슬라이드 -->
-      <div id="carouselExampleCaptions" class="carousel slide"
-         data-bs-ride="carousel">
-         <div class="carousel-indicators">
-            <button type="button"
-               data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-               class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button"
-               data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-               aria-label="Slide 2"></button>
-            <button type="button"
-               data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-               aria-label="Slide 3"></button>
-         </div>
-         <div class="carousel-inner">
-            <div class="carousel-item active"
-               style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-               <div class="carousel-caption">
-                  <h5>First slide label</h5>
-                  <p>Some representative placeholder content for the first
-                     slide.</p>
-               </div>
-            </div>
-            <div class="carousel-item"
-               style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-               <div class="carousel-caption">
-                  <h5>Second slide label</h5>
-                  <p>Some representative placeholder content for the second
-                     slide.</p>
-               </div>
-            </div>
-            <div class="carousel-item"
-               style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-               <div class="carousel-caption">
-                  <h5>Third slide label</h5>
-                  <p>Some representative placeholder content for the third
-                     slide.</p>
-               </div>
-            </div>
-         </div>
-         <button class="carousel-control-prev" type="button"
-            data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-         </button>
-         <button class="carousel-control-next" type="button"
-            data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-         </button>
-      </div>
    </main>
    <!-- 푸터 -->
    <div class="container">
@@ -337,7 +279,7 @@
                class="nav-link px-2 text-muted">MyPage</a></li>
             <li class="nav-item"><a href="/board/list"
                class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="#"
+            <li class="nav-item"><a href="/Projectreview"
                class="nav-link px-2 text-muted">About</a></li>
          </ul>
          <p class="text-center text-muted">© 2021 Company, Inc</p>

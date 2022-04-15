@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import yourstay.md.domain.Image;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.domain.Reservation;
 import yourstay.md.domain.WishListVO;
@@ -52,6 +53,8 @@ public class MypageController {
 	private MyRoomService myRoomService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private AccommodationService accommodationService;
 	
 	
 	@GetMapping(value="/home")
@@ -73,12 +76,9 @@ public class MypageController {
 	}
 	@GetMapping(value="/roomHistory")
     public ModelAndView roomHistory(long mseq){
-        log.info("MypageController -> roomHistory 요청");
         List<Reservation> vo = roomService.getRoomList(mseq);
-        ModelAndView mv = new ModelAndView("mypage/roomHistory","vo",vo);
         log.info("####vo:"+vo.toString());
-       
-        
+    	ModelAndView mv = new ModelAndView("mypage/roomHistory","vo",vo);
         return mv;
     }
    @GetMapping(value="/review")
@@ -97,8 +97,14 @@ public class MypageController {
    public ModelAndView roomReservation(long mseq){
        log.info("MypageController -> roomReservation 요청");
        List<Reservation> vo = roomService.getRoomList(mseq);
-       ModelAndView mv = new ModelAndView("mypage/roomReservation","vo",vo);
-       log.info("####vo:"+vo.toString());
+       for(Reservation ac: vo) {
+			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
+			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
+			log.info("searchGetFromMain ///roomImage: " + roomImage);
+			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
+			ac.setIpath1(roomImage.get(0).getStored_file_name());
+		}
+	   ModelAndView mv = new ModelAndView("mypage/roomReservation","vo",vo);
        
        return mv;
    }

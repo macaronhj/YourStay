@@ -24,9 +24,9 @@ public class MainController {
       log.info("MainController index: "+vo);
       return new ModelAndView("index", "vo" , vo);
    }
-   @GetMapping("/review")
+   @GetMapping("/Projectreview")
    public String review() {
-      return "review";
+      return "Projectreview";
    }
    
 }

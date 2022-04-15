@@ -14,7 +14,7 @@
 		</selectKey>
 		insert
 		into reservation values
-		(#{rid},#{aid},#{mseq},#{rstart},#{rend},#{rpeople},#{rprice})
+		(#{rid},#{aid},#{mseq},#{rstart},#{rend},#{rpeople},#{rprice},0)
 	</insert>
 	<!-- 예약날짜테이블 등록 -->
 	<insert id="insertReservationDate"

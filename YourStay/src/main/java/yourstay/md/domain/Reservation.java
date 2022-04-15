@@ -23,4 +23,8 @@ public class Reservation {
     //member
     private String mname;
     private String memail;
+  //image
+    private String ipath1;
+    private String ipath2;
+    private String ipath3;
 }

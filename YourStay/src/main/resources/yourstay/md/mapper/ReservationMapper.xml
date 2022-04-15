@@ -30,5 +30,7 @@
 		to_date(#{rstart},'yyyy-MM-dd')
 		and to_date(#{rend},'yyyy-MM-dd')
 	</select>
-
+	<select id="checkView" parameterType="long" resultType="Long">
+      select count(*) from RESERVATION where mseq=#{mseq} and checkview=0
+   </select>
 </mapper>

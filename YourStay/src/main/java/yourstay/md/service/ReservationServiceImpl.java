@@ -59,5 +59,9 @@ public class ReservationServiceImpl implements ReservationService {
 			}
 		}
 	}
+	@Override
+	   public Long checkView(long mseq) {
+	      return reservationMapper.checkView(mseq);
+	   }
 
 }

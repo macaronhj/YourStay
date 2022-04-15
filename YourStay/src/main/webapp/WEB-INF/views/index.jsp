@@ -85,6 +85,40 @@
                      window.location = "index.jsp";
                   });
                });
+   function buttonCheck(check,loginCheck){
+	     
+       var mnum = loginCheck;
+       if(loginCheck !=null && check!=0){//checkNum이 널이면 로그인이 안되어있거나 메세지가없는것,0이면 알림을끝상태
+          const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: true,
+              showCancelButton: true,
+              confirmButtonText : "예약내용 보러가기",
+              cancelButtonText: '알림끄기',
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+              }
+            })
+            Toast.fire({
+              icon: 'success',
+              title: '새로운 예약이 있습니다'
+            }).then((result) => {
+                 if (result.isConfirmed) {//여기에 예약보러가는 로직
+                       //location.href="member/messageList?mnum="+mnum;
+
+                    } else if (
+                      /* Read more about handling dismissals below */
+                      result.dismiss === Swal.DismissReason.cancel
+                    ) {//여기에 로직 알림끄는 
+                       //RESERVATION 테이블 checkview 1로 업데이트해주면 됨
+                    }    
+            })
+       }
+   }
 </script>
 <!--// bootstrap-css -->
 <!-- css -->
@@ -110,7 +144,22 @@
 }
 </style>
 <body>
-
+<c:choose>
+   <c:when test="${check eq null }">
+      <c:set value="null" var="check"/>
+   </c:when>
+   <c:otherwise>
+      <c:set value="${check}" var="check"/>
+   </c:otherwise>
+</c:choose>
+<c:choose>
+   <c:when test="${loginOkUser eq null }">
+      <c:set value="null" var="loginOkUser"/>
+   </c:when>
+   <c:otherwise>
+      <c:set value="${loginOkUser.mseq}" var="loginOkUser"/>
+   </c:otherwise>
+</c:choose>
    <div class="container">
       <header class="blog-header py-3">
          <div

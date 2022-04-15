@@ -29,9 +29,10 @@ public class ReservationRestController {
 	ReservationService reservservice;
 
 	@PostMapping("/reservation.do")
-	public void checkReservation(Reservation reservationVO) {
+	public String checkReservation(Reservation reservationVO) {
 		log.info("ReservationController // checkReservation reservationVO :" + reservationVO);
 		reservservice.ReservationDateS(reservationVO);
+		return "redirect:/";
 	}
 	/*
 	 * 숙소상세내역 페이지 이동

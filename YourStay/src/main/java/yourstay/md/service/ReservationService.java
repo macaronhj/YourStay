@@ -20,4 +20,5 @@ public interface ReservationService {
 	public List<ReservationDateVO> selectReservationDateS(Reservation reservationVO);
 	
 	public void ReservationDateS(Reservation reservationVO);
+	public Long checkView(long mseq);
 }

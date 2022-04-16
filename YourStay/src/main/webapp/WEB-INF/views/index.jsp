@@ -10,18 +10,26 @@
 <meta name="author"
    content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
-<!-- bootstrap-css -->
+
+<!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"
    media="all" />
-<script src="///js/bootstrap.bundle.min.js"></script>
+<!-- bootstrap-css -->
+<link rel="stylesheet" href="../css/airDnDCSS.css">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/reset.css">
+<link href="/css/info_slide.css" rel="stylesheet">
+
+<!-- JS -->
+<script src="/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet"
    href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
-<link rel="stylesheet" href="../css/airDnDCSS.css">
-<link rel="stylesheet" href="../css/main.css">
-<link rel="stylesheet" href="../css/reset.css">
+<script src="/js/info_bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script
+   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <!-- 구글웹폰트 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,11 +37,7 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
    rel="stylesheet">
-<!-- Fontawesome -->
-<link rel="stylesheet"
-   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-   integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-   crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <script>
    $(document)
          .ready(
@@ -264,14 +268,64 @@
       </form>
       </div>
       <div background-repeat:no-repeat; width: 100%;"></div>
-   <div class="image-box slider">
+      <!-- 사진 -->
+      <div id="carouselExampleCaptions" class="carousel slide"
+         data-bs-ride="carousel">
+         <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions"
+               data-bs-slide-to="0" class="active" aria-current="true"
+               aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions"
+               data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions"
+               data-bs-slide-to="2" aria-label="Slide 3"></button>
+         </div>
+         <div class="carousel-inner" style="width: 98.5%; border-radius: 1%;">
+            <div class="carousel-item active"
+               style="background:url('../images/forest.jpg') no-repeat; background-position: center;
+  background-size: cover;">
+               <div class="carousel-caption">
+                  <h5>YourStay</h5>
+                  <p>피톤치드와 함께 힐링을 느낄 수 있는 숙소도 있습니다.</p>
+               </div>
+            </div>
+            <div class="carousel-item"
+               style="background:url('../images/ocean.jpg') no-repeat;background-position: center;
+  background-size: cover;">
+               <div class="carousel-caption">
+                  <h5>YourStay</h5>
+                  <p>뻥 뚫린 수평선을 바라보며 힐링을 느낄 수 있는 숙소도 있습니다.</p>
+               </div>
+            </div>
+            <div class="carousel-item"
+               style="background:url('../images/house.jpg') no-repeat;background-position: center;
+  background-size: cover;">
+               <div class="carousel-caption">
+                  <h5>YourStay</h5>
+                  <p>아무도 없는 곳에서의 독채! 연인과 가족과 함께 하면 더욱 좋은 숙소도 있습니다.</p>
+               </div>
+            </div>
+         </div>
+         <button class="carousel-control-prev" type="button"
+            data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true" style="margin-top: 200%;"></span>
+            <span class="visually-hidden">Previous</span>
+         </button>
+         <button class="carousel-control-next" type="button"
+            data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true" style="margin-top: 200%;"></span>
+            <span class="visually-hidden">Next</span>
+         </button>
+      </div>
+   <!-- <div class="image-box slider img-w">
       <div class="img-w">
          <p class="img-w-p">설레는 다음 여행을 위한 아이디어</p>
       </div>
       <img class="image-thumbnail" src="../images/river.jpg">
+      
    </div>
-
-   <div class="row mb-2">
+ -->
+   <div class="row mb-2" style="margin-top: 4%;">
       <div class="col-md-6">
          <div class="card" style="width: 18rem;">
            <img class="card-img-top" src="../images/가평.jpg"

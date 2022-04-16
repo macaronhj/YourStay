@@ -34,7 +34,9 @@ public class MainController {
          mv.addObject("check", check);
       }
       log.info("MainController index: "+vo);
-      return new ModelAndView("index", "vo" , vo);
+      mv.addObject("vo", vo);
+      mv.setViewName("index");
+      return mv;
    }
    @GetMapping("/Projectreview")
    public String review() {

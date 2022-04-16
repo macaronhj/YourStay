@@ -20,8 +20,9 @@
 %>
 </head>
 <style>
-h2, h3,p {
+h2, h3,p, body {
   font-family: 'Poor Story', cursive!important;
+   font-size: 112%;
   }
 </style>
 <body>
@@ -114,7 +115,7 @@ h2, h3,p {
     </div>
   </div>
 </main>
-      <footer class="py-3 my-4">
+      <footer class="py-3 my-4" style="margin-top: 0%!important;">
          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="/"
                class="nav-link px-2 text-muted">Home</a></li>

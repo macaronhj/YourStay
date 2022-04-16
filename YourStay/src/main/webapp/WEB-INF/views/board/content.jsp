@@ -112,7 +112,7 @@
       <table class="table text-center" style="margin-top: 3%;">
         <tbody>
           <tr>
-            <th scope="row" class="text-center">서비스 분류</th>
+            <th scope="row" class="text-center" style="width: 20%;">서비스 분류</th>
             <td>${board.category}</td>
           </tr>
           <tr>

@@ -14,7 +14,12 @@
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/blog.css" rel="stylesheet">
 <link href="/css/index.css" rel="stylesheet">
-
+<!-- 구글웹폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+   href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
+   rel="stylesheet">
 <meta charset="utf-8" />
 <meta name="viewport"
    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -47,6 +52,13 @@
    String memail = (String) session.getAttribute("memail");
    long mseq = (long) session.getAttribute("mseq");
 %>
+<style>
+body{
+     margin-bottom:60px;
+     font-family: 'Poor Story', cursive!important;
+     font-size: 20px;
+        }
+</style>
 <script type="text/javascript">
    $(document).ready(function() {
       // notifySend

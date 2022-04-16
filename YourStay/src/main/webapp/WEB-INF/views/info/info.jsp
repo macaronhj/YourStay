@@ -583,7 +583,7 @@ body, h1, h2, h3 {
                           '        </div>' + 
                           '        <div class="body">' + 
                           '            <div class="img">' +
-                          '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+                          '                <img src="../../resources/images/logo.png" width="73" height="70">' +
                           '           </div>' + 
                           '            <div class="desc">' + 
                           '                <div class="ellipsis">${resVO.amap}</div>' + 

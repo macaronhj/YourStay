@@ -313,6 +313,7 @@
               </div>
          </div>
       </div>
+      
       <div class="col-md-6">
          <div class="card" style="width: 18rem;">
            <img class="card-img-top" src="../images/제주도.jpg"

@@ -34,6 +34,7 @@ public class MainController {
          mv.addObject("check", check);
       }
       log.info("MainController index: "+vo);
+      mv.addObject("mvo", mvo);
       mv.addObject("vo", vo);
       mv.setViewName("index");
       return mv;

@@ -153,4 +153,36 @@ public class MypageController {
 		mv.setViewName("/mypage/removePage");
 		return mv;
 	}
+   @GetMapping(value="/goReservationList")
+   public ModelAndView goReservationList(long mseq){
+       log.info("MypageController -> goReservationList 요청");
+       List<Reservation> vo = roomService.goReservationList(mseq);
+       for(Reservation ac: vo) {
+			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
+			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
+			log.info("searchGetFromMain ///roomImage: " + roomImage);
+			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
+			ac.setIpath1(roomImage.get(0).getStored_file_name());
+		}
+	   ModelAndView mv = new ModelAndView("mypage/goReservationList","vo",vo);
+       
+       return mv;
+   }
+   @GetMapping(value="/accessPage")
+   public ModelAndView accessPage(long rid){
+	   log.info("MypageController -> accessPage rid: "+rid);
+       log.info("MypageController -> accessPage 요청");
+       List<Reservation> vo = roomService.goReservationRoom(rid);
+       log.info("MypageController -> accessPage :"+vo);
+       for(Reservation ac: vo) {
+			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
+			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
+			log.info("searchGetFromMain ///roomImage: " + roomImage);
+			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
+			ac.setIpath1(roomImage.get(0).getStored_file_name());
+		}
+	   ModelAndView mv = new ModelAndView("mypage/goReservationRoom","vo",vo);
+       
+       return mv;
+   }
 }

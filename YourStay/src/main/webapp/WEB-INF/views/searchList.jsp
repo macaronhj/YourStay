@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+   <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -80,6 +80,7 @@ div.list-font {
    href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
    rel="stylesheet">
 <script>
+   
    $(document)
        .ready(
              function() {
@@ -174,6 +175,7 @@ div.list-font {
                  });
               });
              });
+   
 </script>
 <%
    String memail = (String) session.getAttribute("memail");
@@ -222,7 +224,7 @@ div.list-font {
          </div>
       </div>
    </header>
-   <main class="container">
+   <main class="container" style="min-height : 900px">
 
          <form id="seatrchForm">
             <div id="search" class="radius">
@@ -278,7 +280,7 @@ div.list-font {
                style="cursor: pointer;">
       </div>
       </form>
-         <c:forEach items="${acvo}" var="acvo">
+         <c:forEach items="${acvo}" var="acvo" >
          <div
             class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
             style="width: 50%;">
@@ -293,18 +295,18 @@ div.list-font {
 
             </div>
             <div class="col-auto d-none d-lg-block">
-				<img width="400" height="580" class="img-fluid rounded mb-4 mb-lg-0" src="../../resources/images/roomImg/${acvo.aid}/${acvo.ipath1}" alt="..." />
+            <img width="400" height="580" class="img-fluid rounded mb-4 mb-lg-0" src="../../resources/images/roomImg/${acvo.aid}/${acvo.ipath1}" alt="..." />
             </div>
          </div>
       </div>
    </c:forEach>
    </div>
-   <div class="map-area" style="bottom: -15% !important;
+   <div class="map-area" style="bottom: -13% !important;
     position: absolute !important;
     left: 53% !important;">
       <div id="map" style="width: 600px; height: 500px;"></div>
       <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b87f2182c111fec7ca0b3a2aaede2356&libraries=services,clusterer,drawing">
-</script>
+   </script>
 <script>
 
       var container = document.getElementById('map');
@@ -396,6 +398,16 @@ div.list-font {
          <p class="text-center text-muted">© 2021 Company, Inc</p>
       </footer>
    </div>
-
+   <input type="hidden" value="${acvo[0].aname}" id="AccommodationCount">
 </body>
+<script>
+   //검색조건 없을 경우 알람창
+   window.addEventListener('load', function () {
+         var resultAccommodation = $("#AccommodationCount").val(); // document.getElementById("AccommodationCount").val();
+         console.log(resultAccommodation);
+         if(resultAccommodation == ""){
+            alert("검색 조건에 만족하는 숙소가 없습니다");
+         }
+      })
+</script>
 </html>

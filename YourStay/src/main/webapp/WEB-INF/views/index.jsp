@@ -29,9 +29,9 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
    rel="stylesheet">
-   <!-- alert -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- alert -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- Fontawesome -->
 <link rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -120,7 +120,7 @@
               showCancelButton: true,
               confirmButtonText : "예약내용 보러가기",
               cancelButtonText: '알림끄기',
-              timer: 3000,
+              timer: 20000,
               timerProgressBar: true,
               didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -132,7 +132,7 @@
               title: '새로운 예약이 있습니다'
             }).then((result) => {
                  if (result.isConfirmed) {//여기에 예약보러가는 로직
-                       //location.href="member/messageList?mnum="+mnum;
+                       location.href="mypage/goReservationList?mseq="+${mvo.getMseq()};
                     } else if (
                       /* Read more about handling dismissals below */
                       result.dismiss === Swal.DismissReason.cancel
@@ -235,6 +235,7 @@
    <main class="container">
       <div id="searchBar">
          <form id="seatrchForm">
+         <input type="hidden" name="mseq" value="${vo[0].mseq}">
             <div id="search" class="radius">
                <p id="indexH1">YourStay 숙소 찾기</p>
                <div id="cityDiv">
@@ -350,7 +351,7 @@
    </div>
    <!-- 슬라이드 -->
       <div id="carouselExampleCaptions" class="carousel slide"
-         data-bs-ride="carousel">
+         data-bs-ride="carousel" style="margin-top: 3%;">
          <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions"
                data-bs-slide-to="0" class="active" aria-current="true"

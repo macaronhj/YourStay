@@ -40,6 +40,6 @@
 		<beans:property name="order" value="0" />
 	</beans:bean> -->
 	
-	<context:component-scan base-package="yourstay.md.controller" />
+	<context:component-scan base-package="yourstay.md.*" />
 	
 </beans:beans>

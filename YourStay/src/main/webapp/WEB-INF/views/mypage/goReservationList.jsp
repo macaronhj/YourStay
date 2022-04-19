@@ -84,7 +84,7 @@
                  숙소 위치: ${vo.aloc}<br/>숙소 이름: ${vo.aname}<br/>숙소기간: ${vo.rstart} ~ ${vo.rend}<br/>숙소 예약한 사람 성명: ${vo.mname}
                  </p>
               <a class="btn btn-secondary m-2 confirmStart" type="submit" id="confirmStart" href = "/mypage/accessPage?rid=${vo.rid}">상세 보기</a>
-              <a class="btn btn-secondary m-2 confirmStart" type="submit" id="confirmStart" href = "">게스트와  1:1 채팅하기</a>
+              <a class="btn btn-secondary m-2 confirmStart" type="submit" id="confirmStart" href = "/chat">게스트와  1:1 채팅하기</a>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                 </div>

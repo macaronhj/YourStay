@@ -76,7 +76,7 @@
             </svg>
             <div class="card-body">
               <p class="card-text">숙소 위치: ${vo.aloc}<br/>숙소 이름: ${vo.aname}<br/>숙소기간: ${vo.rstart} ~ ${vo.rend}</p>
-              <a class="btn btn-secondary m-2 confirmStart" type="submit" id="confirmStart" href = "">호스트와  1:1 채팅하기</a>
+              <a class="btn btn-secondary m-2 confirmStart" type="submit" id="confirmStart" href = "/chat">호스트와  1:1 채팅하기</a>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                 </div>

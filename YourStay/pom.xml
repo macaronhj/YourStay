@@ -221,6 +221,18 @@
 		<artifactId>jackson-mapper-asl</artifactId>
 		<version>1.4.2</version>
 	</dependency> 
+	 <!--  웹소켓 -->
+     <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-websocket</artifactId>
+        <version>${org.springframework-version}</version>
+    </dependency>
+    <!-- WebSocket --> 
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-messaging</artifactId>
+        <version>${org.springframework-version}</version>
+    </dependency>
 	</dependencies>
     <build>
         <plugins>

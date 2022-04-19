@@ -19,11 +19,11 @@ import yourstay.md.service.SearchService;
 @Log4j
 @Controller
 public class MainController {
-	@Autowired
-	SearchService searchService;
-	@Autowired
-	ReservationService reservservice;
-	
+   @Autowired
+   SearchService searchService;
+   @Autowired
+   ReservationService reservservice;
+   
    @GetMapping("/")
    public ModelAndView index(HttpSession session) {
       List<Accommodation> vo = searchService.getAccommodationByLoc();
@@ -42,6 +42,13 @@ public class MainController {
    @GetMapping("/Projectreview")
    public String review() {
       return "Projectreview";
+   }
+   @GetMapping("/chat")
+   public ModelAndView chat(HttpSession session, ModelAndView mv) {
+      MemberVO mvo =(MemberVO)session.getAttribute("loginOkUser");
+      log.info("mvo:" + mvo);
+      mv.setViewName("chat");
+      return mv;
    }
    
 }

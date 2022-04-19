@@ -7,7 +7,7 @@ import yourstay.md.domain.resultVO;
 import yourstay.md.domain.reviewVO;
 
 public interface ReviewService {
-	public List<reviewVO> getUser(String memail);
+	public List<resultVO> getUser(String memail);
 	
 	public void insertFile(Map<String, Object> map) throws Exception;
 

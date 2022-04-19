@@ -34,6 +34,7 @@ import yourstay.md.service.FileService;
 import yourstay.md.service.MemberService;
 import yourstay.md.service.MyPageService;
 import yourstay.md.service.MyRoomService;
+import yourstay.md.service.ReviewService;
 import yourstay.md.service.RoomHistoryService;
 
 @Log4j
@@ -55,6 +56,8 @@ public class MypageController {
 	private MemberService memberService;
 	@Autowired
 	private AccommodationService accommodationService;
+	@Autowired
+	ReviewService reviewService;
 	
 	
 	@GetMapping(value="/home")
@@ -101,7 +104,7 @@ public class MypageController {
    @GetMapping(value="/review")
     public ModelAndView review(HttpSession session, @RequestParam long aid, @RequestParam long mseq) {
         log.info("aid : " + aid+ "// mseq:" + mseq);
-        List<resultVO> vo = reviewMapper.getUser((String) session.getAttribute("memail"));
+        List<resultVO> vo = reviewService.getUser((String) session.getAttribute("memail"));
 //        for(reviewVO ac: vo) {
 //			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
 //			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());

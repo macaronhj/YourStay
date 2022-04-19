@@ -19,8 +19,8 @@ public class ReviewServiceImpl implements ReviewService {
 	@Autowired
 	ReviewMapper reviewMapper;
 	@Override
-	public List<reviewVO> getUser(String memail) {
-		List<reviewVO> vo = reviewMapper.getUser(memail);
+	public List<resultVO> getUser(String memail) {
+		List<resultVO> vo = reviewMapper.getUser(memail);
 		return vo;
 	}
 

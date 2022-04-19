@@ -6,30 +6,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Board Form</title>
-	<!-- bootstrap-css -->
-	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"
-	   media="all" />
-	  <!--// bootstrap-css -->
-	<!-- css -->
-	<link rel="stylesheet" href="../css/blog.css" type="text/css"
-	   media="all" />
-	<link rel="stylesheet" href="../css/navbar.css" type="text/css"
-	   media="all" />
-	<link rel="stylesheet"
-	   href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<script
-	   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-	<link rel="stylesheet" href="../css/airDnDCSS.css">
-		
-	<!-- 구글웹폰트 -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-	   href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
-	   rel="stylesheet">
-	    
+   <!-- bootstrap-css -->
+   <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"
+      media="all" />
+     <!--// bootstrap-css -->
+   <!-- css -->
+   <link rel="stylesheet" href="../css/blog.css" type="text/css"
+      media="all" />
+   <link rel="stylesheet" href="../css/navbar.css" type="text/css"
+      media="all" />
+   <link rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+   <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+   <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+   <link rel="stylesheet" href="../css/airDnDCSS.css">
+      
+   <!-- 구글웹폰트 -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
+      rel="stylesheet">
+       
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -56,17 +56,9 @@
             class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1"></div>
             <div class="col-4 text-center">
-               <a class="blog-header-logo text-dark" style="font-size: 3rem;" href="/">YourTrip</a>
+               <a class="blog-header-logo text-dark" style="font-size: 3rem;" href="/">YourStay</a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
-               <a class="link-secondary" href="/" aria-label="Search"> <svg
-                     xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                     fill="none" stroke="currentColor" stroke-linecap="round"
-                     stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-                     viewBox="0 0 24 24">
-                     <title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
-                     <path d="M21 21l-5.2-5.2" /></svg>
-               </a>
                <c:choose>
                   <c:when test="${msg =='failure'}">
                      <a class="btn btn-secondary" href="login/loginPage"
@@ -127,16 +119,16 @@
             <th scope="row" class="text-center">숙소 예약한 사람</th>
             <td>${vo[0].mname}</td>
           </tr>
-	</tbody>
-	</table>
-		<div style="margin-left: 45%">
-	<button class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">예약 수락하기</button>
-	<button class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">예약 거절하기</button>
-	<hr width='600' size='2' color='gray' noshade>
+   </tbody>
+   </table>
+      <div style="margin-left: 45%">
+   <button class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">예약 수락하기</button>
+   <button class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">예약 거절하기</button>
+   <hr width='600' size='2' color='gray' noshade>
         </div>
-	<hr width='600' size='2' color='gray' noshade>
-	</div>
-	</div>
+   <hr width='600' size='2' color='gray' noshade>
+   </div>
+   </div>
       <footer class="py-3 my-4" style="margin-top: 13%!important;">
          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="/"
@@ -148,7 +140,7 @@
             <li class="nav-item"><a href="/Projectreview"
                class="nav-link px-2 text-muted">About</a></li>
          </ul>
-         <p class="text-center text-muted">© 2021 Company, Inc</p>
+         <p class="text-center text-muted">© 2022 Company, Inc</p>
       </footer>
 </body>
 </html>

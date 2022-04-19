@@ -23,9 +23,9 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <style>
-	body{
-		font-family: 'Poor Story', cursive;
-	}
+   body{
+      font-family: 'Poor Story', cursive;
+   }
 </style>
 <%
    String memail = (String) session.getAttribute("memail");
@@ -38,12 +38,9 @@
       <div class="col-4 pt-1">
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="/" style="text-decoration:none">YourTrip</a>
+        <a class="blog-header-logo text-dark" href="/" style="text-decoration:none">YourStay</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
-        <a class="link-secondary" href="#" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-        </a>
         <c:choose>
          <c:when test="${msg =='failure'}">
         <a class="btn btn-secondary" href="../login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
@@ -84,9 +81,9 @@
             </svg>
             <div class="card-body">
               <p class="card-text">
-              	숙소 위치: ${vo.aloc}<br/>숙소 이름: ${vo.aname}<br/>숙소기간: ${vo.rstart} ~ ${vo.rend}<br/>숙소 예약한 사람 성명: ${vo.mname}
-              	</p>
-              <a class="btn btn-secondary m-2 confirmStart" type="submit" id="confirmStart" href = "/mypage/accessPage?rid=${vo.rid}">상세 보기</a>
+                 숙소 위치: ${vo.aloc}<br/>숙소 이름: ${vo.aname}<br/>숙소기간: ${vo.rstart} ~ ${vo.rend}<br/>숙소 예약한 사람 성명: ${vo.mname}
+                 </p>
+              <a class="btn btn-secondary m-2 confirmStart" type="submit" id="confirmStart" href = "/mypage/accessPage?rid=${vo.rid}">Confirm 실행</a>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                 </div>
@@ -113,7 +110,7 @@
             <li class="nav-item"><a href="/Projectreview"
                class="nav-link px-2 text-muted">About</a></li>
          </ul>
-         <p class="text-center text-muted">© 2021 Company, Inc</p>
+         <p class="text-center text-muted">© 2022 Company, Inc</p>
       </footer>
    </div>
 

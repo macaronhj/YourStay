@@ -110,7 +110,7 @@
        document.getElementById('my_btn').click();
     });
    function buttonCheck(check,loginCheck){
-	  
+     
        var mnum = loginCheck;
        if(loginCheck !=null && check!=0){//checkNum이 널이면 로그인이 안되어있거나 메세지가없는것,0이면 알림을끝상태
           const Toast = Swal.mixin({
@@ -137,7 +137,7 @@
                       /* Read more about handling dismissals below */
                       result.dismiss === Swal.DismissReason.cancel
                     ) {//여기에 로직 알림끄는 
-                    	//RESERVATION 테이블 checkview 1로 업데이트해주면 됨
+                       //RESERVATION 테이블 checkview 1로 업데이트해주면 됨
                     }    
             })
        }
@@ -149,7 +149,7 @@
 <link rel="stylesheet" href="../css/blog.css" type="text/css"
    media="all" />
 <%
-	String memail = (String) session.getAttribute("memail");
+   String memail = (String) session.getAttribute("memail");
 %>
 </head>
 <style>
@@ -168,20 +168,20 @@
 </style>
 <body>
 <c:choose>
-	<c:when test="${check eq null }">
-		<c:set value="null" var="check"/>
-	</c:when>
-	<c:otherwise>
-		<c:set value="${check}" var="check"/>
-	</c:otherwise>
+   <c:when test="${check eq null }">
+      <c:set value="null" var="check"/>
+   </c:when>
+   <c:otherwise>
+      <c:set value="${check}" var="check"/>
+   </c:otherwise>
 </c:choose>
 <c:choose>
-	<c:when test="${loginOkUser eq null }">
-		<c:set value="null" var="loginOkUser"/>
-	</c:when>
-	<c:otherwise>
-		<c:set value="${loginOkUser.mseq}" var="loginOkUser"/>
-	</c:otherwise>
+   <c:when test="${loginOkUser eq null }">
+      <c:set value="null" var="loginOkUser"/>
+   </c:when>
+   <c:otherwise>
+      <c:set value="${loginOkUser.mseq}" var="loginOkUser"/>
+   </c:otherwise>
 </c:choose>
 
    <div class="container">
@@ -194,12 +194,6 @@
                <a class="blog-header-logo text-dark" href="/">YourStay</a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center" style="padding-right: 10px; padding-top: 14px;">
-               <a class="link-secondary" href="notify.do" aria-label="Search"> 
-				<i class='fa fa-bell' style="margin-right: 30px;"></i>
-                     <title>Search</title><circle cx="10.5" cy="10.5"
-                        r="7.5" />
-                     <path d="M21 21l-5.2-5.2" /></svg>
-               </a> 
                <c:choose>
          <c:when test="${msg =='failure'}">
         <a class="btn btn-secondary" href="../login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
@@ -412,7 +406,7 @@
             <li class="nav-item"><a href="/Projectreview"
                class="nav-link px-2 text-muted">About</a></li>
          </ul>
-         <p class="text-center text-muted">© 2021 Company, Inc</p>
+         <p class="text-center text-muted">© 2022 Company, Inc</p>
       </footer>
    </div>
    <input id="my_btn" type="button" onclick="buttonCheck(${check},${loginOkUser})"/>

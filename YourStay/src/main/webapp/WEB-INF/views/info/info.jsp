@@ -301,17 +301,9 @@ body, h1, h2, h3,h4,h5 {
          class="row flex-nowrap justify-content-between align-items-center">
          <div class="col-4 pt-1"></div>
          <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="/">YourTrip</a>
+            <a class="blog-header-logo text-dark" href="/">YourStay</a>
          </div>
          <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="link-secondary" href="#" aria-label="Search"> <svg
-                  xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="none" stroke="currentColor" stroke-linecap="round"
-                  stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-                  viewBox="0 0 24 24">
-                  <title>Search</title><circle cx="10.5" cy="10.5"
-                     r="7.5" />
-                  <path d="M21 21l-5.2-5.2" /></svg></a>
 
             <c:choose>
                <c:when test="${empty loginOkUser}">
@@ -345,7 +337,6 @@ body, h1, h2, h3,h4,h5 {
                ${resVO.apeople}<br />
             </p>
             <p class="lead mb-0">
-               <a href="#" class="text-white fw-bold">무슨무슨 링크...</a>
             </p>
          </div>
       </div>
@@ -367,27 +358,24 @@ body, h1, h2, h3,h4,h5 {
                style="background:url('../../../resources/images/roomImg/${resVO.aid}/${resVO.ipath1}') no-repeat; background-position: center;
   background-size: cover;">
                <div class="carousel-caption">
-                  <h5>First slide label</h5>
-                  <p>Some representative placeholder content for the first
-                     slide.</p>
+                  <h5></h5>
+                  <p></p>
                </div>
             </div>
             <div class="carousel-item"
                style="background:url('../../../resources/images/roomImg/${resVO.aid}/${resVO.ipath2}') no-repeat;background-position: center;
   background-size: cover;">
                <div class="carousel-caption">
-                  <h5>Second slide label</h5>
-                  <p>Some representative placeholder content for the second
-                     slide.</p>
+                  <h5></h5>
+                  <p></p>
                </div>
             </div>
             <div class="carousel-item"
                style="background:url('../../../resources/images/roomImg/${resVO.aid}/${resVO.ipath3}') no-repeat;background-position: center;
   background-size: cover;">
                <div class="carousel-caption">
-                  <h5>Third slide label</h5>
-                  <p>Some representative placeholder content for the third
-                     slide.</p>
+                  <h5></h5>
+                  <p></p>
                </div>
             </div>
          </div>
@@ -770,16 +758,13 @@ body, h1, h2, h3,h4,h5 {
                               </div>
                               <div
                                  class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
-                                 <a href="#"
-                                    class="btn btn-outline-primary btn-sm float-right">Top
-                                    Rated</a>
                                  <h5 class="mb-1">All Ratings and Reviews</h5>
                              	 
                                  <c:forEach items="${reslist}" var="reviewlist">
                                  <hr>
                                  <div class="reviews-members pt-4 pb-4">
                                     <div class="media">
-                                       <a href="#"><img alt="Generic placeholder image"
+                                       <a href=""><img alt="Generic placeholder image"
                                           src="http://bootdey.com/img/Content/avatar/avatar6.png"
                                           class="mr-3 rounded-pill"></a>
                                        <div class="media-body">
@@ -802,40 +787,11 @@ body, h1, h2, h3,h4,h5 {
                                           <div class="reviews-members-body">
                                              <p>${reviewlist.review}</p>
                                           </div>
-                                          <div class="reviews-members-footer">
-                                             <a class="total-like" href="#"><i
-                                                class="icofont-thumbs-up"></i> 88K</a> <a class="total-like"
-                                                href="#"><i class="icofont-thumbs-down"></i> 1K</a> <span
-                                                class="total-like-user-main ml-2" dir="rtl"> <a
-                                                data-toggle="tooltip" data-placement="top" title=""
-                                                href="#" data-original-title="Gurdeep Osahan"><img
-                                                   alt="Generic placeholder image"
-                                                   src="http://bootdey.com/img/Content/avatar/avatar5.png"
-                                                   class="total-like-user rounded-pill"></a> <a
-                                                data-toggle="tooltip" data-placement="top" title=""
-                                                href="#" data-original-title="Gurdeep Singh"><img
-                                                   alt="Generic placeholder image"
-                                                   src="http://bootdey.com/img/Content/avatar/avatar2.png"
-                                                   class="total-like-user rounded-pill"></a> <a
-                                                data-toggle="tooltip" data-placement="top" title=""
-                                                href="#" data-original-title="Askbootstrap"><img
-                                                   alt="Generic placeholder image"
-                                                   src="http://bootdey.com/img/Content/avatar/avatar3.png"
-                                                   class="total-like-user rounded-pill"></a> <a
-                                                data-toggle="tooltip" data-placement="top" title=""
-                                                href="#" data-original-title="Osahan"><img
-                                                   alt="Generic placeholder image"
-                                                   src="http://bootdey.com/img/Content/avatar/avatar4.png"
-                                                   class="total-like-user rounded-pill"></a>
-                                             </span>
-                                          </div>
                                        </div>
                                     </div>
                                  </div>
                                  </c:forEach>
                                  <hr>
-                                 <a class="text-center w-100 d-block mt-4 font-weight-bold"
-                                    href="#">See All Reviews</a>
                               </div>
 
                            </div>
@@ -905,7 +861,7 @@ body, h1, h2, h3,h4,h5 {
             <li class="nav-item"><a href="/Projectreview"
                class="nav-link px-2 text-muted">About</a></li>
          </ul>
-         <p class="text-center text-muted">© 2021 Company, Inc</p>
+         <p class="text-center text-muted">© 2022 Company, Inc</p>
       </footer>
    </div>
 </body>

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import yourstay.md.domain.Accommodation;
+import yourstay.md.domain.Reservation;
+import yourstay.md.domain.ReservationCheck;
 import yourstay.md.domain.resultVO;
 import yourstay.md.domain.reviewVO;
 
@@ -27,4 +29,5 @@ public interface SearchMapper {
 //		public int checkLastAccomodationId();
 		public List<Accommodation> getAccommodationByLoc();
 		public List<Accommodation> getAccommodationListByLocation(String aloc);
+		public long getCountGuest(long aid);
 }

@@ -105,9 +105,8 @@
             </div>
          </div>
       </header>
-<form method="post" action="delete">
 <div style="padding: 0px 65px 0;">
-    <div class="table-responsive">
+    <div class="table-responsive" style="margin-top: 2%;">
       <table class="table text-center" style="margin-top: 3%;">
         <tbody>
           <tr>
@@ -130,16 +129,15 @@
           </tr>
 	</tbody>
 	</table>
+		<div style="margin-left: 45%">
 	<button class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">예약 수락하기</button>
 	<button class="btn btn-secondary" style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">예약 거절하기</button>
 	<hr width='600' size='2' color='gray' noshade>
-	<div class="pull-right" style="width:100px;margin:10px 0;">
         </div>
 	<hr width='600' size='2' color='gray' noshade>
 	</div>
 	</div>
-	</form>
-      <footer class="py-3 my-4">
+      <footer class="py-3 my-4" style="margin-top: 13%!important;">
          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="/"
                class="nav-link px-2 text-muted">Home</a></li>

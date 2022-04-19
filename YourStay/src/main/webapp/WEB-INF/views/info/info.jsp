@@ -1396,7 +1396,6 @@ body, h1, h2, h3 {
                                     href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
                                     <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
                                  </span>
-                                 <h5 class="mb-0 pt-1">Rate this Place</h5>
                               </div>
                               <div
                                  class="bg-white rounded shadow-sm p-4 mb-4 clearfix graph-star-rating">
@@ -1408,7 +1407,7 @@ body, h1, h2, h3 {
                                           href="#"><i class="icofont-ui-rating active"></i></a> <a
                                           href="#"><i class="icofont-ui-rating active"></i></a> <a
                                           href="#"><i class="icofont-ui-rating"></i></a> <b
-                                          class="text-black ml-2">334</b>
+                                          class="text-black ml-2">총 방문자 수 : ${reservation}</b>
                                     </div>
                                     <p class="text-black mb-4 mt-2">Rated 3.5 out of 5</p>
                                  </div>

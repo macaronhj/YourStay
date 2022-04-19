@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.Accommodation;
+import yourstay.md.domain.Reservation;
+import yourstay.md.domain.ReservationCheck;
 import yourstay.md.domain.resultVO;
 import yourstay.md.domain.reviewVO;
 import yourstay.md.mapper.SearchMapper;
@@ -55,6 +57,12 @@ public class SearchServiceImpl implements SearchService {
 	@Override
 	public List<Accommodation> getAccommodationListByLocation(String aloc) {
 		List<Accommodation> vo = searchMapper.getAccommodationListByLocation(aloc);
+		return vo;
+	}
+
+	@Override
+	public long getCountGuest(long aid) {
+		long vo = searchMapper.getCountGuest(aid);
 		return vo;
 	}
 

@@ -2,6 +2,8 @@ package yourstay.md.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.Image;
+import yourstay.md.domain.MemberVO;
+import yourstay.md.domain.Reservation;
+import yourstay.md.domain.ReservationCheck;
 import yourstay.md.domain.resultVO;
 import yourstay.md.domain.reviewVO;
 import yourstay.md.mapper.SearchMapper;
@@ -95,19 +100,24 @@ public class RouteController {
 
 	@GetMapping(value = "roomDetailInfo")
 	public ModelAndView searchDetail(@RequestParam long aid, @RequestParam String rstart,
-			@RequestParam String rend) {
+			@RequestParam String rend,HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		log.info("RouteCon searchDetail ////  aid : " + aid + ", startDate : " + rstart + ", endDate : " + rend);
 		List<Image> roomImage = accommodationService.selectRoomImageS(aid); //숙소이미지
 		String ipath1 = roomImage.get(0).getStored_file_name();
 		String ipath2 = roomImage.get(1).getStored_file_name();
 		String ipath3 = roomImage.get(2).getStored_file_name();
+//	    MemberVO mvo =(MemberVO)session.getAttribute("loginOkUser");
+//	    long mseq = mvo.getMseq();
 		List<resultVO> reslist = searchService.getAccommodationByAccommodationId(aid);
 		List<reviewVO>  reviewlist = searchService.getReviewByAccommodationId(aid);
+		long reservation = searchService.getCountGuest(aid);
+		log.info("RouteCon searchDetail mseq : "+ aid);
 		log.info("RouteCon searchDetail ipath1 : "+ ipath1);
 		log.info("RouteCon searchDetail roomImage : "+ roomImage);
 		log.info("RouteCon searchDetail reviewlist : "+ reviewlist);
 		log.info("RouteCon searchDetail reslist : "+ reslist);
+		log.info("RouteCon searchDetail reservation : "+ reservation);
 		resultVO resVO = reslist.get(0);
 		log.info("RouteCon searchDetail resVO : "+ resVO);
 		long diffDays = priceService.daysCalc(rstart, rend);// 숙박일수 계산
@@ -120,6 +130,7 @@ public class RouteController {
 		resVO.setRend(rend);// 사용자선택 끝날짜 적용
 		resVO.setDays(diffDays);// 사용자선택 숙박일수 적용
 		resVO.setAid(aid);
+		mv.addObject("reservation",reservation);
 		mv.addObject("reslist", reviewlist);//리뷰리스트 전달
 		mv.addObject("resVO", resVO);//숙소정보 전달
 		mv.setViewName("info/info");

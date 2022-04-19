@@ -33,4 +33,9 @@
 	<select id="checkView" parameterType="long" resultType="Long">
       select count(*) from RESERVATION where mseq=#{mseq} and checkview=0
    </select>
+   <!-- 해당 숙소의 예약된 날짜들 출력 -->
+   <select id="selectAidReservationDate"
+      parameterType="long" resultType="yourstay.md.domain.ReservationDateVO">
+      select * from reservationdate where aid = #{aid}
+   </select>
 </mapper>

@@ -19,11 +19,13 @@ import yourstay.md.domain.Image;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.domain.Reservation;
 import yourstay.md.domain.ReservationCheck;
+import yourstay.md.domain.ReservationDateVO;
 import yourstay.md.domain.resultVO;
 import yourstay.md.domain.reviewVO;
 import yourstay.md.mapper.SearchMapper;
 import yourstay.md.service.AccommodationService;
 import yourstay.md.service.PriceService;
+import yourstay.md.service.ReservationService;
 import yourstay.md.service.SearchService;
 
 @Log4j
@@ -37,6 +39,9 @@ public class RouteController {
 	
 	@Autowired
 	AccommodationService accommodationService;
+	
+	@Autowired
+	ReservationService reservationService;
 
 	@GetMapping(value = "searchInList.do")
 	@ResponseBody
@@ -111,6 +116,7 @@ public class RouteController {
 //	    long mseq = mvo.getMseq();
 		List<resultVO> reslist = searchService.getAccommodationByAccommodationId(aid);
 		List<reviewVO>  reviewlist = searchService.getReviewByAccommodationId(aid);
+		List<ReservationDateVO> rdatelist = reservationService.selectAidReservationDateS(aid);
 		long reservation = searchService.getCountGuest(aid);
 		log.info("RouteCon searchDetail mseq : "+ aid);
 		log.info("RouteCon searchDetail ipath1 : "+ ipath1);
@@ -130,6 +136,7 @@ public class RouteController {
 		resVO.setRend(rend);// 사용자선택 끝날짜 적용
 		resVO.setDays(diffDays);// 사용자선택 숙박일수 적용
 		resVO.setAid(aid);
+		mv.addObject("datelist", rdatelist);
 		mv.addObject("reservation",reservation);
 		mv.addObject("reslist", reviewlist);//리뷰리스트 전달
 		mv.addObject("resVO", resVO);//숙소정보 전달

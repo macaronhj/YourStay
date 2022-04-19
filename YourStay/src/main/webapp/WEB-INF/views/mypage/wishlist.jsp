@@ -74,9 +74,7 @@
 	<c:forEach items="${accommolist}" var="vo" varStatus="status">
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
-            <image class="cover" href="/resources/images/reservation30.jpg"/>
-            </svg>
+            <img class="cover" src="../../../resources/images/roomImg/${imagevo.aid}/${imagevo.ipath1}"/>
             <div class="card-body">
               <p class="card-text">숙소 이름: ${vo.aname}</p>
               <div class="d-flex justify-content-between align-items-center">

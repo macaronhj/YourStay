@@ -74,9 +74,7 @@
       <input type="hidden" name="mseq" value="${vo.mseq}">
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="0" xmlns="http://www.w3.org/2000/svg" >
             <img class="cover" src="../../../resources/images/roomImg/${vo.aid}/${vo.ipath1}"/>
-            </svg>
             <div class="card-body">
               <p class="card-text">숙소 위치: ${vo.aloc}<br/>숙소 이름: ${vo.aname}<br/>숙소기간: ${vo.rstart} ~ ${vo.rend}</p>
               <div class="d-flex justify-content-between align-items-center">

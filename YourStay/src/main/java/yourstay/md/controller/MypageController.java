@@ -71,6 +71,16 @@ public class MypageController {
 		Map<String, List> wishMap = myPageService.getWishS(mseq);
 
 		model.addAttribute("wishMap", wishMap);
+		List<Reservation> vo = roomService.getRoomList(mseq);
+        log.info("####vo:"+vo.toString());
+        for(Reservation ac: vo) {
+			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
+			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
+			log.info("searchGetFromMain ///roomImage: " + roomImage);
+			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
+			ac.setIpath1(roomImage.get(0).getStored_file_name());
+		}
+    	ModelAndView mv = new ModelAndView("mypage/wishlist","imagevo",vo);
 
 		return "mypage/wishlist";
 	}
@@ -78,17 +88,33 @@ public class MypageController {
     public ModelAndView roomHistory(long mseq){
         List<Reservation> vo = roomService.getRoomList(mseq);
         log.info("####vo:"+vo.toString());
+        for(Reservation ac: vo) {
+			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
+			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
+			log.info("searchGetFromMain ///roomImage: " + roomImage);
+			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
+			ac.setIpath1(roomImage.get(0).getStored_file_name());
+		}
     	ModelAndView mv = new ModelAndView("mypage/roomHistory","vo",vo);
         return mv;
     }
    @GetMapping(value="/review")
     public ModelAndView review(HttpSession session, @RequestParam long aid, @RequestParam long mseq) {
         log.info("aid : " + aid+ "// mseq:" + mseq);
-        List<reviewVO> vo = reviewMapper.getUser((String) session.getAttribute("memail"));
+        List<resultVO> vo = reviewMapper.getUser((String) session.getAttribute("memail"));
+//        for(reviewVO ac: vo) {
+//			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
+//			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
+//			log.info("searchGetFromMain ///roomImage: " + roomImage);
+//			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
+//			ac.setIpath1(roomImage.get(0).getStored_file_name());
+//		}
+        
         log.info("####vo:"+vo);
-        reviewVO reviewvo = vo.get(0);
-        reviewvo.setAid(aid); //유저가 선택한 숙소번호 입력
-        ModelAndView mv = new ModelAndView("mypage/review","member",reviewvo);
+        resultVO resultVO = vo.get(0);
+        resultVO.setAid(aid); //유저가 선택한 숙소번호 입력
+        ModelAndView mv = new ModelAndView("mypage/review","member",resultVO);
+        mv.addObject("vo",vo);
         
         return mv;
     }
@@ -122,6 +148,13 @@ public class MypageController {
    public ModelAndView myRoom(@RequestParam long mseq) {
 	   List<Reservation> reservation = myRoomService.getMyRoomList(mseq);
 	   log.info("MypageController -> roomRegister: "+ reservation);
+	   for(Reservation ac: reservation) {
+			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
+			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
+			log.info("searchGetFromMain ///roomImage: " + roomImage);
+			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
+			ac.setIpath1(roomImage.get(0).getStored_file_name());
+		}
 	   ModelAndView mv = new ModelAndView("mypage/myRoom","vo",reservation);
        return mv;
    }

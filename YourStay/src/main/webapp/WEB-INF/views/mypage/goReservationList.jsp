@@ -68,7 +68,7 @@
   </header>
 
 <main>
-  <div class="album py-5 bg-light">
+  <div class="album py-5">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <c:forEach items="${vo}" var="vo">
@@ -83,7 +83,7 @@
               <p class="card-text">
                  숙소 위치: ${vo.aloc}<br/>숙소 이름: ${vo.aname}<br/>숙소기간: ${vo.rstart} ~ ${vo.rend}<br/>숙소 예약한 사람 성명: ${vo.mname}
                  </p>
-              <a class="btn btn-secondary m-2 confirmStart" type="submit" id="confirmStart" href = "/mypage/accessPage?rid=${vo.rid}">Confirm 실행</a>
+              <a class="btn btn-secondary m-2 confirmStart" type="submit" id="confirmStart" href = "/mypage/accessPage?rid=${vo.rid}">상세 보기</a>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                 </div>

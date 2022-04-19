@@ -31,7 +31,7 @@
 		and to_date(#{rend},'yyyy-MM-dd')
 	</select>
 	<select id="checkView" parameterType="long" resultType="Long">
-      select count(*) from RESERVATION where mseq=#{mseq} and checkview=0
+      select count(*) from RESERVATION r, accommodation a where r.aid=a.aid and a.mseq=#{mseq} and r.checkview=0
    </select>
    <!-- 해당 숙소의 예약된 날짜들 출력 -->
    <select id="selectAidReservationDate"

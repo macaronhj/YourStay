@@ -31,7 +31,7 @@ div.list-font {
    height: auto;
 }
 
-.list-font {
+body {
    font-family: 'Poor Story', cursive;
 }
 

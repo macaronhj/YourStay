@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.Reservation;
+import yourstay.md.domain.WishListVO;
 import yourstay.md.mapper.RoomHistoryMapper;
 @Log4j
 @Service
@@ -32,5 +33,9 @@ public class RoomHistoryServiceImpl implements RoomHistoryService {
 		List<Reservation> vo = mapper.goReservationRoom(rid);
 		return vo;
 	}
-
+	@Override
+	   public List<WishListVO> getWishList(long mseq) {
+	      List<WishListVO> vo = mapper.getWishList(mseq);
+	      return vo;
+	   }
 }

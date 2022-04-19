@@ -15,4 +15,7 @@
    <select id="goReservationRoom" resultType="yourstay.md.domain.Reservation">
       select * from reservation r, accommodation a, member m where rid=#{rid} and r.aid=a.aid and m.mseq=r.mseq
    </select>
+   <select id="getWishList" resultType="yourstay.md.domain.WishListVO">
+      select * from wishlist W, accommodation A where A.aid= W.aid and W.mseq=#{mseq}
+   </select>
 </mapper>

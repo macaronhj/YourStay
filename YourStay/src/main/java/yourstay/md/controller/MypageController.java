@@ -69,24 +69,22 @@ public class MypageController {
     }
 	
 	@GetMapping(value = "/wishlist/{mseq}")
-	public String wishlist(@PathVariable("mseq") long mseq, Model model) {
-		log.info("MypageController -> wishlist ø‰√ª");
-		Map<String, List> wishMap = myPageService.getWishS(mseq);
+	   public ModelAndView wishlist(@PathVariable("mseq") long mseq) {
 
-		model.addAttribute("wishMap", wishMap);
-		List<Reservation> vo = roomService.getRoomList(mseq);
-        log.info("####vo:"+vo.toString());
-        for(Reservation ac: vo) {
-			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
-			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
-			log.info("searchGetFromMain ///roomImage: " + roomImage);
-			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
-			ac.setIpath1(roomImage.get(0).getStored_file_name());
-		}
-    	ModelAndView mv = new ModelAndView("mypage/wishlist","imagevo",vo);
-
-		return "mypage/wishlist";
-	}
+	      ModelAndView mv = new ModelAndView();
+	      List<WishListVO> vo = roomService.getWishList(mseq);
+	        for(WishListVO ac: vo) {
+	         List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
+	         log.info("wishlist ///acvo.get("+ac+").getAid(): " + ac.getAid());
+	         log.info("wishlist ///roomImage: " + roomImage);
+	         log.info("wishlist ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
+	         ac.setIpath1(roomImage.get(0).getStored_file_name());
+	      }
+	        log.info("####vo:"+vo.toString());
+	        mv.addObject("wishvo", vo);
+	        mv.setViewName("mypage/wishlist");
+	      return mv;
+	   }
 	@GetMapping(value="/roomHistory")
     public ModelAndView roomHistory(long mseq){
         List<Reservation> vo = roomService.getRoomList(mseq);

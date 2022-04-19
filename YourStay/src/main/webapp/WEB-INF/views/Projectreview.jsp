@@ -125,7 +125,7 @@
             <li class="nav-item"><a href="/Projectreview"
                class="nav-link px-2 text-muted">About</a></li>
          </ul>
-         <p class="text-center text-muted">© 2021 Company, Inc</p>
+         <p class="text-center text-muted">© 2022 Company, Inc</p>
       </footer>
    </div>
 

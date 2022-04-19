@@ -66,16 +66,12 @@
   <div class="album py-5">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" >
-    <c:set value="${wishMap.wishlist}" var="wishlist"/>
-   <c:set value="${wishMap.accommoList}" var="accommolist"/>
-   <c:forEach items="${accommolist}" var="vo" varStatus="status">
+   <c:forEach items="${wishvo}" var="vo" varStatus="status">
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
-            <image class="cover" href="/resources/images/reservation30.jpg"/>
-            </svg>
+            <img class="cover" src="../../../resources/images/roomImg/${vo.aid}/${vo.ipath1}"/>
             <div class="card-body">
-              <p class="card-text">숙소 이름: ${vo.aname}</p>
+              <p class="card-text">숙소 이름: ${vo.aname}<br/>숙소 위치: ${vo.aloc}<br/>숙소 가격: ${vo.aprice}원</p>
               <div class="d-flex justify-content-between align-items-center">
               </div>
             </div>

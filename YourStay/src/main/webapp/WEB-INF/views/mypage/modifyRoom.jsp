@@ -43,7 +43,7 @@
 %>
 </head>
 <style>
-p,div {
+p,div,h3,main {
    font-family: 'Poor Story', cursive !important;
 }
 </style>

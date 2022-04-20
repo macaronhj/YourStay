@@ -2,7 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!doctype html>
-<html lang="en">
+<html lang="ko">
+<title>YourStay</title>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,6 +66,7 @@
   <div class="album py-5">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      
       <c:forEach items="${vo}" var="vo">
       <form action="review" method="get">
       <input type="hidden" name="aid" value="${vo.aid}">
@@ -86,6 +88,7 @@
         </div>
         </form>
         </c:forEach>
+        
       </div>
     </div>
   </div>

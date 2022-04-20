@@ -21,8 +21,8 @@ div.list {
 }
 
 div.map-area {
-   width: 40%;
-   float: right;
+   /* width: 40%; */
+   /* float: right; */
    box-sizing: border-box;
 }
 
@@ -35,15 +35,11 @@ body {
    font-family: 'Poor Story', cursive;
 }
 
-.sort{
-   display: flex;
-   flex-direction: row;
-   justify-content: space-around;
+.flex-container{
+    display: flex;
+    flex-direction: row;
 }
 
-.sort-in{
-   width: 35%
-}
 .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 .wrap * {padding: 0;margin: 0;}
 .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
@@ -215,7 +211,6 @@ body {
       </div>
    </header>
    <main class="container" style="min-height : 900px">
-
          <form id="seatrchForm">
             <div id="search" class="radius">
                <p id="indexH1">YourStay 숙소 찾기</p>
@@ -223,7 +218,7 @@ body {
                   <p class="searchFont">위치</p>
                   <input type="text" id="aloc" name="aloc" placeholder="지역명을 입력해주세요." style="width: 60%;height: 50%;border: none;">
                </div>
-               <div id="datepickerDiv" />
+               <div id="datepickerDiv">
                <div class='col-md-3 col-xs-4'>
                   <div class="form-group">
                      <div class="input-group date" id="datetimepicker1"
@@ -268,12 +263,14 @@ body {
             </div>
             <input type="button" id="searchSubmitBtn" value="검색"
                style="cursor: pointer;">
-      </div>
-      </form>
+<div>           
+ <div class="flex-container" style="margin-top: 4%;">
+   <!-- 숙소리스트 -->
+     <div style="margin-top:2%; width: 100%;">
          <c:forEach items="${acvo}" var="acvo">
          <div
-            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
-            style="width: 50%;">
+            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative"
+            style="width: 90%;">
             <div class="col p-4 d-flex flex-column position-static">
                <strong class="d-inline-block mb-2 text-primary">${acvo.aloc}</strong>
                <h3 class="mb-0 list-font">${acvo.aname}</h3>
@@ -288,14 +285,48 @@ body {
             <img width="400" height="580" class="img-fluid rounded mb-4 mb-lg-0" src="../../resources/images/roomImg/${acvo.aid}/${acvo.ipath1}" alt="..." />
             </div>
          </div>
+         </c:forEach>
       </div>
-   </c:forEach>
-   </div>
-   <div class="map-area" style="bottom: -26% !important;
-    position: absolute !important;
-    left: 53% !important;">
-      <div id="map" style="width: 600px; height: 500px;"></div>
-      <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b87f2182c111fec7ca0b3a2aaede2356&libraries=services,clusterer,drawing">
+   
+   <!-- 지도 -->
+   <section>
+   <div class="map-area" style="    bottom: 15% !important;
+       position: sticky !important;
+       padding-top: 4%;
+       display: inline-block;
+       top: 10%;">
+         <div id="map" style="
+          width: 600px; height: 500px;"></div>
+      </div>
+   </section>
+</div>     
+</div>
+
+<!-- 푸터 -->
+   <div class="container">
+      <footer class="py-3 my-4">
+         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="/"
+               class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="/mypage/home"
+               class="nav-link px-2 text-muted">MyPage</a></li>
+            <li class="nav-item"><a href="/board/list"
+               class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="/Projectreview"
+               class="nav-link px-2 text-muted">About</a></li>
+         </ul>
+         <p class="text-center text-muted">© 2022 Company, Inc</p>
+      </footer>
+   </div> 
+              
+         
+      </div>
+      </form>
+
+
+
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b87f2182c111fec7ca0b3a2aaede2356&libraries=services,clusterer,drawing">
 </script>
 
 <script>
@@ -369,26 +400,10 @@ body {
       });    
       </c:forEach>
       </script>
-   </div>
-   </div>
+
+
 </main>
 
-   <!-- 푸터 -->
-   <div class="container">
-      <footer class="py-3 my-4">
-         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="/"
-               class="nav-link px-2 text-muted">Home</a></li>
-            <li class="nav-item"><a href="/mypage/home"
-               class="nav-link px-2 text-muted">MyPage</a></li>
-            <li class="nav-item"><a href="/board/list"
-               class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="/Projectreview"
-               class="nav-link px-2 text-muted">About</a></li>
-         </ul>
-         <p class="text-center text-muted">© 2022 Company, Inc</p>
-      </footer>
-   </div>
-
+ 
 </body>
 </html>

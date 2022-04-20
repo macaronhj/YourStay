@@ -59,13 +59,68 @@ public class ReservationServiceImpl implements ReservationService {
 			}
 		}
 	}
-	@Override
-	   public Long checkView(long mseq) {
-	      return reservationMapper.checkView(mseq);
-	   }
 
 	@Override
 	   public List<ReservationDateVO> selectAidReservationDateS(long aid) {
 	      return reservationMapper.selectAidReservationDate(aid);
 	   }
+	/*
+     * 호스트 알람 찾기 
+    */
+   @Override
+   public Long checkView(long mseq) {
+      return reservationMapper.checkView(mseq);
+   }
+   /*
+     * 게스트 알람 찾기 
+    */
+   @Override
+   public Long checkView2(long mseq) {
+      return reservationMapper.checkView2(mseq);
+   }
+   /*
+     * rid로 Reservation 찾기 
+     */
+   @Override
+   public int findReservationRidS(long rid) {
+      log.error("ReservationServiceImpl findRacceptS 접속");
+      log.error("rid: "+ rid);
+      return reservationMapper.findReservationRid(rid);
+   }
+   /*
+     * mseq로 Reservation 찾기 
+     */
+   @Override
+   public List<Reservation> findReservationMseqS(long mseq) {
+      log.info("ReservationServiceImpl findRacceptS 접속");
+      return reservationMapper.findReservationMseq(mseq);
+   }
+   /*
+    *해당 예약건 수락해주는 기능 ( Reservation UpdateRaccept )  
+    */
+   @Override
+   public int hostUpdateS(long rid) {
+      log.info("ReservationServiceImpl racceptUpdateS 접속");
+      int result = reservationMapper.hostUpdate(rid);
+      if(result>0) {
+         log.info("ReservationServiceImpl racceptUpdateS 성공!!");
+      }else {
+         log.info("ReservationServiceImpl racceptUpdateS 실패!!!!");
+      }
+      return result;
+   }
+   /*
+    *해당 예약건 수락해주는 기능 ( Reservation UpdateRaccept )  
+    */
+   @Override
+   public int guestUpdateS(Reservation reservation) {
+      log.info("ReservationServiceImpl racceptUpdateS 접속");
+      int result = reservationMapper.guestUpdate(reservation);
+      if(result>0) {
+         log.info("ReservationServiceImpl racceptUpdateS 성공!!");
+      }else {
+         log.info("ReservationServiceImpl racceptUpdateS 실패!!!!");
+      }
+      return result;
+   }
 }

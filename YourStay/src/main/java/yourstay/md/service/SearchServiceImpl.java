@@ -66,4 +66,10 @@ public class SearchServiceImpl implements SearchService {
 		return vo;
 	}
 
+	@Override
+	public double getReviewPoint(long aid) {
+		double vo = searchMapper.getReviewPoint(aid);
+		return vo;
+	}
+
 }

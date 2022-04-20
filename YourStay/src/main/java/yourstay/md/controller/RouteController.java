@@ -58,7 +58,7 @@ public class RouteController {
 
 	@GetMapping(value = "searchInListFromMainGet.do")
 	public ModelAndView searchGetFromMain(@RequestParam String aloc, @RequestParam String startdate,
-			@RequestParam String deadline, @RequestParam String person) {
+			@RequestParam String deadline, @RequestParam String person, ModelAndView mv) {
 		log.info(aloc + " " + startdate + " " + deadline + " " + person);
 		int p = Integer.parseInt(person);
 		List<Accommodation> acvo = searchService.getAccommodationListBySearchBar(aloc, startdate, deadline, p);
@@ -69,18 +69,20 @@ public class RouteController {
 			log.info("searchGetFromMain ///roomImage: " + roomImage);
 			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
 			ac.setIpath1(roomImage.get(0).getStored_file_name());
-		}	
-//		log.info("acvo 3번째 : "+acvo.get(3).getIpath1());
-		log.info(acvo.toString());
-		ModelAndView mv = new ModelAndView("searchList", "acvo", acvo);
-		mv.setViewName("searchList");
-		mv.addObject("voSize", acvo.size());
-		mv.addObject("city", aloc);
-		mv.addObject("startDate", startdate);
-		mv.addObject("endDate", deadline);
-		mv.addObject("person", p);
-		mv.addObject("acvo", acvo);
-
+		}
+		if(acvo.size()==0) {
+			mv.setViewName("nullPage");
+		}else {
+			log.info(acvo.toString());
+			mv = new ModelAndView("searchList", "acvo", acvo);
+			mv.setViewName("searchList");
+			mv.addObject("voSize", acvo.size());
+			mv.addObject("city", aloc);
+			mv.addObject("startDate", startdate);
+			mv.addObject("endDate", deadline);
+			mv.addObject("person", p);
+			mv.addObject("acvo", acvo);
+		}
 		return mv;
 	}
 	@GetMapping(value = "searchByLocation")
@@ -118,12 +120,14 @@ public class RouteController {
 		List<reviewVO>  reviewlist = searchService.getReviewByAccommodationId(aid);
 		List<ReservationDateVO> rdatelist = reservationService.selectAidReservationDateS(aid);
 		long reservation = searchService.getCountGuest(aid);
+		double reviewpoint = searchService.getReviewPoint(aid);
 		log.info("RouteCon searchDetail mseq : "+ aid);
 		log.info("RouteCon searchDetail ipath1 : "+ ipath1);
 		log.info("RouteCon searchDetail roomImage : "+ roomImage);
 		log.info("RouteCon searchDetail reviewlist : "+ reviewlist);
 		log.info("RouteCon searchDetail reslist : "+ reslist);
 		log.info("RouteCon searchDetail reservation : "+ reservation);
+		log.info("RouteCon searchDetail reviewpoint : "+ reviewpoint);
 		resultVO resVO = reslist.get(0);
 		log.info("RouteCon searchDetail resVO : "+ resVO);
 		long diffDays = priceService.daysCalc(rstart, rend);// 숙박일수 계산
@@ -137,7 +141,8 @@ public class RouteController {
 		resVO.setDays(diffDays);// 사용자선택 숙박일수 적용
 		resVO.setAid(aid);
 		mv.addObject("datelist", rdatelist);
-		mv.addObject("reservation",reservation);
+		mv.addObject("reservation",reservation);//방문자 수 구하기
+		mv.addObject("reviewpoint",reviewpoint);//평균 리뷰 구하기
 		mv.addObject("reslist", reviewlist);//리뷰리스트 전달
 		mv.addObject("resVO", resVO);//숙소정보 전달
 		mv.setViewName("info/info");

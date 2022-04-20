@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="yourstay.md.mapper.SearchMapper">
 	<select id="getAccommodationListBySearchBar" parameterType="hashmap" resultType="yourstay.md.domain.Accommodation">
-		select * from accommodation where not exists (
+		select * from accommodation A where not exists (
 			select distinct aid, rdid, rdate 
-			from reservationdate
-			where rdate between to_date(#{startdate},'yyyy-MM-dd') 
+			from reservationdate R
+			where A.aid=R.aid and rdate between to_date(#{startdate},'yyyy-MM-dd') 
 				and to_date(#{deadline},'yyyy-MM-dd') 
 		) 
 		and aloc like '%'||#{aloc}||'%'
@@ -29,6 +29,10 @@
    
    <select id="getCountGuest" resultType="long">
    		select count(*) from reservation where aid=#{aid}
+   </select>
+   
+   <select id="getReviewPoint" resultType="double">
+   		select avg(point) from review where aid=#{aid}
    </select>
 </mapper>
 <!-- resultType : 결과반환 Object / return 값이라고 생각하면 될 듯?

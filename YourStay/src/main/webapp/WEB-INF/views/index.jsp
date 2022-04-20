@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>YourTrip</title>
+<title>YourStay</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
@@ -29,9 +29,9 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
    rel="stylesheet">
-<!-- alert -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+   <!-- alert -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- Fontawesome -->
 <link rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -105,14 +105,46 @@
                   $("#logo").click(function() {
                      window.location = "index.jsp";
                   });
-               });
+              });
    $(function(){
        document.getElementById('my_btn').click();
+       document.getElementById('my_btn2').click();
     });
+   //호스트 알림 관련 
    function buttonCheck(check,loginCheck){
-     
        var mnum = loginCheck;
+       //로그인 되어있고, check 값이 0이 아니면 => check값이 있으면
        if(loginCheck !=null && check!=0){//checkNum이 널이면 로그인이 안되어있거나 메세지가없는것,0이면 알림을끝상태
+          const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: true,
+              showCancelButton: false,
+              confirmButtonText : "예약내용 보러가기",
+              cancelButtonText: '알림끄기',
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+              }
+            })
+            
+            Toast.fire({
+                 icon: 'success',
+                 title: '새로운 예약이 있습니다'
+               }).then((result) => {
+                    if (result.isConfirmed) {//여기에 예약보러가는 로직
+                         location.href="mypage/goReservationList?mseq="+mnum;
+                       }    
+               })
+            
+       }
+   }
+   //게스트 알림 
+   function buttonCheck2(check2,loginCheck){
+       var mnum2 = loginCheck;
+       if(loginCheck !=null && check2!=0){//checkNum이 널이면 로그인이 안되어있거나 메세지가없는것,0이면 알림을끝상태
           const Toast = Swal.mixin({
               toast: true,
               position: 'top-end',
@@ -120,7 +152,7 @@
               showCancelButton: true,
               confirmButtonText : "예약내용 보러가기",
               cancelButtonText: '알림끄기',
-              timer: 20000,
+              timer: 3000,
               timerProgressBar: true,
               didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -129,15 +161,28 @@
             })
             Toast.fire({
               icon: 'success',
-              title: '새로운 예약이 있습니다'
+              title: '예약이 확정되었습니다.'
             }).then((result) => {
                  if (result.isConfirmed) {//여기에 예약보러가는 로직
-                       location.href="mypage/goReservationList?mseq="+${mvo.getMseq()};
+                    let rid = "${rid}";
+                    console.log(rid);
+                    //function 
+                    $.ajax({
+                       url:"/res/guestUpdate",
+                       type:"post",
+                       data:{rid: rid},
+                       success:function(){
+                          location.href="mypage/roomReservation?mseq="+mnum2;
+                       }                     
+                    });
+                    //location.href="/res/guestUpdate"
+                     //location.href="mypage/roomReservation?mseq="+mnum2;
                     } else if (
                       /* Read more about handling dismissals below */
                       result.dismiss === Swal.DismissReason.cancel
                     ) {//여기에 로직 알림끄는 
                        //RESERVATION 테이블 checkview 1로 업데이트해주면 됨
+                       location.href="/res/guestUpdate";
                     }    
             })
        }
@@ -167,6 +212,9 @@
 }
 </style>
 <body>
+   <form action="/res/guestUpdate" name="frm" method="post">
+      <input type="hidden" name="rid" value="${rid}" >
+   </form>
 <c:choose>
    <c:when test="${check eq null }">
       <c:set value="null" var="check"/>
@@ -183,7 +231,14 @@
       <c:set value="${loginOkUser.mseq}" var="loginOkUser"/>
    </c:otherwise>
 </c:choose>
-
+<c:choose>
+   <c:when test="${check2 eq null }">
+      <c:set value="null" var="check2"/>
+   </c:when>
+   <c:otherwise>
+      <c:set value="${check2}" var="check2"/>
+   </c:otherwise>
+</c:choose>
    <div class="container">
       <header class="blog-header py-3">
          <div
@@ -194,6 +249,12 @@
                <a class="blog-header-logo text-dark" href="/">YourStay</a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center" style="padding-right: 10px; padding-top: 14px;">
+               <a class="link-secondary" href="notify.do" aria-label="Search"> 
+            <i class='fa fa-bell' style="margin-right: 30px;"></i>
+                     <title>Search</title><circle cx="10.5" cy="10.5"
+                        r="7.5" />
+                     <path d="M21 21l-5.2-5.2" /></svg>
+               </a> 
                <c:choose>
          <c:when test="${msg =='failure'}">
         <a class="btn btn-secondary" href="../login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
@@ -229,7 +290,6 @@
    <main class="container">
       <div id="searchBar">
          <form id="seatrchForm">
-         <input type="hidden" name="mseq" value="${vo[0].mseq}">
             <div id="search" class="radius">
                <p id="indexH1">YourStay 숙소 찾기</p>
                <div id="cityDiv">
@@ -304,7 +364,7 @@
               <div class="card-body">
                 <h5 class="card-title">${vo[0].aloc}</h5>
                 <p class="card-text">가평에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
-                <a href="/searchByLocation?aloc=${vo[0].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Button</a>
+                <a href="/searchByLocation?aloc=${vo[0].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">상세 보기</a>
               </div>
          </div>
       </div>
@@ -316,7 +376,7 @@
               <div class="card-body">
                 <h5 class="card-title">${vo[4].aloc}</h5>
                 <p class="card-text">제주도에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
-                <a href="/searchByLocation?aloc=${vo[4].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Button</a>
+                <a href="/searchByLocation?aloc=${vo[4].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">상세 보기</a>
               </div>
          </div>
       </div>
@@ -327,7 +387,7 @@
               <div class="card-body">
                 <h5 class="card-title">${vo[2].aloc}</h5>
                 <p class="card-text">여주에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
-                <a href="/searchByLocation?aloc=${vo[2].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Button</a>
+                <a href="/searchByLocation?aloc=${vo[2].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">상세 보기</a>
               </div>
          </div>
       </div>
@@ -338,14 +398,14 @@
               <div class="card-body">
                 <h5 class="card-title">${vo[8].aloc}</h5>
                 <p class="card-text">강원도에 위치한 인기 만점 숙소를 보려면 아래 버튼을 클릭해주세요.</p>
-                <a href="/searchByLocation?aloc=${vo[8].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Button</a>
+                <a href="/searchByLocation?aloc=${vo[8].aloc}" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">상세 보기</a>
               </div>
          </div>
       </div>
    </div>
    <!-- 슬라이드 -->
       <div id="carouselExampleCaptions" class="carousel slide"
-         data-bs-ride="carousel" style="margin-top: 3%;">
+         data-bs-ride="carousel">
          <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions"
                data-bs-slide-to="0" class="active" aria-current="true"
@@ -357,24 +417,21 @@
          </div>
          <div class="carousel-inner" style="width: 98.5%; border-radius: 1%;">
             <div class="carousel-item active"
-               style="background:url('../images/forest.jpg') no-repeat; background-position: center;
-  background-size: cover;">
+               style="background:url('../images/forest.jpg') no-repeat; background-position: center; background-size: cover;">
                <div class="carousel-caption">
                   <h5>YourStay</h5>
                   <p>피톤치드와 함께 힐링을 느낄 수 있는 숙소도 있습니다.</p>
                </div>
             </div>
             <div class="carousel-item"
-               style="background:url('../images/ocean.jpg') no-repeat;background-position: center;
-  background-size: cover;">
+               style="background:url('../images/ocean.jpg') no-repeat;background-position: center; background-size: cover;">
                <div class="carousel-caption">
                   <h5>YourStay</h5>
                   <p>뻥 뚫린 수평선을 바라보며 힐링을 느낄 수 있는 숙소도 있습니다.</p>
                </div>
             </div>
             <div class="carousel-item"
-               style="background:url('../images/house.jpg') no-repeat;background-position: center;
-  background-size: cover;">
+               style="background:url('../images/house.jpg') no-repeat;background-position: center; background-size: cover;">
                <div class="carousel-caption">
                   <h5>YourStay</h5>
                   <p>아무도 없는 곳에서의 독채! 연인과 가족과 함께 하면 더욱 좋은 숙소도 있습니다.</p>
@@ -410,5 +467,6 @@
       </footer>
    </div>
    <input id="my_btn" type="button" onclick="buttonCheck(${check},${loginOkUser})"/>
+   <input id="my_btn2" type="button" onclick="buttonCheck2(${check2},${loginOkUser})"/>
 </body>
 </html>

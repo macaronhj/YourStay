@@ -136,33 +136,33 @@ $(function() {
    }
 });
       $(function(){//
-	      $(".wish").on("click", function(){
-	         $.ajax({ 
-	            url: "/mypage/wishlist/addwish",
-	            type: "POST",
-	            /* cache: "false", */
-	            data: {aid : $("#aid").val(), mseq : $("#mseq").val()},
-	            success: function(data){
-	            	if(data.trim()=='deleteWishList'){
-	            		alert("찜 취소 되었습니다.");
-	            		$('.wish').css({"color": "black"});
-	            	}else{
-	            		$('.wish').css({"color": "pink"});
-	            		alert("찜 등록 되었습니다.");
-	            	}
-	            },
-	            error : function (data) {
-	                alert('죄송!');
-	                return false;
-	            }  
-	         });
-	      });
-	   });
+         $(".wish").on("click", function(){
+            $.ajax({ 
+               url: "/mypage/wishlist/addwish",
+               type: "POST",
+               /* cache: "false", */
+               data: {aid : $("#aid").val(), mseq : $("#mseq").val()},
+               success: function(data){
+                  if(data.trim()=='deleteWishList'){
+                     alert("찜 취소 되었습니다.");
+                     $('.wish').css({"color": "black"});
+                  }else{
+                     $('.wish').css({"color": "pink"});
+                     alert("찜 등록 되었습니다.");
+                  }
+               },
+               error : function (data) {
+                   alert('죄송!');
+                   return false;
+               }  
+            });
+         });
+      });
 </script>
 
 
 <style>
-body, h1, h2, h3,h4,h5 {
+body, h1, h2, h3,h4,h5,div {
    font-family: 'Poor Story', cursive;
 }
 
@@ -285,9 +285,9 @@ body, h1, h2, h3,h4,h5 {
 }
 
 .like{
-	padding: 0;
-	border: none;
-	background: none;
+   padding: 0;
+   border: none;
+   background: none;
 }
 </style>
 <%
@@ -695,7 +695,7 @@ body, h1, h2, h3,h4,h5 {
                                           href="#"><i class="icofont-ui-rating"></i></a> <b
                                           class="text-black ml-2">총 방문자 수 : ${reservation}</b>
                                     </div>
-                                    <p class="text-black mb-4 mt-2">Rated 3.5 out of 5</p>
+                                    <p class="text-black mb-4 mt-2">별점 5점 만점에 평균 ${reviewpoint}점 입니다.</p>
                                  </div>
                                  <div class="graph-star-rating-body">
                                     <div class="rating-list">
@@ -759,7 +759,7 @@ body, h1, h2, h3,h4,h5 {
                               <div
                                  class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
                                  <h5 class="mb-1">All Ratings and Reviews</h5>
-                             	 
+                                 
                                  <c:forEach items="${reslist}" var="reviewlist">
                                  <hr>
                                  <div class="reviews-members pt-4 pb-4">
@@ -777,8 +777,8 @@ body, h1, h2, h3,h4,h5 {
                                                    class="icofont-ui-rating"></i></a>
                                              </span>
                                              <c:if test="${reviewlist==null }">
-			                             	 <h4>아직 후기가 없어요 ㅜ.ㅜ</h4>
-			                             	 </c:if>
+                                          <h4>아직 후기가 없어요 ㅜ.ㅜ</h4>
+                                          </c:if>
                                              <h6 class="mb-1">
                                                 <a class="text-black" href="#">${reviewlist.mname}</a>
                                              </h6>
@@ -807,14 +807,19 @@ body, h1, h2, h3,h4,h5 {
             <div class="position-sticky" style="top: 2rem;">
 
                <main class="page payment-page">
-                  <section class="payment-form dark">
+                  <section class="payment-form">
                      <div class="container">
                         <form action="/res/reservdetail" method="post">
                            <!--달력 -->
+                           <h3 class="title" align="center" style="height:50px; text-align: center; padding-top: 10px;">날짜를 지정해주세요.</h3>
+                           
+                           <div style="text-align-last: center;">
                            <input onchange="daysPriceCalc()" type="text" id="from"
-                              name="rstart" value="${resVO.rstart}"> <input
-                              onchange="daysPriceCalc()" type="text" id="to" name="rend"
+                              name="rstart" value="${resVO.rstart}"> 
+                           <input onchange="daysPriceCalc()" type="text" id="to" name="rend"
                               value="${resVO.rend}">
+                           </div>
+                           
                            <!-- 히든 value -->
                            <input type="hidden" value="${resVO.aid}" name="aid" id="aid">
                            <input type="hidden" value="${loginOkUser.mseq}" name="mseq" id="mseq">
@@ -835,9 +840,9 @@ body, h1, h2, h3,h4,h5 {
                                  <input id="resultpricehidden" type="hidden" name="resultprice" value="${resVO.resultprice}">
                               </div>
                            </div>
-                           <div class="form-group col-sm-12">
+                           <div class="form-group col-sm-12" style="padding: 5% 10%;">
                               <button type="submit" class="btn btn-primary"
-                                 data-bs-toggle="modal" data-bs-target="#staticBackdropLive">
+                                 data-bs-toggle="modal" data-bs-target="#staticBackdropLive" style="width: -webkit-fill-available;">
                                  예약하기</button>
                            </div>
                         </form>

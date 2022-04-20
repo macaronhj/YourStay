@@ -19,6 +19,30 @@ public interface ReservationMapper {
 	 */
 	public List<ReservationDateVO> selectReservationDate(Reservation reservationVO);
 	
-	public Long checkView(long mseq);
 	public List<ReservationDateVO> selectAidReservationDate(long aid);
+	/*
+     * 호스트용 알림기능 checkView 찾기 
+    */
+   public Long checkView(long mseq);
+   /*
+     * 게스트용 알림기능 checkView 찾기
+    */
+   public Long checkView2(long mseq);
+   
+   /*
+     * rid로 Reservation 찾기 
+    */
+    public int findReservationRid(long rid);
+    /*
+     * mseq로 Reservation 찾기 
+    */
+    public List<Reservation> findReservationMseq(long mseq);
+    /*
+     * 호스트 알림 업데이트 하기 ( Reservation UpdateRaccept )  
+    */
+    public int hostUpdate(long rid);
+    /*
+     * 게스트 알림 업데이트 하기 ( Reservation UpdateRaccept )  
+    */
+    public int guestUpdate(Reservation reservation);
 }

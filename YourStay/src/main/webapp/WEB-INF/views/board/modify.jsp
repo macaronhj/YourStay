@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Board Form</title>
+    <title>YourStay</title>
 	<!-- bootstrap-css -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"
 	   media="all" />

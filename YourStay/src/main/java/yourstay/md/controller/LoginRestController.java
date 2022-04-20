@@ -68,7 +68,7 @@ public class LoginRestController {
 	   ModelAndView mav = new ModelAndView();
 	   if(memberVo == null)
 	   {
-	    mapper.addUser(new MemberVO(-1, mname, memail, mpwd , mcallnum, -1));
+	    mapper.addUser(new MemberVO(-1, mname, memail, mpwd , mcallnum,-1));
 		   mav.setViewName("login/loginPage");
 	      mav.addObject("msg","success");
 	      log.info("ddd");

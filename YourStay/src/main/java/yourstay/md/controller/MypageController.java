@@ -34,6 +34,7 @@ import yourstay.md.service.FileService;
 import yourstay.md.service.MemberService;
 import yourstay.md.service.MyPageService;
 import yourstay.md.service.MyRoomService;
+import yourstay.md.service.ReservationService;
 import yourstay.md.service.ReviewService;
 import yourstay.md.service.RoomHistoryService;
 
@@ -58,6 +59,8 @@ public class MypageController {
 	private AccommodationService accommodationService;
 	@Autowired
 	ReviewService reviewService;
+	@Autowired
+	ReservationService reservservice;
 	
 	
 	@GetMapping(value="/home")
@@ -80,13 +83,16 @@ public class MypageController {
 	         log.info("wishlist ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
 	         ac.setIpath1(roomImage.get(0).getStored_file_name());
 	      }
-	        log.info("####vo:"+vo.toString());
-	        mv.addObject("wishvo", vo);
-	        mv.setViewName("mypage/wishlist");
+	        if(vo.size()==0) {
+	        	mv.setViewName("myNullPage");
+	        }else {
+		        mv.addObject("wishvo", vo);
+		        mv.setViewName("mypage/wishlist");
+	        }
 	      return mv;
 	   }
 	@GetMapping(value="/roomHistory")
-    public ModelAndView roomHistory(long mseq){
+    public ModelAndView roomHistory(long mseq,ModelAndView mv){
         List<Reservation> vo = roomService.getRoomList(mseq);
         log.info("####vo:"+vo.toString());
         for(Reservation ac: vo) {
@@ -96,7 +102,11 @@ public class MypageController {
 			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
 			ac.setIpath1(roomImage.get(0).getStored_file_name());
 		}
-    	ModelAndView mv = new ModelAndView("mypage/roomHistory","vo",vo);
+        if(vo.size() ==0) {
+        	mv.setViewName("myNullPage");
+        }else{
+        	mv = new ModelAndView("mypage/roomHistory","vo",vo);
+        }
         return mv;
     }
    @GetMapping(value="/review")
@@ -121,9 +131,10 @@ public class MypageController {
     }
    
    @GetMapping(value="/roomReservation")
-   public ModelAndView roomReservation(long mseq){
+   public ModelAndView roomReservation(long mseq,ModelAndView mv){
        log.info("MypageController -> roomReservation 요청");
        List<Reservation> vo = roomService.getRoomList(mseq);
+       log.info("MypageController -> roomReservation vo:"+ vo);
        for(Reservation ac: vo) {
 			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
 			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
@@ -131,8 +142,11 @@ public class MypageController {
 			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
 			ac.setIpath1(roomImage.get(0).getStored_file_name());
 		}
-	   ModelAndView mv = new ModelAndView("mypage/roomReservation","vo",vo);
-       
+       if(vo.size()==0) {
+    	   mv.setViewName("myNullPage");
+       }else {
+    	   mv = new ModelAndView("mypage/roomReservation","vo",vo);
+       }
        return mv;
    }
    
@@ -146,7 +160,7 @@ public class MypageController {
    }
    
    @GetMapping(value="/myRoom")
-   public ModelAndView myRoom(@RequestParam long mseq) {
+   public ModelAndView myRoom(@RequestParam long mseq,ModelAndView mv) {
 	   List<Reservation> reservation = myRoomService.getMyRoomList(mseq);
 	   log.info("MypageController -> roomRegister: "+ reservation);
 	   for(Reservation ac: reservation) {
@@ -156,7 +170,11 @@ public class MypageController {
 			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
 			ac.setIpath1(roomImage.get(0).getStored_file_name());
 		}
-	   ModelAndView mv = new ModelAndView("mypage/myRoom","vo",reservation);
+	   if(reservation.size() ==0) {
+		   mv.setViewName("myNullPage");
+	   }else {
+		   mv = new ModelAndView("mypage/myRoom","vo",reservation);
+	   }
        return mv;
    }
    @GetMapping(value="/modifyRoom")
@@ -188,7 +206,7 @@ public class MypageController {
 		return mv;
 	}
    @GetMapping(value="/goReservationList")
-   public ModelAndView goReservationList(long mseq){
+   public ModelAndView goReservationList(long mseq, ModelAndView mv){
        log.info("MypageController -> goReservationList 요청");
        List<Reservation> vo = roomService.goReservationList(mseq);
        for(Reservation ac: vo) {
@@ -198,16 +216,22 @@ public class MypageController {
 			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
 			ac.setIpath1(roomImage.get(0).getStored_file_name());
 		}
-	   ModelAndView mv = new ModelAndView("mypage/goReservationList","vo",vo);
+       if(vo.size()==0) {
+    	   mv.setViewName("myNullPage");
+       }else {
+    	   mv = new ModelAndView("mypage/goReservationList","vo",vo);
+       }
        
        return mv;
    }
    @GetMapping(value="/accessPage")
-   public ModelAndView accessPage(long rid){
+   public ModelAndView accessPage(long rid, ModelAndView mv){
 	   log.info("MypageController -> accessPage rid: "+rid);
        log.info("MypageController -> accessPage 요청");
        List<Reservation> vo = roomService.goReservationRoom(rid);
+       int raccept = reservservice.findReservationRidS(rid);
        log.info("MypageController -> accessPage :"+vo);
+       log.info("MypageController -> accessPage raccept:"+raccept);
        for(Reservation ac: vo) {
 			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
 			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
@@ -215,7 +239,8 @@ public class MypageController {
 			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
 			ac.setIpath1(roomImage.get(0).getStored_file_name());
 		}
-	   ModelAndView mv = new ModelAndView("mypage/goReservationRoom","vo",vo);
+       mv.addObject("raccept",raccept);
+	   mv = new ModelAndView("mypage/goReservationRoom","vo",vo);
        
        return mv;
    }

@@ -5,37 +5,58 @@
 <mapper namespace="yourstay.md.mapper.ReservationMapper">
 
 	<!-- 예약테이블 등록 -->
-	<insert id="insertReservation"
-		parameterType="yourstay.md.domain.Reservation"
-		useGeneratedKeys="true" keyProperty="rid">
-		<selectKey keyProperty="rid" resultType="long"
-			order="BEFORE">
-			SELECT reservation_seq.NEXTVAL FROM DUAL
-		</selectKey>
-		insert
-		into reservation values
-		(#{rid},#{aid},#{mseq},#{rstart},#{rend},#{rpeople},#{rprice},0)
-	</insert>
-	<!-- 예약날짜테이블 등록 -->
-	<insert id="insertReservationDate"
-		parameterType="yourstay.md.domain.ReservationDateVO">
-		insert
-		into reservationdate values
-		(resdate_seq.nextval,#{rid},#{aid},#{rdate})
-	</insert>
-	<!-- 예약된 날짜 조회 -->
-	<select id="selectReservationDate"
-		resultType="yourstay.md.domain.ReservationDateVO">
-		select * from reservationdate where aid=#{aid} and rdate between
-		to_date(#{rstart},'yyyy-MM-dd')
-		and to_date(#{rend},'yyyy-MM-dd')
-	</select>
-	<select id="checkView" parameterType="long" resultType="Long">
-      select count(*) from RESERVATION r, accommodation a where r.aid=a.aid and a.mseq=#{mseq} and r.checkview=0
+   <insert id="insertReservation"
+      parameterType="yourstay.md.domain.Reservation"
+      useGeneratedKeys="true" keyProperty="rid">
+      <selectKey keyProperty="rid" resultType="long"
+         order="BEFORE">
+         SELECT reservation_seq.NEXTVAL FROM DUAL
+      </selectKey>
+      insert
+      into reservation values
+      (#{rid},#{aid},#{mseq},#{rstart},#{rend},#{rpeople},#{rprice},0,1,0)
+   </insert>
+   <!-- 예약날짜테이블 등록 -->
+   <insert id="insertReservationDate"
+      parameterType="yourstay.md.domain.ReservationDateVO">
+      insert
+      into reservationdate values
+      (resdate_seq.nextval,#{rid},#{aid},#{rdate})
+   </insert>
+   <!-- 예약된 날짜 조회 -->
+   <select id="selectReservationDate"
+      resultType="yourstay.md.domain.ReservationDateVO">
+      select * from reservationdate where aid=#{aid} and rdate between
+      to_date(#{rstart},'yyyy-MM-dd')
+      and to_date(#{rend},'yyyy-MM-dd')
    </select>
    <!-- 해당 숙소의 예약된 날짜들 출력 -->
    <select id="selectAidReservationDate"
       parameterType="long" resultType="yourstay.md.domain.ReservationDateVO">
       select * from reservationdate where aid = #{aid}
    </select>
+   <!-- 호스트 알림 확인 -->
+   <select id="checkView" parameterType="long" resultType="Long">
+      select count(*) from RESERVATION r, accommodation a where r.aid=a.aid and a.mseq=#{mseq} and r.checkview=0
+    </select>
+    <!-- 게스트 알림 확인 -->
+    <select id="checkView2" parameterType="long" resultType="Long">
+      select count(*) from RESERVATION where mseq=#{mseq} and checkview2=0
+    </select>
+    <!-- rid로 Reservation 찾기 (호스트용)-->
+   <select id="findReservationRid" parameterType="long" resultType="int">
+        SELECT count(*) FROM reservation WHERE rid = #{rid} and raccept=0
+   </select>
+   <!-- mseq로 Reservation 찾기 (게스트용)-->
+   <select id="findReservationMseq" parameterType="long" resultType="yourstay.md.domain.Reservation">
+        SELECT * FROM reservation WHERE mseq = #{mseq} 
+   </select>
+   <!-- 호스트용 알림 Checkview update하기  -->
+   <update id="hostUpdate" parameterType="yourstay.md.domain.Reservation">
+        UPDATE reservation SET raccept = 1, checkview = 1, checkview2 = 0 WHERE rid = #{rid}
+   </update>
+   <!-- 게스트용 알림 Checkview2 update하기  -->
+   <update id="guestUpdate" parameterType="yourstay.md.domain.Reservation">
+        UPDATE reservation SET checkview2 = 1 WHERE rid = #{rid}
+   </update>
 </mapper>

@@ -87,9 +87,7 @@ h2, h3,p, body {
   </tbody>
 </table>
 <div class="container px-4 py-5" id="featured-3">
-<h3>바로 가기</h3><a class="btn btn-secondary" type="submit" href="roomRegister?mseq=${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">숙소 등록 하러 가기</a>
-   <a class="btn btn-secondary" type="submit" href="myRoom?mseq=${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">내가 등록한 숙소 보러 가기</a>
-   <a class="btn btn-secondary" type="submit" href="goReservationList?mseq=${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">내  숙소 예약한 목록 보러 가기</a>
+   <!-- 1번째줄 -->
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
       <div class="feature col">
           <img class="bi" id="like" width="63em" height="63em" src="../images/like.png"/>
@@ -109,6 +107,28 @@ h2, h3,p, body {
         <p>리뷰를 쓰고 싶으시면 아래 버튼을 눌러주세요!</p>
         <input type="hidden" name="mseq" value="${member.mseq}">
         <a class="btn btn-secondary" type="submit" href="roomHistory?mseq=${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">리뷰 쓰러 가기</a>
+      </div>
+    </div>
+    <!-- 2번째줄 -->
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="feature col">
+          <img class="bi" id="like" width="63em" height="63em" src="../images/plus-sign.png"/>
+        <h2>숙소등록 하러가기</h2>
+        <p>숙소를 등록하려면 아래 버튼을 눌러주세요!</p>
+       <a class="btn btn-secondary" type="submit" href="roomRegister?mseq=${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">숙소 등록 하러 가기</a>
+      </div>
+      <div class="feature col">
+      <img class="bi" id="reservation" width="63em" height="63em" src="../images/accommodation.png"/>
+        <h2>등록한 숙소</h2>
+        <p>등록한 숙소를 보고 싶으시면 아래 버튼을 눌러주세요!</p>
+        <a class="btn btn-secondary" type="submit" href="myRoom?mseq=${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">내가 등록한 숙소 보러 가기</a>
+      </div>
+      <div class="feature col">
+        <img class="bi" id="review" width="63em" height="63em" src="../images/check.png"/>
+        <h2>내 숙소 예약확인</h2>
+        <p>내 숙소 예약확인을 하고 싶으시면 아래 버튼을 눌러주세요!</p>
+        <input type="hidden" name="mseq" value="${member.mseq}">
+        <a class="btn btn-secondary" type="submit" href="goReservationList?mseq=${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">내  숙소 예약한 목록 보러 가기</a>
       </div>
     </div>
   </div>

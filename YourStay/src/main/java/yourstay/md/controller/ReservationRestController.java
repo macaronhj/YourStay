@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,4 +58,34 @@ public class ReservationRestController {
 		log.info("reserdetailPage resultVO: " + rVO.toString());
 		return new ModelAndView("/reserdetail/reservation","rdetail",rVO);
 	}
+	/*
+     * 호스트 업데이트 하기 ! 
+    */
+    @PostMapping("/hostUpdate")
+    public ModelAndView hostUpdate(ModelAndView mv, long rid) {
+    	log.info("##ReservationRestController hostUpdate 접속!!!! ");
+       reservservice.hostUpdateS(rid);
+       mv.addObject("rid", rid);
+       log.info("##ReservationRestController updateRaccept 완료!!!! ");
+       mv.setViewName("redirect: /mypage/accessPage");
+       return mv;
+    }
+    /*
+     * 게스트 업데이트 하기 ! 
+    */
+    @PostMapping("/guestUpdate")
+    public ModelAndView guestUpdate(ModelAndView mv, Reservation reservation) {
+       log.info("reservation : "+ reservation);
+       reservservice.guestUpdateS(reservation);
+       mv.addObject("rid", reservation.getRid());
+       log.info("##ReservationRestController guestUpdate 완료!!!! ");
+       mv.setViewName("redirect: /mypage/accessPage");
+       return mv;
+    }
+    @GetMapping("/findReservation")
+    public ModelAndView findReservationRaccept(ModelAndView mv, long rid) {
+       log.info("@@ ReservationControler findReservationRaccept");
+       mv = new ModelAndView("/mypage/goReservationRoom", "FindReservation", reservservice.findReservationRidS(rid));
+       return mv;
+    }
 }

@@ -15,4 +15,5 @@ public interface SearchService {
 	public List<Accommodation> getAccommodationByLoc();
 	public List<Accommodation> getAccommodationListByLocation(String aloc);
 	public long getCountGuest(long aid);
+	public double getReviewPoint(long aid);
 }

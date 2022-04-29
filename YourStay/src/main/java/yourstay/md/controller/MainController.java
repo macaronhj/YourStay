@@ -48,11 +48,8 @@ public class MainController {
          List<Reservation> reservation = reservservice.findReservationMseqS(mvo.getMseq());
           rid = reservation.get(0).getRid();
          Long check = reservservice.checkView(mvo.getMseq()); // 호스트 알림
-         log.info("check : "+ check);
-         log.info("mvo.getMseq() : "+ mvo.getMseq());
          mv.addObject("check", check);
          Long check2 = reservservice.checkView2(mvo.getMseq()); // 게스트 알림
-         log.info("check2 : "+ check2);
         mv.addObject("check2", check2);
       }
       log.info("MainController index: "+vo);

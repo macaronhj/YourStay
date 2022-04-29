@@ -33,9 +33,6 @@ public class RoomFileUtils {
          MultipartHttpServletRequest mpRequest) throws Exception {
       
       List<MultipartFile> fileList = mpRequest.getFiles("file");
-//      Iterator<String> iterator = mpRequest.getFileNames();
-//      log.error("RoomFileUtils³»  // iterator : " + iterator);
-//      MultipartFile multipartFile = null;
       String originalFileName = null;
       String originalFileExtension = null;
       String storedFileName = null;

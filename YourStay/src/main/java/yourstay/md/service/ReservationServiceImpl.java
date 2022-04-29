@@ -45,10 +45,9 @@ public class ReservationServiceImpl implements ReservationService {
 		ArrayList<String> selectDateList = (ArrayList<String>) DateMaker.getDateList(reservationVO.getRstart(), reservationVO.getRend());
 		ArrayList<ReservationDateVO> checkList = (ArrayList<ReservationDateVO>) reservationMapper.selectReservationDate(reservationVO);
 		ReservationDateVO rdateVO = new ReservationDateVO();
-		if(checkList.size() != 0) { //사용자 입력 값이 예약테이블에 없으면
+		if(checkList.size() != 0) { //사용자 입력 값이 예약테이블에 있으면
 			log.error("예약불가합니다");
-		}else {
-			//예약가능1
+		}else {//사용자 입력 값이 예약테이블에 없으면
 			log.error("예약가능합니다");
 			reservationMapper.insertReservation(reservationVO);
 			rdateVO.setAid(reservationVO.getAid());

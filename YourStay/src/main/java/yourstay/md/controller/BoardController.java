@@ -19,6 +19,19 @@ import yourstay.md.service.BoardService;
 @AllArgsConstructor
 @Controller
 @RequestMapping("board")
+
+/**
+ * packageName : yourstay.md.controller
+ * fileName : BoardController
+ * author : kosmo 3得
+ * date : Mar 14, 2022
+ * description :
+ * ===========================================================
+ * DATE                  AUTHOR                  NOTE
+ * -----------------------------------------------------------
+ * Mar 14, 2022          kosmo 3得             置段 持失
+ */
+
 public class BoardController {
 	@Autowired
 	private BoardService boardService;

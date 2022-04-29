@@ -17,14 +17,30 @@ import yourstay.md.service.ReviewService;
 @AllArgsConstructor
 @Controller
 @RequestMapping("/review")
-public class ReviewRestController {
 
+/**
+ * packageName : yourstay.md.controller
+ * fileName : ReviewRestController
+ * author : kosmo 3팀
+ * date : Mar 14, 2022
+ * description :
+ * ===========================================================
+ * DATE                  AUTHOR                  NOTE
+ * -----------------------------------------------------------
+ * Mar 14, 2022          kosmo 3팀             최초 생성
+ */
+
+public class ReviewRestController {
 	@Autowired
-	FileService fileService;
-	
+	FileService fileService;	
 	@Autowired
 	ReviewService reviewService;
-	
+
+	/**
+     * 찜 목록 추가  ( DTO 로 요청 받는 경우 )
+     * @param WishListVO wishlistvo
+     * @return String
+     */
 	@PostMapping(value="/registerReview")
     public ModelAndView addreview(reviewVO reviewVo, MultipartHttpServletRequest mpRequest)throws Exception {
        //작은미션: (멀티파트업로드) 구현! 

@@ -19,6 +19,19 @@ import yourstay.md.service.SearchService;
 
 @Log4j
 @Controller
+
+/**
+ * packageName : yourstay.md.controller
+ * fileName : MainController
+ * author : kosmo 3得
+ * date : Mar 14, 2022
+ * description :
+ * ===========================================================
+ * DATE                  AUTHOR                  NOTE
+ * -----------------------------------------------------------
+ * Mar 14, 2022          kosmo 3得             置段 持失
+ */
+
 public class MainController {
    @Autowired
    SearchService searchService;

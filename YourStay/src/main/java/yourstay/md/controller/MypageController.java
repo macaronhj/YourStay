@@ -42,6 +42,19 @@ import yourstay.md.service.RoomHistoryService;
 @AllArgsConstructor
 @Controller
 @RequestMapping("/mypage")
+
+/**
+ * packageName : yourstay.md.controller
+ * fileName : MypageController
+ * author : kosmo 3팀
+ * date : Mar 14, 2022
+ * description :
+ * ===========================================================
+ * DATE                  AUTHOR                  NOTE
+ * -----------------------------------------------------------
+ * Mar 14, 2022          kosmo 3팀             최초 생성
+ */
+
 public class MypageController {
 	@Autowired
 	private MemberMapper memberMapper;
@@ -113,13 +126,6 @@ public class MypageController {
     public ModelAndView review(HttpSession session, @RequestParam long aid, @RequestParam long mseq) {
         log.info("aid : " + aid+ "// mseq:" + mseq);
         List<resultVO> vo = reviewService.getUser((String) session.getAttribute("memail"));
-//        for(reviewVO ac: vo) {
-//			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
-//			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
-//			log.info("searchGetFromMain ///roomImage: " + roomImage);
-//			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
-//			ac.setIpath1(roomImage.get(0).getStored_file_name());
-//		}
         
         log.info("####vo:"+vo);
         resultVO resultVO = vo.get(0);
@@ -224,6 +230,18 @@ public class MypageController {
        
        return mv;
    }
+   /**
+    * 호스트의 숙소를 예약한 게스트 보기
+    * @param long rid
+    * @return ModelAndView
+    */
+   @GetMapping("/findReservation")
+   public ModelAndView findReservationRaccept(ModelAndView mv, long rid) {
+      log.info("[ReservationRestController -> findReservationRaccept 숙소 예약한 게스트 확인 요청함]");
+      mv = new ModelAndView("/mypage/goReservationRoom", "FindReservation", reservservice.findReservationRidS(rid));
+      return mv;
+   }
+   
    @GetMapping(value="/accessPage")
    public ModelAndView accessPage(long rid, ModelAndView mv){
 	   log.info("MypageController -> accessPage rid: "+rid);

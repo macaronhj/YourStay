@@ -15,10 +15,28 @@ import yourstay.md.service.BoardService;
 @AllArgsConstructor
 @Controller
 @RequestMapping("board")
+
+/**
+ * packageName : yourstay.md.controller
+ * fileName : BoardRestController
+ * author : kosmo 3팀
+ * date : Mar 14, 2022
+ * description :
+ * ===========================================================
+ * DATE                  AUTHOR                  NOTE
+ * -----------------------------------------------------------
+ * Mar 14, 2022          kosmo 3팀             최초 생성
+ */
+
 public class BoardRestController {
 	@Autowired
 	private BoardService boardService;
 	
+    /**
+     * 공지사항 등록  ( DTO 로 요청 받는 경우 )
+     * @param Board Board
+     * @return ModelAndView
+     */
 	@PostMapping("write")
 	public ModelAndView write(ModelAndView mv, Board board) {
 		log.info("BoardRestController -> write");
@@ -28,6 +46,12 @@ public class BoardRestController {
 		return mv;
 		
 	}
+	
+    /**
+     * 공지사항 수정  ( DTO 로 요청 받는 경우 )
+     * @param Board Board
+     * @return ModelAndView
+     */
 	@PostMapping("modify")
 	public ModelAndView modify(ModelAndView mv, Board board) {
 		log.info("BoardRestController -> modify");
@@ -37,6 +61,12 @@ public class BoardRestController {
 		return mv;
 		
 	}
+	
+	/**
+     * 공지사항 삭제  ( DTO 로 요청 받는 경우 )
+     * @param boardnum boardnum
+     * @return ModelAndView
+     */
 	@PostMapping("delete")
 	public ModelAndView delete(ModelAndView mv, long boardnum) {
 		log.info("BoardRestController -> modify");

@@ -62,13 +62,7 @@ body{
 </style>
 <script type="text/javascript">
    $(document).ready(function() {
-      // notifySend
       $('#notifySendBtn').click(function(e) {
-         //let modal = $('.modal-content').has(e.target);
-         //let type = '70';
-         //let target = modal.find('.modal-body input').val();
-         //let content = modal.find('.modal-body textarea').val();
-         //let url = '${contextPath}/member/notify.do';
          let target = $("#mseq").val;
          let url = '${contextPath}/notify.do';
          // 전송한 정보를 db에 저장   
@@ -77,10 +71,6 @@ body{
             url : '${contextPath}/notify.do',
             dataType : 'text',
             data : {
-               /* target: target,
-               content: content,
-               type: type,
-               url: url */
                target : target,
                content : content
             },

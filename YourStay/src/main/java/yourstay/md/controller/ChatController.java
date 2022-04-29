@@ -9,6 +9,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 
 @Controller
+
+/**
+ * packageName : yourstay.md.controller
+ * fileName : ChatController
+ * author : kosmo 3得
+ * date : Mar 14, 2022
+ * description :
+ * ===========================================================
+ * DATE                  AUTHOR                  NOTE
+ * -----------------------------------------------------------
+ * Mar 14, 2022          kosmo 3得             置段 持失
+ */
+
 public class ChatController {
 
     @MessageMapping("/chat.sendMessage") // /{aid}閤焼神奄

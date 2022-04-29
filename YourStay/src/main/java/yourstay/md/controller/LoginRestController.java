@@ -27,16 +27,31 @@ import yourstay.md.service.MemberService;
 @AllArgsConstructor
 @Controller
 @RequestMapping("/login")
+
+/**
+ * packageName : yourstay.md.controller
+ * fileName : LoginRestController
+ * author : kosmo 3팀
+ * date : Mar 14, 2022
+ * description :
+ * ===========================================================
+ * DATE                  AUTHOR                  NOTE
+ * -----------------------------------------------------------
+ * Mar 14, 2022          kosmo 3팀             최초 생성
+ */
+
 public class LoginRestController {
 	@Autowired
 	MemberMapper mapper;
-	
 	@Autowired
 	MemberService memberService;
-	
 	@Autowired
 	SearchMapper searchMapper;
 	
+    /**
+     * 로그인 정보 확인 후 로그인 처리  ( DTO 로 요청 받는 경우 )
+     * @return ModelAndView
+     */
 	@PostMapping("loginCheck.do")
 	private ModelAndView check(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws ServletException, IOException {
 //		log.info("loginCon check aid:" + aid + ", startDate : " + rstart + ", endDate : " + rend);
@@ -61,6 +76,11 @@ public class LoginRestController {
 		mv = new ModelAndView("msg", "result", result);
 		return mv;
 	}
+	
+	/**
+     * 회원가입 처리  ( mname, memail, mpwd, mcallnum 로 요청 받는 경우 )
+     * @return ModelAndView
+     */
 	@PostMapping("join.do")
 	public ModelAndView join(@RequestParam String mname, String memail, String mpwd, int mcallnum) {
    

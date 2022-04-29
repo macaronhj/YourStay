@@ -25,14 +25,24 @@ import static yourstay.md.domain.LoginConst.*;
 @AllArgsConstructor
 @Controller
 @RequestMapping("/login")
+
+/**
+ * packageName : yourstay.md.controller
+ * fileName : LoginController
+ * author : kosmo 3得
+ * date : Mar 14, 2022
+ * description :
+ * ===========================================================
+ * DATE                  AUTHOR                  NOTE
+ * -----------------------------------------------------------
+ * Mar 14, 2022          kosmo 3得             置段 持失
+ */
+
 public class LoginController {
-	
 	@Autowired
 	MemberMapper mapper;
-	
 	@Autowired
 	SearchMapper searchMapper;
-	
 	
 	@GetMapping(value="/loginPage")
     public ModelAndView loginPage(ModelAndView mv){

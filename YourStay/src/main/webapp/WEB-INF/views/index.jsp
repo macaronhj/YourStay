@@ -152,7 +152,7 @@
               showCancelButton: true,
               confirmButtonText : "예약내용 보러가기",
               cancelButtonText: '알림끄기',
-              timer: 3000,
+              timer: 10000,
               timerProgressBar: true,
               didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer);

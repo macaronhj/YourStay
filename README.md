@@ -1,9 +1,6 @@
 YourStay
 =============
 
-* port: 8080 
-* 웹: http://localhost:8080/
-
 ## Technologies
 ### Front-End
 * JSP
